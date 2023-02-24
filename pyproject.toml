@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "ganttouchthis"
+version = "0.1.0"
+description = "Tool for creating and managing Gantt charts, both as a CLI and a Python API."
+authors = ["Isaac Riley <isaac.r.riley@gmail.com>"]
+license = "GPL-3.0-or-later"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[tool.poetry.group.dev.dependencies]
+#black = { version = "22.12.0", extras = ["jupyter"] }
+rinohtype = "0.5.3"
+ipython = "^8.8.0"
+pre-commit = "^2.21.0"
+ipykernel = "^6.20.2"
+pylint = "^2.12.1"
+pytest = "^6.2.5"
+pytest-mock = "^3.6.1"
+isort = "^5.10.1"
+Sphinx = "^5.0"
+recommonmark = "^0.7.1"
+readthedocs-sphinx-ext = "^2.1.4"
+rst2pdf = "^0.99"
+sphinx-rtd-theme = "^0.5"
+docxbuilder = "^1.2.0"
+python-dotenv = "^0.21.1"
+sphinx-autodoc-typehints = "^1.22"
+
+[tool.black]
+line-length = 120
+
+[tool.isort]
+profile = "black"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
