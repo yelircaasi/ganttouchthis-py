@@ -1,7 +1,4 @@
 from ganttouchthis import Date, Gantt, Priority, Project, Task
-from ganttouchthis.structures.gantt import *
-from ganttouchthis.structures.project import *
-from ganttouchthis.structures.task import *
 
 g = Gantt()
 g.add_project(
@@ -20,6 +17,10 @@ g.add_project(
     end=Date.today() + 60,
     cluster=1,
 )
+s = g.serialize()
+g2 = Gantt.deserialize(s)
+
+
 tasks1 = g.get_day(Date.today() + 3)
 
 save_path = "/tmp/gantt.json"
@@ -37,3 +38,6 @@ p = Project(
     cluster=3,
 )
 p
+
+s = p.serialize()
+p2 = Project.deserialize(s)

@@ -5,10 +5,12 @@ from ganttouchthis.structures.task import DayTasks, Priority, schedule_tasks
 from ganttouchthis.utils.date import Date
 from ganttouchthis.utils.spacer import expand_tasks
 
+SEP = "\n  \t  \n"
+
 
 class Gantt:
     def __init__(self, projects: list = []) -> None:
-        self.projects = projects
+        self.projects = {p.name: p for p in projects}
         # self.groups
 
     def add_project(
@@ -23,17 +25,19 @@ class Gantt:
         interval: Union[int, None] = None,
     ) -> None:
 
-        self.projects.append(
-            Project(
-                name=name,
-                tasks=tasks,
-                priority=priority,
-                groups=groups,
-                start=start,
-                end=end,
-                cluster=cluster,
-                interval=interval,
-            )
+        self.projects.update(
+            {
+                name: Project(
+                    name=name,
+                    tasks=tasks,
+                    priority=priority,
+                    groups=groups,
+                    start=start,
+                    end=end,
+                    cluster=cluster,
+                    interval=interval,
+                )
+            }
         )
 
     def adjust(self, algorithm: AdjustmentAlg, adj_params: AdjustmentParams, projects: list):
@@ -60,3 +64,13 @@ class Gantt:
 
     def save(self, json_path):
         ...
+
+    def serialize(self, indet: Union[int, None] = None) -> str:
+        # return SEP.join(['['] + list(map(lambda x: x.serialize() + ',', self.projects)) + [']'])
+        pl = map(lambda x: x.serialize() + ",", self.projects.values())
+        return "[" + SEP + SEP.join(pl).strip(",") + SEP + "]"
+
+    @classmethod
+    def deserialize(cls, json_str: str) -> "Gantt":
+        projects = list(map(lambda x: Project.deserialize(x.strip(",")), json_str.split(SEP)[1:-1]))
+        return cls(projects=projects)

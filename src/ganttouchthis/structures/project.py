@@ -1,12 +1,16 @@
+import json
 from dataclasses import dataclass
 from enum import Enum
 from typing import Dict, Literal, TypedDict, Union
 
-from ganttouchthis.structures.task import DayTasks, Priority, schedule_tasks
+from ganttouchthis.structures.task import DayTasks, Priority, Task, schedule_tasks
 from ganttouchthis.utils.date import Date
+from ganttouchthis.utils.json import CustomEncoder
 from ganttouchthis.utils.spacer import expand_tasks
 
 AdjustmentAlg = Literal["EVEN", "RIGID", "ROLLOVER"]
+TASK_SEP = "\n        \n"
+KV_SEP = "     \n"
 
 
 class AdjustmentParams(TypedDict):
@@ -22,8 +26,8 @@ class ProjectInit:
 class Project:
     def __init__(
         self,
-        name: str,
-        tasks="13",
+        name: str = "Unnamed Project",
+        tasks: str = "",
         priority: Priority = Priority.UNDEFINED,
         groups: set = set(),
         start: Date = Date.today() + 1,
@@ -44,15 +48,35 @@ class Project:
             + "\n ".join(map(lambda kv: f"{kv[0]}:\n{kv[1]}\n", self.task_schedule.items()))
         )
 
-    def push_back(self, algorithm: AdjustmentAlg):
-        ...
-
-    def serialize(self) -> dict:
-        proj_dict: Dict[Date, dict] = {}
-        return proj_dict
+    def serialize(self, indent: Union[int, None] = None) -> str:
+        ind = lambda x: "" if indent is None else "\n" + x * indent
+        task_list = json.dumps(self.task_list, indent=indent)
+        head = (
+            f'{{{ind(1)}"name": "{self.name}", {ind(1)}"task_list": {task_list}, {ind(1)}"task_schedule": {{{TASK_SEP}'
+        )
+        body = TASK_SEP.join(
+            map(lambda kv: '"' + str(kv[0]) + KV_SEP + kv[1].serialize(indent=None) + ",", self.task_schedule.items())
+        ).strip(",")
+        tail = TASK_SEP + r"}}"
+        # print(task_list)
+        # print(head)
+        # print(body)
+        # print(tail)
+        return head + body + tail
 
     @classmethod
-    def deserialize(cls, proj_dict: dict) -> "Project":
-        prj = Project("")
+    def deserialize(cls, json_str) -> "Project":
+        segments = json_str.split(TASK_SEP)
+        _dict = json.loads(segments[0] + segments[-1])
+        date_task_pairs = map(lambda x: x.split(KV_SEP), segments[1:-1])
+        task_schedule = dict(
+            map(lambda x: (Date.fromisoformat(x[0].strip('"')), Task.deserialize(x[1].strip(","))), date_task_pairs)
+        )
+        _dict["task_schedule"].update(task_schedule)
+        proj = cls(name=_dict["name"])
+        proj.task_list = _dict["task_list"]
+        proj.task_schedule = _dict["task_schedule"]
+        return proj
 
-        return prj
+    def push_back(self, algorithm: AdjustmentAlg):
+        ...

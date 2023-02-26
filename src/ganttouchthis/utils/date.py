@@ -7,7 +7,10 @@ class Date:
         self.date = date(year, month, day)
 
     def __repr__(self):
-        return f"{self.year}-{self.month}-{self.day}"
+        return f"{self.year}-{self.month:02d}-{self.day:02d}"
+
+    def __str__(self) -> str:
+        return self.__repr__()
 
     def __add__(self, x: int) -> "Date":
         return Date.fromordinal(self.date.toordinal() + x)
@@ -32,4 +35,17 @@ class Date:
     @classmethod
     def today(cls):
         d = date.today()
+        return cls(d.year, d.month, d.day)
+
+    def __hash__(self) -> int:
+        return hash(self.__repr__())
+
+    def __eq__(self, __o: object) -> bool:
+        if not isinstance(__o, Date):
+            return NotImplemented
+        return self.__repr__() == __o.__repr__()
+
+    @classmethod
+    def fromisoformat(cls, iso_date: str) -> "Date":
+        d = date.fromisoformat(iso_date)
         return cls(d.year, d.month, d.day)

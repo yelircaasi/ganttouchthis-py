@@ -1,7 +1,9 @@
+import json
 from dataclasses import dataclass, field
 from enum import Enum
-from itertools import batched
 from typing import List, Tuple, Union
+
+from more_itertools import batched
 
 from ganttouchthis.utils.date import Date
 
@@ -59,16 +61,40 @@ class Task:
         )
         return task_str
 
+    def serialize(self, indent: Union[int, None] = None) -> str:
+        return json.dumps(
+            {k: str(v) if not isinstance(v, list) else v for k, v in self.__dict__.items()},
+            indent=indent,
+            ensure_ascii=False,
+        )
+
+    @classmethod
+    def deserialize(cls, json_str: str) -> "Task":
+        _dict = json.loads(json_str)
+        _dict["duration_min"] = int(_dict["duration_min"])
+        _dict["priority"] = Priority[_dict["priority"].split()[0]]
+        _dict["color"] = Color[_dict["color"]]
+        return cls(**_dict)
+
 
 @dataclass
 class DayTasks:
     tasks: List[Task]
 
     def __repr__(self) -> str:
-        return "\n".join(map(str, self.tasks))
+        return "\n\n".join(map(str, self.tasks))
 
     def __str__(self) -> str:
         return self.__repr__()
+
+    def serialize(self, indent: Union[int, None] = None) -> str:
+        return "[\n\n\n" + "\n\n".join(map(lambda x: x.serialize(indent=indent), self.tasks)) + "\n\n\n]\n"
+
+    @classmethod
+    def deserialize(cls, json_str: str) -> "DayTasks":
+        task_strings = json_str.split("\n\n\n")[1].split("\n\n")
+        tasks = list(map(lambda x: Task.deserialize(x), task_strings))
+        return cls(tasks=tasks)
 
 
 def schedule_tasks(

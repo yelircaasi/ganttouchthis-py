@@ -1,5 +1,7 @@
 def expand_tasks(task_abbr: str) -> list:
     def expand_block(block):
+        if not task_abbr:
+            return []
         error = ValueError(
             r"Tasks string not of a suitable form. Acceptable: \d{1, 3}(-\d{1, 3})?([A-Z]\d{0, 2}(-[A-Z]\d{0, 2})?)?"
         )
