@@ -9,16 +9,22 @@ from ganttouchthis.utils.date import Date
 
 
 class Priority(Enum):
+    FINISHED = -2
     UNDEFINED = -1
-    FINISHED = 0
-    BOTTOM = 1
-    LOW = 2
-    MEDIUM = 3
-    HIGH = 4
-    TOP = 5
+    WISH = 0
+    LOWEST = 1
+    LOWER = 2
+    LOW = 3
+    MEDIUM_LOW = 4
+    MEDIUM = 5
+    MEDIUM_HIGH = 6
+    HIGH = 7
+    HIGHER = 8
+    CRITICAL = 9
+    YESTERDAY = 10
 
     def __repr__(self) -> str:
-        return f"{self.name} ({self.value}/5)"
+        return f"{self.name} ({self.value}/10)"
 
     def __str__(self) -> str:
         return self.__repr__()
@@ -98,18 +104,20 @@ class DayTasks:
 
 
 def schedule_tasks(
+    name: str,
     task_list: list,
     start: Date,
-    end: Date,
-    cluster: int,
-    interval: Union[int, None],
-    name: str,
+    end: Union[Date, None] = None,
+    cluster: int = 1,
+    interval: Union[int, None] = 1,
     priority: Priority = Priority.UNDEFINED,
 ) -> dict:
 
     start = start if start else Date.today() + 1
     task_chunks = list(batched(task_list, cluster))
     nchunks = len(task_chunks)
+    if len(task_chunks) == 1:
+        return {start: Task(name=name, subtasks=task_chunks[0], priority=priority)}
     if end:
         ndays = int(end) - int(start)
         gap = int((ndays - nchunks) / (nchunks - 1))

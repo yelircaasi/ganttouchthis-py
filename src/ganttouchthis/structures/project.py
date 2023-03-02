@@ -27,18 +27,20 @@ class Project:
     def __init__(
         self,
         name: str = "Unnamed Project",
+        link: str = "",
         tasks: str = "",
         priority: Priority = Priority.UNDEFINED,
         groups: set = set(),
         start: Date = Date.today() + 1,
-        end: Date = Date.today() + 30,
-        cluster: int = 1,
+        end: Union[Date, None] = Date.today() + 30,
         interval: Union[int, None] = None,
+        cluster: int = 1,
     ) -> None:
         """ """
         self.name = name
+        self.link = link
         self.task_list = expand_tasks(tasks)
-        self.task_schedule = schedule_tasks(self.task_list, start, end, cluster, interval, name, priority)
+        self.task_schedule = schedule_tasks(self.name, self.task_list, start, end, cluster, interval, name, priority)
 
     def __repr__(self) -> str:
         return (
@@ -51,17 +53,11 @@ class Project:
     def serialize(self, indent: Union[int, None] = None) -> str:
         ind = lambda x: "" if indent is None else "\n" + x * indent
         task_list = json.dumps(self.task_list, indent=indent)
-        head = (
-            f'{{{ind(1)}"name": "{self.name}", {ind(1)}"task_list": {task_list}, {ind(1)}"task_schedule": {{{TASK_SEP}'
-        )
+        head = f'{{{ind(1)}"name": "{self.name}", {ind(1)}"link": "{self.link}", {ind(1)}"task_list": {task_list}, {ind(1)}"task_schedule": {{{TASK_SEP}'
         body = TASK_SEP.join(
             map(lambda kv: '"' + str(kv[0]) + KV_SEP + kv[1].serialize(indent=None) + ",", self.task_schedule.items())
         ).strip(",")
         tail = TASK_SEP + r"}}"
-        # print(task_list)
-        # print(head)
-        # print(body)
-        # print(tail)
         return head + body + tail
 
     @classmethod
@@ -73,7 +69,7 @@ class Project:
             map(lambda x: (Date.fromisoformat(x[0].strip('"')), Task.deserialize(x[1].strip(","))), date_task_pairs)
         )
         _dict["task_schedule"].update(task_schedule)
-        proj = cls(name=_dict["name"])
+        proj = cls(name=_dict["name"], link=_dict["link"])
         proj.task_list = _dict["task_list"]
         proj.task_schedule = _dict["task_schedule"]
         return proj

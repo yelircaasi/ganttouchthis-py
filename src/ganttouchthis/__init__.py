@@ -1,3 +1,4 @@
+from ganttouchthis.structures.backlog import BacklogItem
 from ganttouchthis.structures.gantt import Gantt
 from ganttouchthis.structures.project import Project
 from ganttouchthis.structures.task import Color, DayTasks, Priority, Task

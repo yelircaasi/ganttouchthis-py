@@ -1,5 +1,6 @@
-from typing import Union
+from typing import Iterable, Union
 
+from ganttouchthis.structures.backlog import BacklogItem
 from ganttouchthis.structures.project import AdjustmentAlg, AdjustmentParams, Project
 from ganttouchthis.structures.task import DayTasks, Priority, schedule_tasks
 from ganttouchthis.utils.date import Date
@@ -9,33 +10,36 @@ SEP = "\n  \t  \n"
 
 
 class Gantt:
-    def __init__(self, projects: list = []) -> None:
+    def __init__(self, projects: list = [], backlog: Iterable[BacklogItem] = []) -> None:
         self.projects = {p.name: p for p in projects}
+        self.backlog = list(backlog)
         # self.groups
 
     def add_project(
         self,
         name: str,
-        tasks="13",
+        link: str = "",
+        tasks="1",
         priority: Priority = Priority.UNDEFINED,
         groups: set = set(),
         start: Date = Date.today() + 1,
-        end: Date = Date.today() + 30,
-        cluster: int = 1,
+        end: Union[Date, None] = Date.today() + 30,
         interval: Union[int, None] = None,
+        cluster: int = 1,
     ) -> None:
 
         self.projects.update(
             {
                 name: Project(
                     name=name,
+                    link=link,
                     tasks=tasks,
                     priority=priority,
                     groups=groups,
                     start=start,
                     end=end,
-                    cluster=cluster,
                     interval=interval,
+                    cluster=cluster,
                 )
             }
         )
