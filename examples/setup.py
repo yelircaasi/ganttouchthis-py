@@ -941,7 +941,7 @@ g.add_project(
 g.add_project(
     name="Cómo piensa el mundo: Una historia global de la filosofía",
     tasks="28",
-    priority=Priority.WISH_LOW,
+    priority=Priority.MEDIUM_LOW,
     groups={"philo"},
     start=zero_date + 306,
     end=zero_date + 396,
@@ -1050,7 +1050,7 @@ g.add_project(
 g.add_project(
     name="Gemalte Wörter",
     tasks="214",
-    priority=Priority.WISH_LOW,
+    priority=Priority.LOW,
     groups={"ls", "zh"},
     start=zero_date + 306,
     end=zero_date + 396,
@@ -6488,7 +6488,7 @@ g.add_project(
 g.add_project(
     name="Data Science. Concepts and Practice",
     tasks="15",
-    priority=Priority.WISH_HIGH,
+    priority=Priority.MEDIUM_HIGH,
     groups={"ds"},
     start=zero_date + 306,
     end=zero_date + 396,
@@ -7389,7 +7389,7 @@ g.add_project(
 g.add_project(
     name="Neural Network Programming with Java.pdf",
     tasks="9,B",
-    priority=Priority.WISH_HIGH,
+    priority=Priority.MEDIUM_HIGH,
     groups={"java", "dl"},
     start=zero_date + 306,
     end=zero_date + 396,
@@ -7436,7 +7436,7 @@ g.add_project(
 g.add_project(
     name="Head First Java.pdf",
     tasks="9,A",
-    priority=Priority.WISH_LOW,
+    priority=Priority.MEDIUM_LOW,
     groups={"java"},
     start=zero_date + 306,
     end=zero_date + 396,
@@ -7508,7 +7508,7 @@ g.add_project(
 g.add_project(
     name="Interactive Object-Oriented Programming with Java.pdf",
     tasks="16,C",
-    priority=Priority.WISH_HIGH,
+    priority=Priority.MEDIUM_HIGH,
     groups={"java"},
     start=zero_date + 306,
     end=zero_date + 396,
@@ -7526,7 +7526,7 @@ g.add_project(
 g.add_project(
     name="https://exercism.org/tracks/java",
     tasks="132",
-    priority=Priority.WISH_HIGH,
+    priority=Priority.MEDIUM_HIGH,
     groups={"java"},
     start=zero_date + 306,
     end=zero_date + 396,

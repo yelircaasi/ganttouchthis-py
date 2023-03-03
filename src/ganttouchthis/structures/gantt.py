@@ -1,13 +1,12 @@
-from typing import Iterable, Union
+from typing import Iterable, Union, Optional, Callable
 
 from ganttouchthis.structures.backlog import BacklogItem
 from ganttouchthis.structures.project import AdjustmentAlg, AdjustmentParams, Project
-from ganttouchthis.structures.task import DayTasks, Priority, schedule_tasks
-from ganttouchthis.utils.date import Date
-from ganttouchthis.utils.db import projects_db, tasks_db
+from ganttouchthis.structures.task import Priority, schedule_tasks
+from ganttouchthis.structures.temporal import DayLoads, DayTasks
+from ganttouchthis.utils.date import Date, date_range
+from ganttouchthis.utils.db import Query, projects_db, tasks_db
 from ganttouchthis.utils.spacer import expand_tasks
-
-SEP = "\n  \t  \n"
 
 
 class Gantt:
@@ -16,6 +15,7 @@ class Gantt:
         self.backlog = list(backlog)
         self.projects_db = projects_db
         self.tasks_db = tasks_db
+        self.query = Query()
         # self.groups
 
     def add_project(
@@ -69,18 +69,28 @@ class Gantt:
     ) -> str:
         return "TODO"
 
-    def open(self, json_path):
+    def get_tasks(self, day: Date, sort_key: Optional[Callable] = None):  # -> DayTasks:
+        tasks = self.tasks_db.search(self.query.date == str(day))
+        if sort_key:
+            tasks.sort(key=sort_key)
+        return tasks
+
+    def get_day_loads(self, start_day: Date, end_day: Date) -> DayLoads:
+        days = date_range(start_day, end_day)
+        loads = []
+        for day in days:
+            tasks = self.get_tasks(day)
+            total = sum([task["duration"] for task in tasks])
+            print(total)
+            loads.append(total)
+        return DayLoads(days, loads)
+
+    def set_max_loads(self, start_day: Date, end_day: Date) -> None:
+        self.max_loads = {}
+        print("Please set the max load (in minutes) for each day:\n")
+        for day in date_range(start_day, end_day):
+            self.max_loads.update({day: input(f"Max load for {str(day)} ({day.english() + '):':<11} ")})
+        print()
+
+    def redistribute(self) -> None:
         ...
-
-    def save(self, json_path):
-        ...
-
-    def serialize(self, indet: Union[int, None] = None) -> str:
-        # return SEP.join(['['] + list(map(lambda x: x.serialize() + ',', self.projects)) + [']'])
-        pl = map(lambda x: x.serialize() + ",", self.projects.values())
-        return "[" + SEP + SEP.join(pl).strip(",") + SEP + "]"
-
-    @classmethod
-    def deserialize(cls, json_str: str) -> "Gantt":
-        projects = list(map(lambda x: Project.deserialize(x.strip(",")), json_str.split(SEP)[1:-1]))
-        return cls(projects=projects)

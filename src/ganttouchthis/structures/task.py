@@ -1,7 +1,7 @@
 import json
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import List, Tuple, Union
+from typing import List, Optional, Tuple, Union
 
 from more_itertools import batched
 
@@ -47,9 +47,10 @@ class Color(Enum):
 
 @dataclass
 class Task:
-    date: Date = (Date.today(),)
+    date: Optional[Date] = Date.today()
     name: str = ""
     subtasks: list = field(default_factory=list)
+    hash: str = hex(hash((name, subtasks)))
     duration: int = 30
     priority: Priority = Priority.UNDEFINED
     color: Color = Color.GRAY
@@ -65,27 +66,15 @@ class Task:
                 f"Priority:    {str(self.priority)}",
                 f"Color:       {str(self.color)}",
                 f"Description: {self.description}",
+                f"Hash:        {self.hash}"
             )
         )
         return task_str
 
-    def serialize(self, indent: Union[int, None] = None) -> str:
-        return json.dumps(
-            {k: str(v) if not isinstance(v, list) else v for k, v in self.__dict__.items()},
-            indent=indent,
-            ensure_ascii=False,
-        )
-
-    @classmethod
-    def deserialize(cls, json_str: str) -> "Task":
-        _dict = json.loads(json_str)
-        _dict["duration"] = int(_dict["duration"])
-        _dict["priority"] = Priority[_dict["priority"].split()[0]]
-        _dict["color"] = Color[_dict["color"]]
-        return cls(**_dict)
 
     def as_dict(self):
         return {
+            "hash": self.hash,
             "date": str(self.date),
             "name": self.name,
             "subtasks": self.subtasks,
@@ -106,26 +95,6 @@ class Task:
             color=Color[json_dict["color"]],
             description=json_dict["description"],
         )
-
-
-@dataclass
-class DayTasks:
-    tasks: List[Task]
-
-    def __repr__(self) -> str:
-        return "\n\n".join(map(str, self.tasks))
-
-    def __str__(self) -> str:
-        return self.__repr__()
-
-    def serialize(self, indent: Union[int, None] = None) -> str:
-        return "[\n\n\n" + "\n\n".join(map(lambda x: x.serialize(indent=indent), self.tasks)) + "\n\n\n]\n"
-
-    @classmethod
-    def deserialize(cls, json_str: str) -> "DayTasks":
-        task_strings = json_str.split("\n\n\n")[1].split("\n\n")
-        tasks = list(map(lambda x: Task.deserialize(x), task_strings))
-        return cls(tasks=tasks)
 
 
 def schedule_tasks(

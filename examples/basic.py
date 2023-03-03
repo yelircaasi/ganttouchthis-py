@@ -22,4 +22,9 @@ g.add_project(
 g.get_tasks(day=Date.today())
 g.get_day_loads(Date.today(), Date.today() + 14)
 g.set_max_loads(Date.today(), Date.today() + 14)
-g.redistribute()
+# g.shift_load()
+# g.edit_project(...)
+# g.edit_task(...)
+
+g.tasks_db.truncate()
+g.projects_db.truncate()
