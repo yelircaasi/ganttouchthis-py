@@ -35,12 +35,55 @@ class Project:
         end: Union[Date, None] = Date.today() + 30,
         interval: Union[int, None] = None,
         cluster: int = 1,
+        task_list: list = [],
     ) -> None:
         """ """
         self.name = name
         self.link = link
-        self.task_list = expand_tasks(tasks)
-        self.task_schedule = schedule_tasks(self.name, self.task_list, start, end, cluster, interval, name, priority)
+        self.task_list = task_list or expand_tasks(tasks)
+        self.start = start
+        self.end = end
+        self.priority = priority
+        self.interval = interval
+        self.cluster = cluster
+        self.groups = groups
+        self.task_schedule = schedule_tasks(
+            self.name,
+            self.task_list,
+            start,
+            end=end,
+            cluster=cluster,
+            interval=interval,
+            priority=self.priority,
+        )
+
+    def as_dict(self):
+        return {
+            "name": self.name,
+            "link": self.link,
+            "task_list": self.task_list,
+            "start": str(self.start),
+            "end": str(self.end),
+            "priority": self.priority.value,
+            "groups": list(self.groups),
+            "interval": self.interval,
+            "cluster": self.cluster,
+        }
+
+    @classmethod
+    def from_dict(cls, proj_dict) -> "Project":
+        return cls(
+            name=proj_dict["Unnamed Project"],
+            link=proj_dict["link"],
+            tasks=proj_dict["tasks"],
+            priority=Priority(proj_dict["priority"]),
+            groups=set(proj_dict["groups"]),
+            start=Date.fromisoformat(proj_dict["start"]),
+            end=Date.fromisoproject(proj_dict["end"]),
+            interval=proj_dict["interval"],
+            cluster=proj_dict["cluster"],
+            task_list=proj_dict["task_list"],
+        )
 
     def __repr__(self) -> str:
         return (

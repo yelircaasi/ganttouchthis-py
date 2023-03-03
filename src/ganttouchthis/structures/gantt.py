@@ -4,6 +4,7 @@ from ganttouchthis.structures.backlog import BacklogItem
 from ganttouchthis.structures.project import AdjustmentAlg, AdjustmentParams, Project
 from ganttouchthis.structures.task import DayTasks, Priority, schedule_tasks
 from ganttouchthis.utils.date import Date
+from ganttouchthis.utils.db import projects_db, tasks_db
 from ganttouchthis.utils.spacer import expand_tasks
 
 SEP = "\n  \t  \n"
@@ -13,6 +14,8 @@ class Gantt:
     def __init__(self, projects: list = [], backlog: Iterable[BacklogItem] = []) -> None:
         self.projects = {p.name: p for p in projects}
         self.backlog = list(backlog)
+        self.projects_db = projects_db
+        self.tasks_db = tasks_db
         # self.groups
 
     def add_project(
@@ -43,6 +46,9 @@ class Gantt:
                 )
             }
         )
+        self.projects_db.insert(self.projects[name].as_dict())
+        for task in self.projects[name].task_schedule.values():
+            self.tasks_db.insert(task.as_dict())
 
     def adjust(self, algorithm: AdjustmentAlg, adj_params: AdjustmentParams, projects: list):
         ...

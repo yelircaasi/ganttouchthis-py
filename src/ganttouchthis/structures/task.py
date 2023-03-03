@@ -47,9 +47,10 @@ class Color(Enum):
 
 @dataclass
 class Task:
+    date: Date = (Date.today(),)
     name: str = ""
     subtasks: list = field(default_factory=list)
-    duration_min: int = 30
+    duration: int = 30
     priority: Priority = Priority.UNDEFINED
     color: Color = Color.GRAY
     description: str = ""
@@ -57,9 +58,10 @@ class Task:
     def __repr__(self) -> str:
         task_str = "\n    ".join(
             (
-                f"    Name:        {self.name}",
+                f"    Date:        {str(self.date)}",
+                f"Name:        {self.name}",
                 f"Subtasks:    {', '.join(self.subtasks)}",
-                f"Duration:    {str(self.duration_min)} min",
+                f"Duration:    {str(self.duration)} min",
                 f"Priority:    {str(self.priority)}",
                 f"Color:       {str(self.color)}",
                 f"Description: {self.description}",
@@ -77,10 +79,33 @@ class Task:
     @classmethod
     def deserialize(cls, json_str: str) -> "Task":
         _dict = json.loads(json_str)
-        _dict["duration_min"] = int(_dict["duration_min"])
+        _dict["duration"] = int(_dict["duration"])
         _dict["priority"] = Priority[_dict["priority"].split()[0]]
         _dict["color"] = Color[_dict["color"]]
         return cls(**_dict)
+
+    def as_dict(self):
+        return {
+            "date": str(self.date),
+            "name": self.name,
+            "subtasks": self.subtasks,
+            "duration": self.duration,
+            "priority": self.priority.value,
+            "color": self.color.name,
+            "description": self.description,
+        }
+
+    @classmethod
+    def from_dict(cls, json_dict):
+        return cls(
+            date=Date.fromisoformat(json_dict["date"]),
+            name=json_dict["name"],
+            subtasks=json_dict["subtasks"],
+            duration=json_dict["duration"],
+            priority=Priority(json_dict["priority"]),
+            color=Color[json_dict["color"]],
+            description=json_dict["description"],
+        )
 
 
 @dataclass
@@ -117,7 +142,7 @@ def schedule_tasks(
     task_chunks = list(batched(task_list, cluster))
     nchunks = len(task_chunks)
     if len(task_chunks) == 1:
-        return {start: Task(name=name, subtasks=task_chunks[0], priority=priority)}
+        return {start: Task(date=start, name=name, subtasks=task_chunks[0], priority=priority)}
     if end:
         ndays = int(end) - int(start)
         gap = int((ndays - nchunks) / (nchunks - 1))
@@ -128,6 +153,6 @@ def schedule_tasks(
 
     def make_pair(enum_task_chunk: Tuple[int, list]) -> Tuple[Date, Task]:
         i, task_chunk = enum_task_chunk
-        return (start + (i + i * gap), Task(name=name, subtasks=task_chunk, priority=priority))
+        return (d := start + (i + i * gap), Task(date=d, name=name, subtasks=task_chunk, priority=priority))
 
     return dict(map(make_pair, enumerate(task_chunks)))

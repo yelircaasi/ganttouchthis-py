@@ -47,5 +47,7 @@ class Date:
 
     @classmethod
     def fromisoformat(cls, iso_date: str) -> "Date":
+        if iso_date == "None":
+            return None
         d = date.fromisoformat(iso_date)
         return cls(d.year, d.month, d.day)
