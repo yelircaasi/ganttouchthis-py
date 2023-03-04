@@ -1,13 +1,19 @@
-from typing import Callable, Iterable, Optional, Union, Any
 from collections import defaultdict
 from operator import itemgetter
+from typing import Any, Callable, Iterable, Optional, Union
 
 from ganttouchthis.structures.backlog import BacklogItem
 from ganttouchthis.structures.project import AdjustmentAlg, AdjustmentParams, Project
 from ganttouchthis.structures.task import Priority, schedule_tasks
 from ganttouchthis.structures.temporal import DayLoads, DayTasks
 from ganttouchthis.utils.date import Date, date_range
-from ganttouchthis.utils.db import Query, projects_db, tasks_db, max_loads_db, backlog_db
+from ganttouchthis.utils.db import (
+    Query,
+    backlog_db,
+    max_loads_db,
+    projects_db,
+    tasks_db,
+)
 from ganttouchthis.utils.spacer import expand_tasks
 
 
@@ -19,11 +25,11 @@ class Gantt:
         self.projects = {hex(hash((p.name, tuple(p.tasks)))): p for p in projects}
         self.projects.update(dict(map(lambda p: (p["hash"], Project.from_dict(p)), self.projects_db.all())))
         self.backlog = list(backlog)
-        
+
         self.query = Query()
         self.default_max_load = default_max_load
         self.max_loads = defaultdict(lambda: 240)
-        
+
     def add_project(
         self,
         name: str,
@@ -35,9 +41,9 @@ class Gantt:
         end: Union[Date, None] = Date.today() + 30,
         interval: Union[int, None] = None,
         cluster: int = 1,
-        duration: int = 30
+        duration: int = 30,
     ) -> None:
-        
+
         proj = Project(
             name=name,
             link=link,
@@ -101,7 +107,7 @@ class Gantt:
             if not date_string:
                 continue
             day = Date.fromisoformat(date_string)
-            load = int(input("Max load (minutes): ")) 
+            load = int(input("Max load (minutes): "))
             self.max_loads.update({day: load})
         print()
 
@@ -118,23 +124,21 @@ class Gantt:
                 self.edit_task(task_to_move.hash, "date", str(task_to_move.date + 1))
                 total = sum(map(lambda t: t.duration, tasks))
 
-
-
-    #TODO: enforce consitency by editing all subtasks when I edit a project
+    # TODO: enforce consitency by editing all subtasks when I edit a project
     # def edit_project(self, hash: str, key: str, value: Any) -> None:
 
     #     self.projects[hash].__dict__.update({key: value})
     #     self.project_db.update(self.projects[hash].as_dict(), self.query.hash == hash)
 
     def edit_task(self, hash: str, key: str, value: Any) -> None:
-        
+
         task = self.tasks_db.search(self.query.hash == hash)[0]
         project_hash = task["project_hash"]
         day = Date.fromisoformat(task["date"])
         self.projects[project_hash].task_schedule[day].__dict__.update({key: value})
         update = self.projects[project_hash].task_schedule[day].as_dict()
         self.tasks_db.update(update, self.query.hash == hash)
-                
+
     def search_projects(
         self,
         key1: str,

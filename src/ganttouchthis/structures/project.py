@@ -74,7 +74,7 @@ class Project:
             "groups": list(self.groups),
             "interval": self.interval,
             "cluster": self.cluster,
-            "duration": self.duration
+            "duration": self.duration,
         }
 
     @classmethod
@@ -97,4 +97,3 @@ class Project:
         return f"\n\n{self.name} ({self.hash})\n\n" + "\n ".join(
             map(lambda kv: f"{kv[0]}:\n{kv[1]}\n", self.task_schedule.items())
         )
-

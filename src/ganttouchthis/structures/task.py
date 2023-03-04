@@ -45,18 +45,17 @@ class Color(Enum):
         return self.__repr__()
 
 
-
 class Task:
     def __init__(
-            self,
-            project_hash: str,
-            date: Optional[Date] = Date.today(),
-            name: str = "",
-            subtasks: list = ["1"],
-            duration: int = 30,
-            priority: Priority = Priority.UNDEFINED,
-            color: Color = Color.GRAY,
-            description: str = "",
+        self,
+        project_hash: str,
+        date: Optional[Date] = Date.today(),
+        name: str = "",
+        subtasks: list = ["1"],
+        duration: int = 30,
+        priority: Priority = Priority.UNDEFINED,
+        color: Color = Color.GRAY,
+        description: str = "",
     ) -> None:
 
         self.project_hash = project_hash
@@ -138,6 +137,9 @@ def schedule_tasks(
 
     def make_pair(enum_task_chunk: Tuple[int, list]) -> Tuple[Date, Task]:
         i, task_chunk = enum_task_chunk
-        return (d := start + (i + i * gap), Task(project_hash=project_hash, date=d, name=name, subtasks=task_chunk, priority=priority))
+        return (
+            d := start + (i + i * gap),
+            Task(project_hash=project_hash, date=d, name=name, subtasks=task_chunk, priority=priority),
+        )
 
     return dict(map(make_pair, enumerate(task_chunks)))
