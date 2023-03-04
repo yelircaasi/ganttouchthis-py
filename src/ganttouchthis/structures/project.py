@@ -87,9 +87,8 @@ class Project:
         )
 
     def __repr__(self) -> str:
-        return (
-            f"\n\n{self.name} ({self.hash})\n\n"
-            + "\n ".join(map(lambda kv: f"{kv[0]}:\n{kv[1]}\n", self.task_schedule.items()))
+        return f"\n\n{self.name} ({self.hash})\n\n" + "\n ".join(
+            map(lambda kv: f"{kv[0]}:\n{kv[1]}\n", self.task_schedule.items())
         )
 
     def push_back(self, algorithm: AdjustmentAlg):

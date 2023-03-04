@@ -32,17 +32,11 @@ class Date:
 
     def toordinal(self):
         return self.date.toordinal()
-    
+
     def english(self):
-        return {
-            1: "Monday",
-            2: "Tuesday",
-            3: "Wednesday",
-            4: "Thursday",
-            5: "Friday",
-            6: "Saturday",
-            7: "Sunday"
-        }[self.date.isoweekday()]
+        return {1: "Monday", 2: "Tuesday", 3: "Wednesday", 4: "Thursday", 5: "Friday", 6: "Saturday", 7: "Sunday"}[
+            self.date.isoweekday()
+        ]
 
     @classmethod
     def today(cls):

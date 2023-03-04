@@ -22,6 +22,4 @@ class DayLoads:
         self.dict = dict(zip(dates, loads))
 
     def __repr__(self) -> str:
-        return "\nDay loads:\n----------------\n" + "\n".join(
-            [f"{str(k)}: {v:>4}" for k, v in self.dict.items()]
-        )
+        return "\nDay loads:\n----------------\n" + "\n".join([f"{str(k)}: {v:>4}" for k, v in self.dict.items()])

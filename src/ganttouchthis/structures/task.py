@@ -66,11 +66,10 @@ class Task:
                 f"Priority:    {str(self.priority)}",
                 f"Color:       {str(self.color)}",
                 f"Description: {self.description}",
-                f"Hash:        {self.hash}"
+                f"Hash:        {self.hash}",
             )
         )
         return task_str
-
 
     def as_dict(self):
         return {
