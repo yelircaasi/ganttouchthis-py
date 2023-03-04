@@ -34,12 +34,14 @@ class Project:
         end: Optional[Date] = Date.today() + 30,
         interval: Union[int, None] = None,
         cluster: int = 1,
+        duration: int = 30,
         task_list: list = [],
     ) -> None:
         """ """
         self.name = name
         self.link = link
         self.task_list = task_list or expand_tasks(tasks)
+        self.tasks = tasks
         self.start = start
         self.end = end
         self.priority = priority
@@ -47,7 +49,9 @@ class Project:
         self.cluster = cluster
         self.groups = groups
         self.hash = hex(hash((self.name, tuple(self.task_list))))
+        self.duration = duration
         self.task_schedule = schedule_tasks(
+            self.hash,
             self.name,
             self.task_list,
             start or Date.today(),
@@ -62,6 +66,7 @@ class Project:
             "hash": self.hash,
             "name": self.name,
             "link": self.link,
+            "tasks": self.tasks,
             "task_list": self.task_list,
             "start": str(self.start),
             "end": str(self.end),
@@ -69,12 +74,13 @@ class Project:
             "groups": list(self.groups),
             "interval": self.interval,
             "cluster": self.cluster,
+            "duration": self.duration
         }
 
     @classmethod
     def from_dict(cls, proj_dict) -> "Project":
         return cls(
-            name=proj_dict["Unnamed Project"],
+            name=proj_dict["name"],
             link=proj_dict["link"],
             tasks=proj_dict["tasks"],
             priority=Priority(proj_dict["priority"]),
@@ -83,6 +89,7 @@ class Project:
             end=Date.fromisoformat(proj_dict["end"]),
             interval=proj_dict["interval"],
             cluster=proj_dict["cluster"],
+            duration=proj_dict["duration"],
             task_list=proj_dict["task_list"],
         )
 
@@ -91,5 +98,3 @@ class Project:
             map(lambda kv: f"{kv[0]}:\n{kv[1]}\n", self.task_schedule.items())
         )
 
-    def push_back(self, algorithm: AdjustmentAlg):
-        ...

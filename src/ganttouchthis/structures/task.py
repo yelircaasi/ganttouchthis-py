@@ -45,16 +45,29 @@ class Color(Enum):
         return self.__repr__()
 
 
-@dataclass
+
 class Task:
-    date: Optional[Date] = Date.today()
-    name: str = ""
-    subtasks: list = field(default_factory=list)
-    hash: str = hex(hash((name, subtasks)))
-    duration: int = 30
-    priority: Priority = Priority.UNDEFINED
-    color: Color = Color.GRAY
-    description: str = ""
+    def __init__(
+            self,
+            project_hash: str,
+            date: Optional[Date] = Date.today(),
+            name: str = "",
+            subtasks: list = ["1"],
+            duration: int = 30,
+            priority: Priority = Priority.UNDEFINED,
+            color: Color = Color.GRAY,
+            description: str = "",
+    ) -> None:
+
+        self.project_hash = project_hash
+        self.date = date
+        self.name = name
+        self.subtasks = subtasks
+        self.hash = hex(hash((name, tuple(subtasks))))
+        self.duration = duration
+        self.priority = priority
+        self.color = color
+        self.description = description
 
     def __repr__(self) -> str:
         task_str = "\n    ".join(
@@ -67,12 +80,14 @@ class Task:
                 f"Color:       {str(self.color)}",
                 f"Description: {self.description}",
                 f"Hash:        {self.hash}",
+                f"Project Hash: {self.project_hash}",
             )
         )
         return task_str
 
     def as_dict(self):
         return {
+            "project_hash": self.project_hash,
             "hash": self.hash,
             "date": str(self.date),
             "name": self.name,
@@ -86,6 +101,7 @@ class Task:
     @classmethod
     def from_dict(cls, json_dict):
         return cls(
+            project_hash=json_dict["project_hash"],
             date=Date.fromisoformat(json_dict["date"]),
             name=json_dict["name"],
             subtasks=json_dict["subtasks"],
@@ -97,6 +113,7 @@ class Task:
 
 
 def schedule_tasks(
+    project_hash: str,
     name: str,
     task_list: list,
     start: Date,
@@ -121,6 +138,6 @@ def schedule_tasks(
 
     def make_pair(enum_task_chunk: Tuple[int, list]) -> Tuple[Date, Task]:
         i, task_chunk = enum_task_chunk
-        return (d := start + (i + i * gap), Task(date=d, name=name, subtasks=task_chunk, priority=priority))
+        return (d := start + (i + i * gap), Task(project_hash=project_hash, date=d, name=name, subtasks=task_chunk, priority=priority))
 
     return dict(map(make_pair, enumerate(task_chunks)))

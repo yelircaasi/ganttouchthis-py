@@ -6,9 +6,10 @@ g.add_project(
     name="Python лучшие инструменты и практики",
     tasks="17,A",
     priority=Priority.MEDIUM,
-    start=Date.today() + 3,
-    end=Date.today(),
+    start=Date.today(),
+    end=Date.today() + 60,
     cluster=3,
+    duration=90
 )
 g.add_project(
     name="Python Programming with Design Patterns",
@@ -17,14 +18,28 @@ g.add_project(
     start=Date.today(),
     end=Date.today() + 60,
     cluster=1,
+    duration=40
 )
+g.add_project(
+    name="Alice's Adventures in Wonderland",
+    tasks="25",
+    priority=Priority.MEDIUM,
+    start=Date.today(),
+    end=Date.today() + 60,
+    cluster=4,
+    duration=80
+)
+
 
 g.get_tasks(day=Date.today())
 g.get_day_loads(Date.today(), Date.today() + 14)
-g.set_max_loads(Date.today(), Date.today() + 14)
-# g.shift_load()
+g.set_max_loads()
+g.edit_task('-0x6ccc65b57da62f4f', "priority", Priority.HIGH)
+
 # g.edit_project(...)
 # g.edit_task(...)
+g.shift_load()
+
 
 g.tasks_db.truncate()
 g.projects_db.truncate()
