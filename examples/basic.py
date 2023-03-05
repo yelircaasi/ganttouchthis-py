@@ -30,15 +30,14 @@ g.add_project(
     duration=80,
 )
 
-
 g.get_tasks(day=Date.today())
-g.get_day_loads(Date.today(), Date.today() + 14)
+g.get_day_loads(Date.today(), Date.today() + 60)
 g.set_max_loads()
 g.edit_task("-0x6ccc65b57da62f4f", "priority", Priority.HIGH)
 
 # g.edit_project(...)
 # g.edit_task(...)
-g.shift_load()
+g.adjust_loads(Date.today(), Date.today() + 20)
 
 
 g.tasks_db.truncate()

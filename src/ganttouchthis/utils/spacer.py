@@ -1,15 +1,18 @@
+import re
+
+
 def expand_tasks(task_abbr: str) -> list:
     def expand_block(block):
         if not task_abbr:
             return []
         error = ValueError(
-            r"Tasks string not of a suitable form. Acceptable: \d{1, 3}(-\d{1, 3})?([A-Z]\d{0, 2}(-[A-Z]\d{0, 2})?)?"
+            f"Tasks string (item '{block}') not of a suitable form."
+            + r"Acceptable: \d{1, 3}(-\d{1, 3})?([A-Z]\d{0, 2}(-[A-Z]\d{0, 2})?)?"
         )
-        if block.isalpha():
-            return [block]
         if block.isnumeric():
             return list(map(str, range(1, int(block) + 1)))
-        elif "-" in block:
+
+        elif re.match("\w?\d\d?-", "block"):
             start, end = block.split("-")
             if start.isnumeric() and end.isnumeric():
                 return list(map(str, range(int(start), int(end) + 1)))
@@ -30,13 +33,16 @@ def expand_tasks(task_abbr: str) -> list:
                     raise error
             else:
                 raise error
-        elif block.isalnum():
-            letter, num = block[0], block[1:]
-            if not letter.isalpha() and num.isnumeric():
-                raise error
-            return list(map(lambda x: letter + str(x), range(1, int(num) + 1)))
+        # elif re.match("[^\d\-]{2}", block[:2]):
+        #     return [block]
+        # elif block.isalnum():
+        #     letter, num = block[0], block[1:]
+        #     if not letter.isalpha() and num.isnumeric():
+        #         raise error
+        #     return list(map(lambda x: letter + str(x), range(1, int(num) + 1)))
         else:
-            raise error
+            # raise error
+            return [block]
 
     tasks = []
     blocks = task_abbr.split(",")

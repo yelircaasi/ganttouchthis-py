@@ -120,13 +120,18 @@ def schedule_tasks(
     cluster: int = 1,
     interval: Union[int, None] = 1,
     priority: Priority = Priority.UNDEFINED,
+    duration: int = 30,
 ) -> dict:
 
     start = start if start else Date.today() + 1
     task_chunks = list(batched(task_list, cluster))
     nchunks = len(task_chunks)
     if len(task_chunks) == 1:
-        return {start: Task(date=start, name=name, subtasks=task_chunks[0], priority=priority)}
+        return {
+            start: Task(
+                project_hash, date=start, name=name, subtasks=task_chunks[0], priority=priority, duration=duration
+            )
+        }
     if end:
         ndays = int(end) - int(start)
         gap = int((ndays - nchunks) / (nchunks - 1))
@@ -139,7 +144,7 @@ def schedule_tasks(
         i, task_chunk = enum_task_chunk
         return (
             d := start + (i + i * gap),
-            Task(project_hash=project_hash, date=d, name=name, subtasks=task_chunk, priority=priority),
+            Task(project_hash, date=d, name=name, subtasks=task_chunk, priority=priority, duration=duration),
         )
 
     return dict(map(make_pair, enumerate(task_chunks)))

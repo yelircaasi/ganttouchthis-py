@@ -54,6 +54,7 @@ class Gantt:
             end=end,
             interval=interval,
             cluster=cluster,
+            duration=duration,
         )
         hash = proj.hash
         self.projects.update({hash: proj})
@@ -81,6 +82,7 @@ class Gantt:
         return "TODO"
 
     def get_tasks(self, day: Date, sort_key: Optional[Callable] = None, reverse: bool = True):  # -> DayTasks:
+        # tasks = list(map(dict, self.tasks_db.search(self.query.date == str(day))))
         tasks = self.tasks_db.search(self.query.date == str(day))
         if sort_key:
             tasks.sort(key=sort_key, reverse=reverse)
@@ -116,13 +118,15 @@ class Gantt:
         day = start_day
         while day < end_day:
             print(30 * "=" + "\n" + str(day) + "\n" + 30 * "=")
-            tasks = self.get_tasks(day, sort_key=lambda t: (t.priority.value, t.duration))
-            total = sum(map(lambda t: t.duration, tasks))
+            tasks = self.get_tasks(day, sort_key=lambda t: (t["priority"], t["duration"]))
+            total = sum(map(lambda t: t["duration"], tasks))
             while total > self.max_loads[day]:
                 print(30 * "=" + "\n" + str(total) + "\n" + 30 * "=")
                 task_to_move = tasks.pop()
-                self.edit_task(task_to_move.hash, "date", str(task_to_move.date + 1))
-                total = sum(map(lambda t: t.duration, tasks))
+                print(task_to_move)
+                self.edit_task(task_to_move["hash"], "date", str(Date.fromisoformat(task_to_move["date"]) + 1))
+                total = sum(map(lambda t: t["duration"], tasks))
+            day += 1
 
     # TODO: enforce consitency by editing all subtasks when I edit a project
     # def edit_project(self, hash: str, key: str, value: Any) -> None:
@@ -135,8 +139,16 @@ class Gantt:
         task = self.tasks_db.search(self.query.hash == hash)[0]
         project_hash = task["project_hash"]
         day = Date.fromisoformat(task["date"])
-        self.projects[project_hash].task_schedule[day].__dict__.update({key: value})
-        update = self.projects[project_hash].task_schedule[day].as_dict()
+        if key == "date":
+            new_day = Date.fromisoformat(value)
+            if not new_day in self.projects[project_hash].task_schedule:
+                self.projects[project_hash].task_schedule.update({new_day: XXX})
+            # TODO: unfinished -> rewrite data model to use doc IDs and pointers: example: g.projects_db.get(doc_id=4); also db.update, db.insert, db.upsert
+            # TODO: also add task Status enum to all instances
+
+        else:
+            self.projects[project_hash].task_schedule[day].__dict__.update({key: value})
+            update = self.projects[project_hash].task_schedule[day].as_dict()
         self.tasks_db.update(update, self.query.hash == hash)
 
     def search_projects(

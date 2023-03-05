@@ -59,6 +59,7 @@ class Project:
             cluster=cluster,
             interval=interval,
             priority=self.priority,
+            duration=self.duration,
         )
 
     def as_dict(self):
