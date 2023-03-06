@@ -473,7 +473,7 @@ g.add_project(
     cluster=2,
     duration=30,
 )
-"""
+# """
 g.add_project(
     name="Изучаем Python, том 2",
     tasks="26-41,D",
@@ -482,7 +482,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Python Tutorial",
@@ -492,7 +492,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Изучаем Python, том 1",
@@ -502,7 +502,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Test-Driven Development with Python",
@@ -512,7 +512,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Functional Python Programming. Discover the power of functional programming, generator functions, lazy evaluation, the built-in itertools library, and monads",
@@ -522,7 +522,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Functional Programming in Python (2019)",
@@ -532,7 +532,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Flask Framework Cookbook",
@@ -542,7 +542,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Python. Экспресс-курс",
@@ -552,7 +552,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="The Coder’s Apprentice. Learning Programming with Python 3",
@@ -562,7 +562,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="A functional start to computing with Python",
@@ -572,7 +572,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Классические задачи Computer Science на языке Python",
@@ -582,7 +582,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Fluent Python (2015)",
@@ -592,7 +592,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Python Fluente (2015)",
@@ -602,7 +602,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Functional Programming in Python",
@@ -612,7 +612,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Learn More Python 3 the Hard Way",
@@ -622,7 +622,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Learn Python 3 the Hard Way",
@@ -632,7 +632,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Mastering Python for Web. A Beginner's Guide",
@@ -642,7 +642,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Паттерны разработки на Python. TDD, DDD и событийно-ориентированная архитектура",
@@ -652,7 +652,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Beyond the Basic Stuff with Python. Best Practices",
@@ -662,7 +662,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://pybind11.readthedocs.io/en/latest/",
@@ -672,7 +672,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Стандартная библиотека Python 3",
@@ -682,7 +682,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://book.pythontips.com/en/latest/index.html",
@@ -692,7 +692,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Python. Сборник упражнений",
@@ -702,7 +702,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Learn Python Programing",
@@ -712,7 +712,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Основы Python (2021)",
@@ -722,7 +722,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Как устроен Python. Гид для разработчиков, программистов и интересующихся [2019] Харрисон",
@@ -732,7 +732,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Advanced Python Programming",
@@ -742,7 +742,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Python Developer’s Guide",
@@ -752,7 +752,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Une introduction à Python 3",
@@ -762,7 +762,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Introduction to Programming in Python. An Interdisciplinary Approach",
@@ -772,7 +772,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Python/C API",
@@ -782,9 +782,9 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
-#---------------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------------
 g.add_project(
     name="Bash Pocket Reference. Help for Power Users and Sys Admins",
     tasks="18",
@@ -793,7 +793,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Udemy C++ Masterclass",
@@ -803,7 +803,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=7,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Cherno C++ Playlist",
@@ -813,7 +813,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="C++. Das umfassende Handbuch",
@@ -823,7 +823,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Programming Principles and Practice Using C++",
@@ -833,7 +833,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Beginning C++17",
@@ -843,7 +843,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Beginning C++20",
@@ -853,7 +853,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Schrödinger programmiert C++",
@@ -863,7 +863,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Data Structures and Algorithms in Cpp",
@@ -873,7 +873,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://www.learncpp.com/",
@@ -883,7 +883,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Here's An Easier Way to Understand Pointer Math in C/C++ Programming - YouTube",
@@ -893,7 +893,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="C++ на примерах",
@@ -903,7 +903,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Cpp for Mathematicians",
@@ -913,7 +913,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Accelerated C++",
@@ -923,7 +923,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="C++ by Dissection",
@@ -933,7 +933,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Beginning Cpp Programming",
@@ -943,7 +943,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="How Linux Works. What Every Superuser Should Know",
@@ -953,7 +953,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Введение в язык Си++",
@@ -963,7 +963,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools",
@@ -973,7 +973,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="C++ Tutorial 2021 - YouTube",
@@ -983,7 +983,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Язык программирование C++. Полное руководство",
@@ -993,7 +993,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://vcpkg.io/en/index.html",
@@ -1003,7 +1003,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Lecture: Modern C++ (Summer 2018, Uni Bonn)",
@@ -1013,7 +1013,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="The Rook's Guide to Cpp",
@@ -1023,7 +1023,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Уроки програмування на С++ для початківців / aCode",
@@ -1033,7 +1033,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Hands-On Machine Learning with Cpp",
@@ -1043,7 +1043,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Modern CMake for Cpp",
@@ -1053,7 +1053,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="C++ Cheatsheets",
@@ -1064,7 +1064,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="C++20 Recipes",
@@ -1074,7 +1074,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="CMake Cookbook",
@@ -1084,7 +1084,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Система построения проектов CMake",
@@ -1094,7 +1094,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Professional CMake. A Practical Guide",
@@ -1104,7 +1104,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="C++ - das Übungsbuch",
@@ -1114,7 +1114,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Professional C++",
@@ -1124,7 +1124,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://github.com/pdeitel/CPlusPlus20ForProgrammers",
@@ -1134,7 +1134,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Modern Parallel Programming with C++ and Assembly Language",
@@ -1144,7 +1144,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Touch of Class",
@@ -1154,7 +1154,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="An Introduction to GCC. For the GNU Compilers GCC and G++",
@@ -1164,7 +1164,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="C++20 for Programmers",
@@ -1174,7 +1174,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Foundations of Programming Languages",
@@ -1184,7 +1184,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Learn Computer Vision Using OpenCV. With Deep Learning CNNs and RNNs",
@@ -1194,7 +1194,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Linguae per carmina",
@@ -1212,7 +1212,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="NLP01) Speech and Language Processing (2023)",
@@ -1222,7 +1222,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="NLP02) Speech and Language Processing (2008).djvu",
@@ -1232,7 +1232,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Cómo piensa el mundo: Una historia global de la filosofía",
@@ -1242,7 +1242,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="LingoDeer",
@@ -1252,7 +1252,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Fusha to Shami",
@@ -1262,7 +1262,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://uk.wikipedia.org/wiki/Обробка_природної_мови",
@@ -1272,7 +1272,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="NLP04) Deep Learning for NLP and Speech Recognition",
@@ -1282,7 +1282,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Introduction to Digital Electronics",
@@ -1292,7 +1292,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="NLP03) NLP (Eisenstein)",
@@ -1302,7 +1302,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Машинное обучение без лишних слов",
@@ -1312,7 +1312,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Dual Numbers",
@@ -1323,7 +1323,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Об'єктно-орієнтоване програмування",
@@ -1333,7 +1333,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Cogneethi -  Evolution Of Object Detection Networks",
@@ -1343,7 +1343,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=4,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="NLP Wikipedia",
@@ -1353,7 +1353,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Gemalte Wörter",
@@ -1363,7 +1363,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Open Data Structures",
@@ -1373,7 +1373,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="The Computer Science of TeX and LaTeX",
@@ -1383,7 +1383,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Transfer Learning for Natural Language Processing",
@@ -1393,7 +1393,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Code and Data for the Social Sciences. A Practitioner's Guide",
@@ -1403,7 +1403,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="The Healthy Programmer",
@@ -1413,7 +1413,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="A Programmer's Guide to Computer Science. Volume I",
@@ -1423,7 +1423,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Julia Docs",
@@ -1433,7 +1433,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="How Software Works",
@@ -1443,7 +1443,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="NLP09) NLP and CL II (Kurdi)",
@@ -1453,7 +1453,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="NLP07) Advanced Natural Language Processing with TensorFlow 2",
@@ -1463,7 +1463,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Дискретная математика для программистов",
@@ -1473,7 +1473,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="NLP18) Taming Text",
@@ -1483,7 +1483,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://www.gnu.org/software/bash/manual/",
@@ -1493,7 +1493,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="NLP13) Practical Natural Language Processing",
@@ -1503,7 +1503,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Willensfreiheit",
@@ -1513,7 +1513,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Das Handwerk der Freiheit",
@@ -1523,7 +1523,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="HOG paper",
@@ -1533,7 +1533,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Detecting Faces (Viola Jones Algorithm) - Computerphile",
@@ -1543,7 +1543,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="ML Algorithms.jpg",
@@ -1553,7 +1553,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Git Cheat Sheet",
@@ -1563,7 +1563,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Page Segmentation for Historical Handwritten Documents Using Fully Convolutional Networks",
@@ -1573,7 +1573,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://uk.wikipedia.org/wiki/Інформатика#Штучний_інтелект",
@@ -1583,7 +1583,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="The Gospel of John in Greek and Latin",
@@ -1593,7 +1593,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Modern C for Absolute Beginners",
@@ -1603,7 +1603,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Algorithmic Thinking. A Problem Based Introduction",
@@ -1613,7 +1613,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="C Programming. A Self-Teaching Introduction",
@@ -1623,7 +1623,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="100 примеров на Си.djvu",
@@ -1633,7 +1633,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="C Programming for Dummies",
@@ -1643,7 +1643,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Smaller C",
@@ -1653,7 +1653,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="The C Programming Language 2e",
@@ -1663,7 +1663,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="The Linux Command Line",
@@ -1673,7 +1673,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Head First Design Patterns",
@@ -1683,7 +1683,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="NLP14) Transformers for Natural Language Processing",
@@ -1693,7 +1693,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Mythos Determinismus",
@@ -1703,7 +1703,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Шаблоны и практика глубокого обучения",
@@ -1713,7 +1713,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Использование Docker",
@@ -1723,7 +1723,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Computing with Data",
@@ -1733,7 +1733,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Шаблоны и практика глубокого обучения",
@@ -1743,7 +1743,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://sites.google.com/view/datascience-cheat-sheets",
@@ -1753,7 +1753,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Neural Networks and Deep Learning",
@@ -1763,7 +1763,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Introductory Mathematics: Algebra and Analysis (Smith)",
@@ -1773,7 +1773,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Clean Code (IT)",
@@ -1783,7 +1783,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Clean Code. A Handbook of Agile Software Craftsmanship",
@@ -1793,7 +1793,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="MIT DL Course",
@@ -1803,7 +1803,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Introduction to Computer Organization. An Under the Hood Look at Hardware and x86-64 Assembly",
@@ -1813,7 +1813,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Україна - не Росія",
@@ -1823,7 +1823,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Computer Science Illuminated",
@@ -1833,7 +1833,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Computer Science - A Very Short Introduction",
@@ -1843,7 +1843,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="A Concise Introduction to ML (Faul)",
@@ -1853,7 +1853,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Encyclopedia of Machine Learning and Data Mining",
@@ -1863,7 +1863,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Machine Learning (Mitchell)",
@@ -1873,7 +1873,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Intro to Github",
@@ -1883,7 +1883,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Математика для Data Science [2021] Миронов, Минеева",
@@ -1893,7 +1893,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="NLP00) Natural Language Processing with Transformers",
@@ -1903,7 +1903,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Building your Mouseless Development Environment",
@@ -1913,7 +1913,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Computing with Data",
@@ -1923,7 +1923,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="The Missing Semester of Your CS Education",
@@ -1933,7 +1933,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Computing Handbook. Computer science and software engineering",
@@ -1943,7 +1943,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="All the Math You Missed",
@@ -1953,7 +1953,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="ML Spider Diagram RU.jpg",
@@ -1963,7 +1963,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Taxonomy of Principal Distances.jpg",
@@ -1973,7 +1973,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Linux intern",
@@ -1983,7 +1983,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="zsh Docs",
@@ -1993,7 +1993,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Embeddings in Natural Language Processing",
@@ -2003,7 +2003,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="The Art of Clean Code",
@@ -2013,7 +2013,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Code Craft - The Practice of Writing Excellent Code",
@@ -2023,7 +2023,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Softwareengineering - Wie entwickelt man Software",
@@ -2033,7 +2033,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Гид по Computer Science",
@@ -2043,7 +2043,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="3Blue1Brown Essence of Linear Algebra & Calculus & Neural Networks",
@@ -2053,7 +2053,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="The Foundations of Mathematics (Ian Stewart)",
@@ -2063,7 +2063,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Modern Vim",
@@ -2073,7 +2073,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Обработка естественного языка в действии",
@@ -2083,7 +2083,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="NLP12) NLP in Action",
@@ -2093,7 +2093,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Week 12 – Practicum: Attention and the Transformer",
@@ -2103,7 +2103,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Git Tutorial",
@@ -2113,7 +2113,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Programming Languages. Principles and Paradigms",
@@ -2123,7 +2123,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Das illustrierte Kompendium der Philosophie",
@@ -2133,7 +2133,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Techtiefen",
@@ -2143,7 +2143,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Самоучитель украинского языка",
@@ -2153,7 +2153,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Bin ich mein Gehirn?",
@@ -2163,7 +2163,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Design Patterns (Lasater)",
@@ -2173,7 +2173,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Introducción al sistema operativo GNU/Linux",
@@ -2183,7 +2183,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Das lateinische Basisvokabular",
@@ -2193,7 +2193,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Griechische Grammatik (Bornemann)",
@@ -2203,7 +2203,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Refactoring",
@@ -2213,7 +2213,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Dive into Deep Learning",
@@ -2223,7 +2223,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Learn Vim Tonight",
@@ -2233,7 +2233,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Code (Petzold)",
@@ -2243,7 +2243,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Код",
@@ -2253,7 +2253,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Learn Git Branching",
@@ -2263,7 +2263,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Bert",
@@ -2273,7 +2273,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Injecting fairness into machine-learning models",
@@ -2283,7 +2283,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Handbook of Linear Algebra",
@@ -2293,7 +2293,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Pattern Recognition and Machine Learning (Bishop)",
@@ -2303,7 +2303,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="NLP15) Audio Processing and Speech Recognition. Concepts, Techniques and Research Overviews",
@@ -2313,7 +2313,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Алгоритмы обработки текста. 125 задач с решениями",
@@ -2323,7 +2323,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="NLP26) Real-World Natural Language Processing",
@@ -2333,7 +2333,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="TF Certificate Handbook",
@@ -2343,7 +2343,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://towardsdatascience.com/ai-papers-to-read-in-2022-c6edd4302247",
@@ -2353,7 +2353,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Sigmoid and Logit function | Logical Intuitions",
@@ -2363,7 +2363,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Ingeniería del software",
@@ -2373,7 +2373,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Computer Systems - A Programmer's Perspective",
@@ -2383,7 +2383,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Learn TensorFlow 2.0",
@@ -2393,7 +2393,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Programming Logic and Design, Comprehensive",
@@ -2403,7 +2403,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Lilian Weng Blog",
@@ -2413,7 +2413,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Наш творчий мозок",
@@ -2423,7 +2423,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="An Introduction To Programs",
@@ -2433,7 +2433,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Lecture notes: Literature search and scientific reading",
@@ -2443,7 +2443,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="C32 | SIFT | Scale Invariant Feature Transform | Computer Vision | Object detection | EvODN - YouTube",
@@ -2453,7 +2453,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Modern C",
@@ -2463,7 +2463,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Mastering C Pointers",
@@ -2473,7 +2473,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Язык Си для начинающих",
@@ -2484,7 +2484,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Си на примерах. Практика",
@@ -2494,7 +2494,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Effective C",
@@ -2504,7 +2504,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Transformers Video",
@@ -2515,7 +2515,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Заблуждения и антишаблоны, относящиеся к devops",
@@ -2525,7 +2525,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Open letter",
@@ -2536,7 +2536,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Handbook of Mathematics",
@@ -2546,7 +2546,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="NLP08) NLP and CL I (Kurdi)",
@@ -2556,7 +2556,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Programming from the Ground Up",
@@ -2566,7 +2566,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="NLP10) Neural Network Methods for NLP",
@@ -2576,7 +2576,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="LPP 13-16",
@@ -2586,7 +2586,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Грокаем глубокое обучение",
@@ -2596,7 +2596,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Notation Sheet",
@@ -2607,7 +2607,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Deep Learning. A Comprehensive Overview",
@@ -2617,7 +2617,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="nand2tetris",
@@ -2627,7 +2627,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://sebastianraschka.com/faq/docs/logistic-why-sigmoid.html",
@@ -2637,7 +2637,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="First Year in Code",
@@ -2647,7 +2647,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Intro to Deep Learning (Skansi)",
@@ -2657,7 +2657,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Learn Bash the Hard Way",
@@ -2667,7 +2667,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="NLP-01) Applied Natural Language Processing in the Enterprise",
@@ -2677,7 +2677,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Align LPP",
@@ -2687,7 +2687,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Reinforcement Learning. An Introduction",
@@ -2697,7 +2697,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="But How Do It Know. The Basic Principles of Computers for Everyone",
@@ -2707,7 +2707,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Современные методы обработки естественного языка",
@@ -2717,7 +2717,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Обработка естественного языка",
@@ -2727,7 +2727,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Cambridge NLP Notes",
@@ -2737,7 +2737,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Attention is All You Need",
@@ -2747,7 +2747,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Conditional Random Fields : Data Science Concepts - YouTube",
@@ -2757,7 +2757,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Linguistique computationnelle. Entre sciences cognitives et traitement automatique des langues",
@@ -2767,7 +2767,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Deep Learning for Amharic Text-Image Recognition: Algorithm, Dataset and Application",
@@ -2777,7 +2777,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://euler.stephan-brumme.com/",
@@ -2787,7 +2787,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Ukrainian. A Comprehensive Grammar",
@@ -2797,7 +2797,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Регулярные выражения",
@@ -2807,7 +2807,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Concise Computer Vision",
@@ -2817,7 +2817,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="The Programmer's Brain. What Every Programmer Needs",
@@ -2827,7 +2827,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="The Machine Learning Solutions Architect Handbook",
@@ -2837,7 +2837,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Linux in a Nutshell",
@@ -2847,7 +2847,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Learn to Program with Assembly",
@@ -2857,7 +2857,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Читаемый код",
@@ -2867,7 +2867,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="The Linux Philosophy for SysAdmins",
@@ -2877,7 +2877,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="The Secret Life of Programs. Understand Computers, Craft Better Code",
@@ -2887,7 +2887,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Машинное обучение. Паттерны проектирования",
@@ -2897,7 +2897,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Der freie Wille",
@@ -2907,7 +2907,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Learning the Vi and Vim Editors",
@@ -2917,7 +2917,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Dialogues Project",
@@ -2927,7 +2927,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Mastering Vim",
@@ -2937,7 +2937,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Big Data PT",
@@ -2947,7 +2947,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Object-oriented vs Functional Programming",
@@ -2957,7 +2957,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Numbers and Functions: Steps into Analysis (Burn)",
@@ -2967,7 +2967,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Computer Science Distilled",
@@ -2977,7 +2977,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Теоретический минимум по Computer Science",
@@ -2987,7 +2987,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="NLP Overview",
@@ -2997,7 +2997,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Agile (PT)",
@@ -3007,7 +3007,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Elements of Computing Systems (2e)",
@@ -3017,7 +3017,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Машинное обучение. Карманный справочник",
@@ -3027,7 +3027,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Bewusstsein und freier Wille",
@@ -3037,7 +3037,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Computer Vision Algorithms and Applications",
@@ -3047,7 +3047,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Neural Networks and Deep Learning (Michael Nielsen)",
@@ -3057,7 +3057,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="The Missing README",
@@ -3067,7 +3067,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Simple Explanation of LSTM | Deep Learning Tutorial 36 (Tensorflow, Keras & Python) - YouTube",
@@ -3077,7 +3077,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Logique, Linguistique et Informatique",
@@ -3087,7 +3087,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://uk.wikipedia.org/wiki/Машинне_навчання",
@@ -3097,7 +3097,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Page Segmentation of Historical Document Images  with Convolutional Autoencoders",
@@ -3107,7 +3107,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Git Handbook",
@@ -3118,7 +3118,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Make list of top 1000 Chinese characters, all input codes, constituent radicals, character combinations, pronunciations, eventually example phrases",
@@ -3137,7 +3137,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Computer Science. An Interdisciplinary Approach",
@@ -3147,7 +3147,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Advanced Deep Learning with TensorFlow 2 and Keras",
@@ -3157,7 +3157,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="ix Developer - Sichere Software entwickeln",
@@ -3167,7 +3167,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Introduction to Metric and Topological Spaces (Sutherland)",
@@ -3177,7 +3177,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Nano Docs",
@@ -3187,7 +3187,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Cogneethi - Classical CV - HOG and SIFT intuitions",
@@ -3197,7 +3197,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Nano Cheatsheet",
@@ -3207,7 +3207,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Computational Linguistics and Deep Learning",
@@ -3217,7 +3217,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Elmo",
@@ -3227,7 +3227,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Reviewing Pull Requests",
@@ -3237,7 +3237,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Computerlinguistik und Sprachtechnologie",
@@ -3247,7 +3247,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://exercism.org/tracks/bash",
@@ -3257,7 +3257,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Ich denke, also will ich: Philosophie des freien Willens",
@@ -3267,7 +3267,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Computers: A History",
@@ -3278,7 +3278,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="The Future of Computer Security",
@@ -3289,7 +3289,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Чистый Agile. Основы гибкости",
@@ -3299,7 +3299,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Software Development, Design, and Coding",
@@ -3309,7 +3309,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Software Engineering. Grundlagen, Menschen, Prozesse, Techniken.epub",
@@ -3319,7 +3319,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Scrum. Революционный метод управления проектами",
@@ -3329,7 +3329,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Pro bash programming: scripting the GNU/Linux shell",
@@ -3339,7 +3339,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Сценарии командной оболочки",
@@ -3349,7 +3349,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Real-World Kanban",
@@ -3359,7 +3359,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://towardsdatascience.com/xgboost-an-intuitive-explanation-88eb32a48eff",
@@ -3369,7 +3369,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="ML Algorithms List.jpg",
@@ -3379,7 +3379,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Why do linear SVMs trained on HOG features perform so well?",
@@ -3389,7 +3389,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="MMOD paper",
@@ -3399,7 +3399,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Genealogy of Programming Languages",
@@ -3409,7 +3409,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Мозок - це ми",
@@ -3419,7 +3419,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Прекрасный, опасный, кибербезопасный мир",
@@ -3429,7 +3429,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Automated Machine Learning in Action",
@@ -3439,7 +3439,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Regression Cheatsheet.jpg",
@@ -3449,7 +3449,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Networks: The Internet and Beyond",
@@ -3459,7 +3459,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="How I Read a Paper: Facebook's DETR (Video Tutorial)",
@@ -3469,7 +3469,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="DETR: End-to-End Object Detection with Transformers | Paper Explained",
@@ -3479,7 +3479,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="DETR: End-to-End Object Detection with Transformers (Paper Explained)",
@@ -3489,7 +3489,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="DETR Paper arXiv Repo PwC",
@@ -3499,7 +3499,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="DETR - End to end object detection with transformers (ECCV2020)",
@@ -3509,7 +3509,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Data: The Past, the Present and the Future",
@@ -3519,7 +3519,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="CV3DST - Transformers and DETR",
@@ -3529,7 +3529,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="[Code] How to use Facebook's DETR object detection algorithm in Python (Full Tutorial)",
@@ -3539,7 +3539,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Emacs Tour",
@@ -3549,7 +3549,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Ali Baba",
@@ -3559,7 +3559,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Software Engineering",
@@ -3569,7 +3569,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Consolidate Learning Scripts & Keyboards and Carácteres y radicales chinos and HSK",
@@ -3579,7 +3579,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://en.wikipedia.org/wiki/Template:Design_Patterns_patterns",
@@ -3589,7 +3589,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Элементарное введение в высшую математику",
@@ -3599,7 +3599,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Computing Systems (Elahi)",
@@ -3609,7 +3609,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Программист-фанатик",
@@ -3619,7 +3619,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Ich denke zu viel",
@@ -3629,7 +3629,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Вища математика I. Підручник у 2 частинах",
@@ -3639,7 +3639,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Episode 10: Deep Neural Networks in Julia with Flux.jl",
@@ -3649,7 +3649,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://zsh.sourceforge.io/Guide/zshguide.html",
@@ -3659,7 +3659,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Street Coder",
@@ -3669,7 +3669,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Code Complete - A Practical Handbook of Software Construction",
@@ -3679,7 +3679,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="The Data Science Design Manual",
@@ -3689,7 +3689,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Практическая статистика для специалистов Data Science",
@@ -3699,7 +3699,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="GEB 2-3, 5-8",
@@ -3709,7 +3709,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Introduction to Programming Languages. Programming in C, C++, Scheme, Prolog, g, C#, and SOA",
@@ -3719,7 +3719,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Assembly Programming and Computer Architecture for Software Engineers",
@@ -3729,7 +3729,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Computer Science: A Very Short Introduction",
@@ -3739,7 +3739,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Handbook of Data Structures and Applications",
@@ -3749,7 +3749,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Encyclopedia of Algorithms",
@@ -3759,7 +3759,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Mastering ML with Python in Six Steps",
@@ -3769,7 +3769,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://numpy.org/doc/stable/reference/c-api/index.html",
@@ -3779,7 +3779,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Самоучитель Python",
@@ -3789,7 +3789,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Introduction to Mathematical Thinking (Devlin)",
@@ -3799,7 +3799,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Разработка конвейеров машинного обучения",
@@ -3809,7 +3809,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Tacitus Germania",
@@ -3819,7 +3819,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="write clustering section of ML Cheatsheet & make PR",
@@ -3829,7 +3829,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Write Great Code 2",
@@ -3839,7 +3839,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Write Great Code 1",
@@ -3849,7 +3849,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Soft Skills",
@@ -3859,7 +3859,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="O Programador Pragmático",
@@ -3869,7 +3869,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Introducción a los Patrones de Diseño",
@@ -3879,7 +3879,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Идеальный программист. Как стать профессионалом разработки ПО",
@@ -3889,7 +3889,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Visual Studio Code. End-To-End...",
@@ -3899,7 +3899,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Visual Studio Code Distilled",
@@ -3909,7 +3909,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Микросервисы и контейнеры Docker",
@@ -3919,7 +3919,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Совершенный код. Мастер-класс",
@@ -3929,7 +3929,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Assimil Hindi",
@@ -3939,7 +3939,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Cogneethi - Convolutional Neural Networks Basics & Intuitions",
@@ -3949,7 +3949,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Программирование Cloud Native. Микросервисы, Docker и Kubernetes",
@@ -3959,7 +3959,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://exercism.org/tracks/vimscript",
@@ -3969,7 +3969,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Hacking APIs Breaking Web Application Programming Interfaces",
@@ -3979,7 +3979,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="The Algorithm Design Manual",
@@ -3989,7 +3989,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="sed & awk 101 Hacks",
@@ -3999,7 +3999,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="GNU sed. Awesome Stream Editor",
@@ -4009,7 +4009,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Introduction to Algorithms",
@@ -4019,7 +4019,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="First Course in Algorithms through Puzzles",
@@ -4029,7 +4029,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Effective awk Programming. Universal Text Processing and Pattern Matching",
@@ -4039,7 +4039,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Learning Shell Scripting with zsh",
@@ -4049,7 +4049,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Sed & Awk",
@@ -4059,7 +4059,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="The Object-Oriented Thought Process",
@@ -4069,7 +4069,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Learn Git the Hard Way",
@@ -4079,7 +4079,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Git Essentials",
@@ -4089,7 +4089,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="How Open Source Ate Software",
@@ -4099,7 +4099,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Mastering Git. A Beginner's Guide",
@@ -4109,7 +4109,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Practical Git",
@@ -4119,7 +4119,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Advanced Git",
@@ -4129,7 +4129,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Git Version Control Cookbook",
@@ -4139,7 +4139,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Git. Практическое руководство",
@@ -4149,7 +4149,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Professional Git",
@@ -4159,7 +4159,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Beginning Git and Github",
@@ -4169,7 +4169,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="GitHub for Dummies",
@@ -4179,7 +4179,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Learn Git in a Month of Lunches",
@@ -4189,7 +4189,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Mastering Git",
@@ -4199,7 +4199,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Git Notes for Professionals",
@@ -4209,7 +4209,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Git Succinctly",
@@ -4219,7 +4219,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Git - Book",
@@ -4229,7 +4229,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Git для профессионального программиста",
@@ -4239,7 +4239,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Head First Git",
@@ -4249,7 +4249,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Pro Git",
@@ -4259,7 +4259,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Чистая архитектура. Искусство разработки программного обеспечения",
@@ -4269,7 +4269,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="The Kubernetes Book",
@@ -4279,7 +4279,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Consciousness: A Very Short Introduction",
@@ -4289,7 +4289,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="What Kind of Computation Is Cognition?",
@@ -4299,7 +4299,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Manim tutorial | Introduction: What is Manim?",
@@ -4309,7 +4309,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Make Videos Like 3Blue1Brown | Manim",
@@ -4319,7 +4319,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="How 3 Blue 1 Brown makes animations  | Manim Tutorial",
@@ -4329,7 +4329,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Advice for using Manim | Grant Sanderson and Lex Fridman",
@@ -4339,7 +4339,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="An Introduction to Information Retrieval",
@@ -4349,7 +4349,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="An Introduction to Language (Fromkin)",
@@ -4359,7 +4359,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="CRC Handbook of NLP (2010)",
@@ -4369,7 +4369,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="A Practical Introduction to Phonetics",
@@ -4379,7 +4379,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Acoustic Phonetics",
@@ -4389,7 +4389,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Articulatory Phonetics",
@@ -4399,7 +4399,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Cambridge Handbook of Formal Semantics",
@@ -4409,7 +4409,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Comprehensive Articulatory Phonetics",
@@ -4419,7 +4419,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Dictionary of Linguistics and Phonetics",
@@ -4429,7 +4429,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Elements of Acoustical Phonetics",
@@ -4439,7 +4439,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Elements of Formal Semantics",
@@ -4449,7 +4449,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Embedding of Semantic Predications",
@@ -4459,7 +4459,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Linguistic Fundamentals for NLP",
@@ -4469,7 +4469,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="A Novel Method of Extracting Topological Features from Word Embeddings",
@@ -4479,7 +4479,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Essentials of Linguistics (Anderson)",
@@ -4489,7 +4489,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="go through https://cs-k.it/master/lecture/Grundlagen-der-Automatischen-Spracherkennung.html",
@@ -4499,7 +4499,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Head First Data Analysis",
@@ -4509,7 +4509,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Introduction to Artificial Intelligence",
@@ -4519,7 +4519,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Introduction to Language (Yule)",
@@ -4529,7 +4529,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Langage naturel (résumé)",
@@ -4539,7 +4539,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Mathematical Linguistics",
@@ -4549,7 +4549,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Mathematics of Language",
@@ -4559,7 +4559,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="АВТОМАТИЧЕСКАЯ ОБРАБОТКА ТЕКСТОВ. ЗАДАЧИ, ПОДХОДЫ,  РЕСУРСЫ",
@@ -4569,7 +4569,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="NLP06) Natural Language Processing with PyTorch",
@@ -4579,7 +4579,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="NLP06) Знакомство с PyTorch",
@@ -4589,7 +4589,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Oxford Handbook of CL and NLP (2010)",
@@ -4599,7 +4599,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="NLP20) Oxford Handbook of Computational Linguistics",
@@ -4609,7 +4609,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="NLP25) Speech and Audio Signal Processing. Processing and Perception of Speech and Music",
@@ -4619,7 +4619,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="NLP17) Text-to-Speech Synthesis",
@@ -4629,7 +4629,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="NLP16) Automatic Speech Recognition - A Deep Learning Approach",
@@ -4639,7 +4639,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="NLP21) Handbook of Computational Linguistics and Natural Language Processing",
@@ -4649,7 +4649,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="NLP22) Spoken Language Processing",
@@ -4659,7 +4659,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="NLP19) Applied Text Analysis with Python",
@@ -4669,7 +4669,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="NLP23) Text Mining with R. a Tidy Approach",
@@ -4679,7 +4679,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Psycholinguistics - The Key Concepts",
@@ -4689,7 +4689,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Routledge Handbook of Semantics",
@@ -4699,7 +4699,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Using Praat for Linguistic Research (Styler)",
@@ -4709,7 +4709,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="NLP11) Deep Learning in Natural Language Processing",
@@ -4719,7 +4719,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="NLP24) Text Mining in Practice with R",
@@ -4729,7 +4729,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="NLP05) Foundations of Statistical Natural Language Processing",
@@ -4739,7 +4739,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="The Sounds of the World's Languages",
@@ -4749,7 +4749,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Document Image Analysis. Current Trends and Challenges in Graphics Recognition",
@@ -4759,7 +4759,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://github.com/doc-analysis",
@@ -4769,7 +4769,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Rich feature hierarchies for accurate object detection and semantic segmentation",
@@ -4779,7 +4779,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Fast R-CNN",
@@ -4789,7 +4789,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Fast R-CNN Slides",
@@ -4799,7 +4799,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Faster R-CNN. Towards Real-Time Object Detection with Region Proposal Networks",
@@ -4809,7 +4809,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Mask R-CNN",
@@ -4819,7 +4819,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Mask RCNN - How it Works - Intuition Tutorial | OpenCV Python | Computer Vision 2020",
@@ -4829,7 +4829,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale",
@@ -4839,7 +4839,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://learnopencv.com/create-snapchat-instagram-filters-using-mediapipe/",
@@ -4849,7 +4849,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://learnopencv.com/deep-learning-based-object-detection-using-yolov3-with-opencv-python-c/",
@@ -4859,7 +4859,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://www.learnopencv.com/wp-content/uploads/2020/05/Computer-Vision-Resources",
@@ -4869,7 +4869,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Mask RCNN - How it Works - Intuition Tutorial | OpenCV Python | Computer Vision 2020",
@@ -4879,7 +4879,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Vision Transformer in PyTorch",
@@ -4889,7 +4889,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Advanced Computer Vision with Python - Full Course",
@@ -4899,7 +4899,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Artificial Intelligence Programming with Python",
@@ -4909,7 +4909,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://omdena.com/blog/computer-vision-projects-github/",
@@ -4919,7 +4919,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Lecture 11 | Detection and Segmentation",
@@ -4929,7 +4929,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="DETR: End-to-End Object Detection with Transformers (Paper Explained)",
@@ -4939,7 +4939,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://learnopencv.com/deep-learning-based-text-recognition-ocr-using-tesseract-and-opencv/",
@@ -4949,7 +4949,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://learnopencv.com/multi-person-pose-estimation-in-opencv-using-openpose/",
@@ -4959,7 +4959,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://homepages.inf.ed.ac.uk/rbf/HIPR2/guidecon.htm",
@@ -4969,7 +4969,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Lecture 11 | Detection and Segmentation",
@@ -4979,7 +4979,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale",
@@ -4989,7 +4989,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Vision Transformer in PyTorch",
@@ -4999,7 +4999,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://www.width.ai/post/facial-detection-and-recognition-with-dlib",
@@ -5009,7 +5009,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://learnopencv.com/convolutional-neural-network-based-image-colorization-using-opencv/",
@@ -5019,7 +5019,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://github.com/spmallick/learnopencv/blob/master/README.md?ck_subscriber_id=1680684172",
@@ -5029,7 +5029,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Fast R-CNN Slides",
@@ -5039,7 +5039,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="DETR: End-to-End Object Detection with Transformers (Paper Explained)",
@@ -5049,7 +5049,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Computer Vision. A Reference Guide",
@@ -5059,7 +5059,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Wikipedia Computer Vision",
@@ -5069,7 +5069,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Hands-On Computer Vision with Julia ",
@@ -5079,7 +5079,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Convolutional Neural Networks (Course 4 of the Deep Learning Specialization)",
@@ -5089,7 +5089,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Mastering Computer Vision with TensorFlow 2.x",
@@ -5099,7 +5099,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="OCR with OpenCV, Tesseract, and Python",
@@ -5109,7 +5109,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Practical Machine Learning for Computer Vision",
@@ -5119,7 +5119,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Learning OpenCV 4 Computer Vision with Python 3",
@@ -5129,7 +5129,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Lecture Collection | Convolutional Neural Networks for Visual Recognition (Spring 2017)",
@@ -5139,7 +5139,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="OCR with OpenCV, Tesseract, and Python - Intro to OCR",
@@ -5149,7 +5149,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Deep Learning for Vision Systems",
@@ -5159,7 +5159,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Deep Learning in Computer Vision",
@@ -5169,7 +5169,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Domain Adaptation in Computer Vision with Deep Learning",
@@ -5179,7 +5179,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Handbook of Image Processing and Computer Vision. Volume 1. From Energy to Image",
@@ -5189,7 +5189,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="PyTorch Computer Vision Cookbook",
@@ -5199,7 +5199,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="TensorFlow 2.0 Computer Vision Cookbook",
@@ -5209,7 +5209,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Биологическое и компьютерное зрение",
@@ -5219,7 +5219,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Practical Docker with Python",
@@ -5229,7 +5229,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="The Docker Handbook",
@@ -5239,7 +5239,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Descomplicando o Docker",
@@ -5249,7 +5249,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Mastering Docker",
@@ -5259,7 +5259,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="BIOS.djvu",
@@ -5269,7 +5269,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Learn Docker in a Month of Lunches",
@@ -5279,7 +5279,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Docker Succinctly",
@@ -5289,7 +5289,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Desconstruindo a Web",
@@ -5299,7 +5299,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Docker in Action",
@@ -5309,7 +5309,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Aprendizaje Docker",
@@ -5319,7 +5319,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Docker на практике",
@@ -5329,7 +5329,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Docker in Practice",
@@ -5339,7 +5339,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Docker Deep Dive",
@@ -5349,7 +5349,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Docker para Desenvolvedores",
@@ -5359,7 +5359,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Scrum Shortcuts without Cutting Corners",
@@ -5369,7 +5369,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="The GNU Make Book",
@@ -5379,7 +5379,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="A Course in Formal Languages, Automata, and Groups (Chiswell)",
@@ -5389,7 +5389,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Sistemas computacionales",
@@ -5399,7 +5399,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://justinmeiners.github.io/lc3-vm/",
@@ -5409,7 +5409,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Category Theory for Computing Science",
@@ -5419,7 +5419,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://makefiletutorial.com/",
@@ -5429,7 +5429,7 @@ g.add_project(
     start=zero_date - 1,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="GNU Make Manual",
@@ -5439,7 +5439,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Rust Book",
@@ -5449,7 +5449,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Introduction to Logic Circuits and Logic Design with VHDL",
@@ -5459,7 +5459,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Grundkurs Codierung Verschlüsselung, Kompression und Fehlerbeseitigung",
@@ -5469,7 +5469,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Linux Kernel in a Nutshell",
@@ -5479,7 +5479,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Low-Level Programming",
@@ -5489,7 +5489,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Web Development for Beginners",
@@ -5499,7 +5499,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Компиляторы",
@@ -5509,7 +5509,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Ensamblador",
@@ -5519,7 +5519,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Kryptologie Eine Einführung in die Wissenschaft vom Verschlüsseln, Verbergen und Verheimlichen",
@@ -5529,7 +5529,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Scientific Computing. A Historical Perspective",
@@ -5539,7 +5539,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Bases de datos",
@@ -5549,7 +5549,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="How to Design, Build, & Program Your Own Working Computer System",
@@ -5559,7 +5559,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Cryptography Algorithms",
@@ -5569,7 +5569,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Fundamentos físicos de la informática",
@@ -5579,7 +5579,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Exploring the Early Digital",
@@ -5589,7 +5589,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="How Cybersecurity Really Works",
@@ -5599,7 +5599,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="PostgreSQL. Основы языка SQL",
@@ -5609,7 +5609,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Programming with POSIX threads",
@@ -5619,7 +5619,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Beginning PostgresQL on the Cloud",
@@ -5629,7 +5629,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Scala Book",
@@ -5639,7 +5639,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Real-World Cryptography",
@@ -5649,7 +5649,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="An Introduction to Formal Languages and Automata",
@@ -5659,7 +5659,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Основы технологий баз данных",
@@ -5669,7 +5669,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Digital Computer Electronics",
@@ -5679,7 +5679,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Прикладная криптография",
@@ -5689,7 +5689,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Happy Learn Haskell",
@@ -5699,7 +5699,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Five Lines of Code",
@@ -5709,7 +5709,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Haskell Report",
@@ -5719,7 +5719,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Assembly Language Step-by-Step. Programming with Linux",
@@ -5729,7 +5729,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="How to Build a Working Digital Computer",
@@ -5739,7 +5739,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Essentials of Programming Languages",
@@ -5749,7 +5749,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Intro to Automata Theory, Languages, and Computation (Hopcroft)",
@@ -5759,7 +5759,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Lenguaje ensamblador y programación para IBM PC y compatibles",
@@ -5769,7 +5769,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Mastering MySQL for Web. A Beginner's Guide",
@@ -5779,7 +5779,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Tour of Scala",
@@ -5790,7 +5790,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="UNIX Network Programming, Volume 1. The Sockets Networking API",
@@ -5801,7 +5801,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Web Security for Developers",
@@ -5811,7 +5811,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Yet Another Haskell Tutorial",
@@ -5821,7 +5821,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Алгебраические основы криптографии",
@@ -5831,7 +5831,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Scalability Patterns",
@@ -5841,7 +5841,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Algorithms, Languages, Automata, and Compilers",
@@ -5851,7 +5851,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Refactoring at Scale",
@@ -5861,7 +5861,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="The Art of Assembly Language Programming",
@@ -5871,7 +5871,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Програмування мовою асемблера. Навчальний посібник",
@@ -5881,7 +5881,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Scalability Rules",
@@ -5891,7 +5891,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Secure by Design",
@@ -5901,7 +5901,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="The Annotated Turing",
@@ -5911,7 +5911,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="The Art of 64-Bit Assembly",
@@ -5921,7 +5921,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="GNU Emacs Manual",
@@ -5931,7 +5931,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Профессиональное программирование на ассемблере x64 с расширениями",
@@ -5941,7 +5941,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Программирование на ассемблере х64. От начального уровня до профессионального",
@@ -5951,7 +5951,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Code Reading. The Open Source Perspective",
@@ -5961,7 +5961,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Алгоритмы и модели вычисления",
@@ -5971,7 +5971,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Изучение сложных систем с помощью Python",
@@ -5981,7 +5981,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Математические основы информатики",
@@ -5991,7 +5991,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Сетевые технологии. Основы веб дизайна",
@@ -6001,7 +6001,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Assembler Lernen - Tutorial Deutsch",
@@ -6011,7 +6011,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Fundamentals of Computer Architecture and Design",
@@ -6021,7 +6021,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="1400 задач по программированию",
@@ -6031,7 +6031,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Introduction to Compiler Design",
@@ -6041,7 +6041,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Kubernetes Succinctly",
@@ -6051,7 +6051,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Cloud Native DevOps with Kubernetes (2019)",
@@ -6061,7 +6061,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Kubernetes – An Enterprise Guide",
@@ -6071,7 +6071,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Cloud Native DevOps with Kubernetes",
@@ -6081,7 +6081,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Kubernetes лучшие практики",
@@ -6091,7 +6091,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Learn Kubernetes in a Month of Lunches",
@@ -6101,7 +6101,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Kubernetes Patterns",
@@ -6111,7 +6111,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Networking and Kubernetes",
@@ -6121,7 +6121,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Diving Deep into Kubernetes Networking",
@@ -6131,7 +6131,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="97 Etudes RU",
@@ -6141,7 +6141,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Learn Helm",
@@ -6151,7 +6151,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Learning Helm",
@@ -6161,7 +6161,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Linux в действии",
@@ -6171,7 +6171,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Seriously Good Software",
@@ -6181,7 +6181,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Scala Programming Projects",
@@ -6191,7 +6191,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Scala Design Patterns",
@@ -6201,7 +6201,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Mastering RabbitMQ",
@@ -6211,7 +6211,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Betriebssysteme (zweisprachig)",
@@ -6221,7 +6221,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Introduction to the Theory of Formal Languages and Automata (Levelt)",
@@ -6231,7 +6231,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Learning Algorithms Through Programming and Puzzle Solving",
@@ -6241,7 +6241,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Грокаем алгоритмы",
@@ -6251,7 +6251,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Объектно-ориентированный подход",
@@ -6261,7 +6261,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Real-Time Operating Systems Book 1. The Theory",
@@ -6271,7 +6271,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Cloud Computing (Ruparelia)",
@@ -6281,7 +6281,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Cloud Computing Theory and Practice",
@@ -6291,7 +6291,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Implementing Programming Languages. An Introduction to Compilers and Interpreters",
@@ -6301,7 +6301,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="О криптографии всерьез",
@@ -6311,7 +6311,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Handbuch für Softwareentwickler",
@@ -6321,7 +6321,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Алгоритмы. Построение и анализ",
@@ -6331,7 +6331,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Foundations of Computer Science",
@@ -6341,7 +6341,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Arquitectura de computadores",
@@ -6351,7 +6351,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Introduction to the Design and Analysis of Algorithms",
@@ -6361,7 +6361,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Алгоритмы для начинающих",
@@ -6371,7 +6371,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://ocw.mit.edu/courses/6-172-performance-engineering-of-software-systems-fall-2018/video_galleries/lecture-videos/",
@@ -6381,7 +6381,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Linux API. Исчерпывающее руководство",
@@ -6391,7 +6391,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Algorithmen und Datenstrukturen (Sedgewick 2014)",
@@ -6401,7 +6401,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Compilers (Aho et al. 2E)",
@@ -6411,7 +6411,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Linguaggi di Programmazione",
@@ -6421,7 +6421,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Algoritmi. Lo spirito dell'informatica",
@@ -6431,7 +6431,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Types and Programming Languages",
@@ -6441,7 +6441,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Algorytmy, struktury danych i techniki programowania",
@@ -6451,7 +6451,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Operating System - YouTube",
@@ -6461,7 +6461,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Structure and Interpretation of Computer Programs",
@@ -6471,7 +6471,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Programming Languages. Principles and Paradigms (Noonan and Tucker)",
@@ -6481,7 +6481,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="CS 377 Spring '14: Operating Systems - YouTube",
@@ -6491,7 +6491,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Compiladores y interpretes",
@@ -6501,7 +6501,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Compiladores 2e",
@@ -6511,7 +6511,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Compilers",
@@ -6521,7 +6521,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Computer Systems (Elahi)",
@@ -6531,7 +6531,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Inside the Machine - An Illustrated Guide",
@@ -6541,7 +6541,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Fundamentals of Software Architecture",
@@ -6551,7 +6551,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Electronic Digital System Fundamentals",
@@ -6561,7 +6561,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Графовые алгоритмы",
@@ -6571,7 +6571,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Processor Microarchitecture",
@@ -6581,7 +6581,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Вычислительные системы и ассемблер.djvu",
@@ -6591,7 +6591,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Введение в рекурсивное программирование",
@@ -6601,7 +6601,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Structured Computer Organization",
@@ -6611,7 +6611,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Человеческий фактор успешные проекты и команды",
@@ -6621,7 +6621,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://exercism.org/tracks/x86-64-assembly/",
@@ -6631,7 +6631,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Arquitetura e organização de computadores (Stallings)",
@@ -6641,7 +6641,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Advanced Topics in Types and Programming Languages",
@@ -6651,7 +6651,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://exercism.org/tracks/lua",
@@ -6661,7 +6661,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://exercism.org/tracks/ocaml",
@@ -6671,7 +6671,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://exercism.org/tracks/wasm",
@@ -6681,7 +6681,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://exercism.org/tracks/kotlin",
@@ -6691,7 +6691,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://exercism.org/tracks/haskell",
@@ -6701,7 +6701,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="ix Developer - Machine Learning",
@@ -6711,7 +6711,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Modern C Quick Syntax Reference",
@@ -6721,7 +6721,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="A survey of transformers",
@@ -6731,7 +6731,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Transformers for Machine Learning. A Deep Dive",
@@ -6741,7 +6741,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Вища математика II. Підручник у 2 частинах",
@@ -6751,7 +6751,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Artin - Algebra",
@@ -6761,7 +6761,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Algebra, Topology, Differential Calculus, and Optimization Theory for Computer Science and Machine Learning",
@@ -6771,7 +6771,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Pure Mathematics for Beginners. A Rigorous Introduction to Logic, Set Theory, Abstract Algebra, Number Theory, Real Analysis, Topology, Complex Analysis, and Linear Algebra",
@@ -6781,7 +6781,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="ACME: Foundations of Applied Mathematics, Volume 2. Algorithms, Approximation, Optimization",
@@ -6791,7 +6791,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="ACME: Labs I",
@@ -6801,7 +6801,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="ACME: Labs II",
@@ -6811,7 +6811,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="ACME: Data Science Essentials →",
@@ -6821,7 +6821,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="ACME: Foundations of Applied Mathematics, Volume 1. Mathematical Analysis",
@@ -6831,7 +6831,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="ACME: Python Essentials",
@@ -6841,7 +6841,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="ACME: README",
@@ -6851,7 +6851,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="PyTorch Recipes",
@@ -6861,7 +6861,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Глубокое обучение",
@@ -6871,7 +6871,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="PyTorch Deep Learning Hands-On",
@@ -6881,7 +6881,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Foundations Of Data Science (2020)",
@@ -6891,7 +6891,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Hands-On Machine Learning with Scikit-Learn and TensorFlow",
@@ -6901,7 +6901,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Deep Learning with TensorFlow 2 and Keras",
@@ -6911,7 +6911,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Deep Learning. From Basics to Practice. Volume 1 (Glassner 2022)",
@@ -6921,7 +6921,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Deep Learning. From Basics to Practice. Volume 2 (Glassner 2022)",
@@ -6931,7 +6931,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Introduction to Machine Learning (Alpaydin 4e)",
@@ -6941,7 +6941,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Learning Deep Learning",
@@ -6951,7 +6951,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Основы искусственного интеллекта в примерах на Python",
@@ -6961,7 +6961,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="The TensorFlow Workshop",
@@ -6971,7 +6971,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Programming Machine Learning. From Coding to Deep Learning",
@@ -6981,7 +6981,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Applied Deep Learning with TensorFlow 2",
@@ -6991,7 +6991,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Artificial Intelligence with Python. Your complete guide to building intelligent apps using Python 3.x and TensorFlow 2",
@@ -7001,7 +7001,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Machine Learning mit Python",
@@ -7011,7 +7011,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Generative Deep Learning",
@@ -7021,7 +7021,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Deep Learning with PyTorch",
@@ -7031,7 +7031,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Mastering PyTorch",
@@ -7041,7 +7041,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Deep Learning with Python. Learn Best Practices of Deep Learning Models with PyTorch",
@@ -7051,7 +7051,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="AI and Machine Learning for Coders",
@@ -7061,7 +7061,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="PyTorch Artificial Intelligence Fundamentals",
@@ -7071,7 +7071,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="The Deep Learning with PyTorch Workshop",
@@ -7081,7 +7081,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Inside Deep Learning",
@@ -7091,7 +7091,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://github.com/yunjey/pytorch-tutorial",
@@ -7101,7 +7101,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="TensorFlow 2 Pocket Reference: Building and Deploying Machine Learning Models",
@@ -7111,7 +7111,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Developing Analytic Talent",
@@ -7121,7 +7121,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Machine Learning Bookcamp",
@@ -7131,7 +7131,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Machine Learning (Flach)",
@@ -7141,7 +7141,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Machine Learning Refined",
@@ -7151,7 +7151,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Machine Learning. An Algorithmic Perspective",
@@ -7161,7 +7161,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="scikit-learn Cookbook",
@@ -7171,7 +7171,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="An Overview of Statistical Learning Theory",
@@ -7181,7 +7181,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Deep Learning Approaches for Low-Resource Natural Language Processing",
@@ -7191,7 +7191,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Statistical Learning Theory Notes (Liang)",
@@ -7201,7 +7201,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Learning from Data",
@@ -7212,7 +7212,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Introduction to Applied Linear Algebra Julia Companion",
@@ -7223,7 +7223,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Statistics with Julia",
@@ -7233,7 +7233,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Julia for Data Science",
@@ -7243,7 +7243,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Flux.jl Docs",
@@ -7253,7 +7253,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Data Science. Concepts and Practice",
@@ -7263,7 +7263,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Data Science at the Command Line",
@@ -7273,7 +7273,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Doing Data Science",
@@ -7283,7 +7283,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="DL Technical Intro",
@@ -7293,7 +7293,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Антология машинного обучения. Важнейшие исследования в области ИИ.epub",
@@ -7303,7 +7303,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Крупномасштабное машинное обучение вместе с Python",
@@ -7313,7 +7313,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Building Machine Learning Pipelines",
@@ -7323,7 +7323,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Data science для карьериста",
@@ -7333,7 +7333,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Data Science Handbook (Shan et al.)",
@@ -7343,7 +7343,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="The Data Science Handbook (Cady)",
@@ -7353,7 +7353,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Pragmatic AI",
@@ -7363,7 +7363,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Deep Learning (Goodfellow et al., 2016)",
@@ -7373,7 +7373,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Elements of Statistical Learning",
@@ -7383,7 +7383,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Machine Learning (Alpaydin 2020)",
@@ -7393,7 +7393,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Algorithms for Data Science",
@@ -7403,7 +7403,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Handbook of Data Intensive Computing",
@@ -7413,7 +7413,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Data Mining (Aggarwal)",
@@ -7423,7 +7423,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Understanding Complex Datasets",
@@ -7433,7 +7433,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Spark: The Definitive Guide (Chambers & Zaharia)",
@@ -7443,7 +7443,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Using MPI: Portable Parallel Programming with the Message-Passing Interface by (Gropp, Lusk, and Skjellum)",
@@ -7453,7 +7453,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Programming Massively Parallel Processors (Kirk and Hwu)",
@@ -7463,7 +7463,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="CUDA for Engineers (Storti & Yurtoglu)",
@@ -7473,7 +7473,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Fundamentals of Machine Learning for Predictive Data Analysis",
@@ -7483,7 +7483,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Probabilistic Machine Learning. Advanced Topics - Supplementary Materials",
@@ -7493,7 +7493,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Probabilistic Machine Learning. Advanced Topics",
@@ -7503,7 +7503,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="The Kaggle Book",
@@ -7513,7 +7513,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Data Clustering",
@@ -7523,7 +7523,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Practical Machine Learning. A New Look at Anomaly Detection",
@@ -7533,7 +7533,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Practical Machine Learning. Innovations in Recommendation",
@@ -7543,7 +7543,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Анализ данных в науке и технике",
@@ -7553,7 +7553,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Как вытащить из данных максимум. Навыки аналитики для неспециалистов",
@@ -7563,7 +7563,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Разработка беспилотных транспортных средств",
@@ -7573,7 +7573,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Глубокое обучение с подкреплением на Python. OpenAI Gym и TensorFlow для профи",
@@ -7583,7 +7583,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Глубокое обучение с подкреплением",
@@ -7593,7 +7593,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Deep Reinforcement Learning. Das umfassende Praxis-Handbuch",
@@ -7603,7 +7603,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Алгоритмы обучения с подкреплением на Python",
@@ -7613,7 +7613,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Deep Learning for Robot Perception and Cognition",
@@ -7623,7 +7623,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="R Deep Learning. Essentials",
@@ -7633,7 +7633,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Scaling Up Machine Learning. Parallel and Distributed Approaches",
@@ -7643,7 +7643,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Машинное обучение: алгоритмы для бизнеса",
@@ -7653,7 +7653,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Machine Learning and Data Science Blueprints for Finance",
@@ -7663,7 +7663,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Artificial Intelligence (Norvig)",
@@ -7673,7 +7673,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Linear Algebra and Learning from Data",
@@ -7683,7 +7683,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Aprender Noruego",
@@ -7693,7 +7693,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="> 100 frases positivas + cumplidos - Noruego + Español - (Hablante nativo)",
@@ -7703,7 +7703,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Imparare 200 frasi in Cinese",
@@ -7713,7 +7713,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="(2024) Word Translation Graph Project",
@@ -7723,7 +7723,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="(2024) Modismos diversos (borrador)",
@@ -7733,7 +7733,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="(2024) Database of Figurative Language",
@@ -7743,7 +7743,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Argot - review and plan",
@@ -7753,7 +7753,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="(2024)Wikiquote",
@@ -7763,7 +7763,7 @@ g.add_project(
     start=Date(2024, 1, 1),
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Parallel Translations Projects - review & plan",
@@ -7773,7 +7773,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Proverbs Project - review and plan",
@@ -7783,7 +7783,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://zh.wikipedia.org/wiki/深度学习",
@@ -7793,7 +7793,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://zh.wikipedia.org/wiki/计算机科学",
@@ -7803,7 +7803,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="> Aprender Idiomas con Chris",
@@ -7813,7 +7813,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Assimil Ancient Greek",
@@ -7823,7 +7823,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Assimil HI",
@@ -7833,7 +7833,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="> Assimil HR",
@@ -7843,7 +7843,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="> Assimil PL",
@@ -7853,7 +7853,7 @@ g.add_project(
     start=Date(2024, 1, 1),
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="> Assimil ZH",
@@ -7863,7 +7863,7 @@ g.add_project(
     start=Date(2023, 3, 1) + 90,
     end=Date(2023, 3, 1) + 150,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="> Build Your Arabic Vocabulary",
@@ -7873,7 +7873,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="> https://archive.org/details/AssimilArabicWithEase",
@@ -7883,7 +7883,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="(2024) Modismos diversos (borrador)",
@@ -7893,7 +7893,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="(2024) Assimil NL",
@@ -7903,7 +7903,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="200 frases - Télugu - Español",
@@ -7913,7 +7913,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="R in a Nutshell",
@@ -7923,7 +7923,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="The Art of R Programming",
@@ -7933,7 +7933,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Systems Programming in Unix/Linux",
@@ -7943,7 +7943,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Deep Learning (Aggarwal)",
@@ -7953,7 +7953,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Learning Perl the Hard Way",
@@ -7963,7 +7963,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://exercism.org/tracks/prolog",
@@ -7973,7 +7973,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://exercism.org/tracks/perl5",
@@ -7983,7 +7983,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://exercism.org/tracks/rust",
@@ -7993,7 +7993,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Data Science with Julia",
@@ -8003,7 +8003,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Artificial Intelligence, Machine Learning, and Deep Learning (Campesato)",
@@ -8013,7 +8013,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Deep Learning in Natural Language Processing",
@@ -8023,7 +8023,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Machine Learning: A Bayesian and Optimization Perspective",
@@ -8033,7 +8033,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Linear Algebra and Optimization for Machine Learning: A Textbook",
@@ -8043,7 +8043,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Alebra, Topology, Differential Calculus, and Optimization Theory for Computer Science and Machine Learning",
@@ -8053,7 +8053,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Machine Learning: A Probabilistic Perspective",
@@ -8063,7 +8063,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Probabilistic Machine Learning: An Introduction",
@@ -8073,7 +8073,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Deep Learning. A Visual Approach (Glassner)",
@@ -8083,7 +8083,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Getting Started with Artificial Intelligence",
@@ -8093,7 +8093,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Beginning Perl Programming",
@@ -8103,7 +8103,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Beginning Rust",
@@ -8113,7 +8113,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Why Flux? The Elegant Julia Machine Learning Library",
@@ -8123,7 +8123,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Intro to Applied Linear Algebra",
@@ -8134,7 +8134,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Однострочники Python лаконичный и содержательный код",
@@ -8144,7 +8144,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Architcture Patterns with Python",
@@ -8154,7 +8154,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Efektywny Python 59 sposobow na lepszy kod",
@@ -8164,7 +8164,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Programming Rust. Fast, Safe Systems Development",
@@ -8174,7 +8174,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Программирование на Rust. Официальный гайд от команды разработчиков",
@@ -8184,7 +8184,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Java и OpenCV",
@@ -8194,7 +8194,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Программирование на Java для начинающих",
@@ -8204,7 +8204,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://www.analyticsinsight.net/top-10-java-projects-that-beginners-should-master-in-2022/",
@@ -8214,7 +8214,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Sams Teach Yourself Java in 24 Hours",
@@ -8224,7 +8224,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Fundamentals of Java Programming",
@@ -8234,7 +8234,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Grundkurs Java",
@@ -8244,7 +8244,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Java Succinctly Part 1",
@@ -8254,7 +8254,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Neural Network Programming with Java",
@@ -8264,7 +8264,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Core Java Cheatsheet",
@@ -8274,7 +8274,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Learning Java",
@@ -8284,7 +8284,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Програмування на Java",
@@ -8295,7 +8295,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=3,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Курс Java з нуля Українською",
@@ -8306,7 +8306,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Head First Java",
@@ -8316,7 +8316,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Легкий способ выучить Java",
@@ -8326,7 +8326,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Hands-On Software Engineering with Java",
@@ -8336,7 +8336,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://www.geeksforgeeks.org/image-processing-in-java-changing-orientation-of-image/?ref=rp",
@@ -8346,7 +8346,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="JTextPro: A Java-based Text Processing Toolkit",
@@ -8356,7 +8356,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="JWebPro: A Java-based Web Processing Toolkit",
@@ -8366,7 +8366,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Learn Java the Hard Way",
@@ -8376,7 +8376,7 @@ g.add_project(
     start=zero_date + 306,
     interval=1,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Классические задачи Computer Science на языке Java",
@@ -8386,7 +8386,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Interactive Object-Oriented Programming with Java",
@@ -8396,7 +8396,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Core Java SE 9 for the Impatient",
@@ -8406,7 +8406,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="https://exercism.org/tracks/java",
@@ -8416,7 +8416,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Think Java (2e)",
@@ -8426,7 +8426,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Java для всех",
@@ -8436,7 +8436,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 g.add_project(
     name="Eloquent JavaScript",
@@ -8446,7 +8446,7 @@ g.add_project(
     start=zero_date + 306,
     end=zero_date + 396,
     cluster=1,
-    duration=30
+    duration=30,
 )
 
 g.backlog.extend(
@@ -9415,4 +9415,4 @@ g.backlog.extend(
         BacklogItem(name="Python и наука о данных", tasks="", groups={""}),
     ]
 )
-"""
+# """
