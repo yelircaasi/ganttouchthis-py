@@ -1,50 +1,73 @@
 from collections import defaultdict
 from operator import itemgetter
-from typing import Any, Callable, Iterable, Optional, Union
+from typing import Any, Callable, ClassVar, Iterable, List, Optional, Union
+
+from tinydb import Query, TinyDB
 
 from ganttouchthis.structures.backlog import BacklogItem
 from ganttouchthis.structures.project import AdjustmentAlg, AdjustmentParams, Project
-from ganttouchthis.structures.task import Priority, schedule_tasks
+from ganttouchthis.structures.task import Priority, Task, schedule_tasks
 from ganttouchthis.structures.temporal import DayLoads, DayTasks
 from ganttouchthis.utils.date import Date, date_range
-from ganttouchthis.utils.db import (
-    Query,
-    backlog_db,
-    max_loads_db,
-    projects_db,
-    tasks_db,
-)
+from ganttouchthis.utils.db import DBPaths
+
+# from ganttouchthis.utils.dotdict import dotdict, as_dotdict
 from ganttouchthis.utils.spacer import expand_tasks
+
+DEFAULT_MAX_LOAD: int = 240
 
 
 class Gantt:
-    def __init__(self, default_max_load: int = 240) -> None:
+    def __init__(self, start_empty: bool = False) -> None:
         self.query = Query()
-        self.default_max_load = default_max_load
+        self.default_max_load = DEFAULT_MAX_LOAD
+        self.projects: list = []
+        self.tasks: list = []
+        self.max_loads: list = []
+        self.backlog: list = []
+        self.days = self.get_days()
 
-        self.projects = self.open_projects()
-        self.tasks = self.open_tasks()
-        self.days = self.open_days()
-        self.backlog = self.open_backlog()
+    def configure(self, cfg_dict: Optional[dict] = None) -> None:
+        start_empty = False if not cfg_dict else cfg_dict["start_empty"]
+        self.projects = self.open_projects() if start_empty else self.projects
+        self.tasks = self.open_tasks() if start_empty else self.tasks
+        self.max_loads = self.open_max_loads() if start_empty else self.days
+        self.backlog = self.open_backlog() if start_empty else self.backlog
 
-    def open_projects(self) -> None:
-        projects = ...
+    def open_projects(self) -> list:
+        projects_db = TinyDB(DBPaths.PROJECTS_DB_PATH)
+        num_projects = len(projects_db)
+        projects = list(map(projects_db.get, range(num_projects)))
+        projects_db.close()
         return projects
 
-    def open_tasks(self) -> None:
-        tasks = ...
+    def open_tasks(self) -> list:
+        tasks_db = TinyDB(DBPaths.TASKS_DB_PATH)
+        num_tasks = len(tasks_db)
+        tasks = list(map(tasks_db.get, range(num_tasks)))
+        tasks_db.close()
         return tasks
 
-    def open_days(self) -> None:  # !! to include max_loads
-        days = ...
-        return days
+    def open_max_loads(self) -> list:  # !! to include max_loads
+        max_loads_db = TinyDB(DBPaths.MAX_LOADS_DB_PATH)
+        num_max_loads = len(max_loads_db)
+        max_loads = list(map(max_loads_db.get, range(num_max_loads)))
+        max_loads_db.close()
+        return max_loads
 
-    def open_backlog(self) -> None:
-        backlog = ...
+    def open_backlog(self) -> list:
+        backlog_db = TinyDB(DBPaths.BACKLOG_DB_PATH)
+        num_tasks = len(backlog_db)
+        backlog = list(map(backlog_db.get, range(num_tasks)))
+        backlog_db.close()
         return backlog
 
-    def open_days(self) -> None:
-        days = ...
+    def get_day(self, day: Date) -> List[Task]:
+        day_tasks: List[Task] = []
+        return day_tasks
+
+    def get_days(self) -> list:
+        days: list = []
         return days
 
     def back_up_databases(self) -> None:
@@ -52,27 +75,39 @@ class Gantt:
 
     def save_projects(self) -> None:
         projects = ...
-        return projects
 
     def save_tasks(self) -> None:
         tasks = ...
-        return tasks
 
     def save_days(self) -> None:  # !! to include max_loads
         days = ...
-        return days
 
     def save_backlog(self) -> None:
         backlog = ...
-        return backlog
 
     def _check_object_consistency(self) -> bool:
         ...
+        is_consistent = True
+        return is_consistent
 
     def _check_database_consistency(self) -> bool:
         ...
+        is_consistent = True
+        return is_consistent
 
-    def add_project(self) -> None:
+    def add_project(
+        self,
+        name: str,
+        link: str = "",
+        tasks="1",
+        priority: Priority = Priority.UNDEFINED,
+        groups: set = set(),
+        start: Date = Date.today() + 1,
+        end: Union[Date, None] = Date.today() + 30,
+        interval: Union[int, None] = None,
+        cluster: int = 1,
+        duration: int = 30,
+    ) -> None:
         ...
 
     def add_task(self) -> None:
@@ -87,7 +122,7 @@ class Gantt:
     def __repr__(
         self,
     ) -> str:
-        ...
+        return ""
 
     def show_day(self, date: Date) -> None:  # change to get_ and return object?
         ...
@@ -138,6 +173,13 @@ class Gantt:
 
     def adjust_loads_interactive(self) -> None:
         ...
+
+
+_g = Gantt()
+
+
+def get_gantt():
+    return _g
 
 
 #############################################################################################################3

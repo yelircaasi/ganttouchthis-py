@@ -12,7 +12,7 @@ def expand_tasks(task_abbr: str) -> list:
         if block.isnumeric():
             return list(map(str, range(1, int(block) + 1)))
 
-        elif re.match("\w?\d\d?-", "block"):
+        elif re.match(r"\w?\d\d?-", "block"):
             start, end = block.split("-")
             if start.isnumeric() and end.isnumeric():
                 return list(map(str, range(int(start), int(end) + 1)))

@@ -1,6 +1,7 @@
-from ganttouchthis import Date, Gantt, Priority, Project, Task
+from ganttouchthis import Date, Priority, Project, Task, get_gantt
 
-g = Gantt()
+g = get_gantt()
+g.configure()
 
 g.add_project(
     name="Python лучшие инструменты и практики",
