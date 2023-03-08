@@ -1,7 +1,8 @@
 import re
 
 
-def expand_tasks(task_abbr: str) -> list:
+# TODO: refactor
+def expand_task_segments(task_abbr: str) -> list:
     def expand_block(block):
         if not task_abbr:
             return []

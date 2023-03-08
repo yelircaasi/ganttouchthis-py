@@ -6,6 +6,7 @@ from ganttouchthis.utils.date import Date
 from .task import Task
 
 
+# TODO: determine whether any of this is really necessary
 @dataclass
 class DayTasks:
     tasks: List[Task]

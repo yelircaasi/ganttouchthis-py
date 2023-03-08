@@ -1,9 +1,9 @@
 import json
-import re
 
 from .date import Date
 
 
+# TODO: move to scratch folder
 class CustomEncoder(json.JSONEncoder):
     def default(self, obj) -> str:
         if isinstance(obj, Date):

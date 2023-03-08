@@ -5,20 +5,22 @@ from typing import Any, Callable, ClassVar, Iterable, List, Optional, Union
 from tinydb import Query, TinyDB
 
 from ganttouchthis.structures.backlog import BacklogItem
-from ganttouchthis.structures.project import AdjustmentAlg, AdjustmentParams, Project
+from ganttouchthis.structures.project import AdjustmentAlg, Project
 from ganttouchthis.structures.task import Priority, Task, schedule_tasks
 from ganttouchthis.structures.temporal import DayLoads, DayTasks
 from ganttouchthis.utils.date import Date, date_range
 from ganttouchthis.utils.db import DBPaths
 
+# TODO: clean up imports
 # from ganttouchthis.utils.dotdict import dotdict, as_dotdict
-from ganttouchthis.utils.spacer import expand_tasks
+# from ganttouchthis.utils.task_segment_expansion import expand_task_segments
 
 DEFAULT_MAX_LOAD: int = 240
 
 
 class Gantt:
     def __init__(self, start_empty: bool = False) -> None:
+        self.db_paths = DBPaths()
         self.query = Query()
         self.default_max_load = DEFAULT_MAX_LOAD
         self.projects: list = []
@@ -34,68 +36,80 @@ class Gantt:
         self.max_loads = self.open_max_loads() if start_empty else self.days
         self.backlog = self.open_backlog() if start_empty else self.backlog
 
-    def open_projects(self) -> list:
-        projects_db = TinyDB(DBPaths.PROJECTS_DB_PATH)
+    def open_projects(self) -> list:  # TODO: rename?
+        projects_db = TinyDB(self.db_paths.PROJECTS_DB_PATH)
         num_projects = len(projects_db)
         projects = list(map(projects_db.get, range(num_projects)))
         projects_db.close()
         return projects
 
-    def open_tasks(self) -> list:
-        tasks_db = TinyDB(DBPaths.TASKS_DB_PATH)
+    def open_tasks(self) -> list:  # TODO: rename?
+        tasks_db = TinyDB(self.db_paths.TASKS_DB_PATH)
         num_tasks = len(tasks_db)
         tasks = list(map(tasks_db.get, range(num_tasks)))
         tasks_db.close()
         return tasks
 
-    def open_max_loads(self) -> list:  # !! to include max_loads
-        max_loads_db = TinyDB(DBPaths.MAX_LOADS_DB_PATH)
+    # TODO: rename?
+    # # !! change to day, including max_loads?
+    def open_max_loads(self) -> list:
+        max_loads_db = TinyDB(self.db_paths.MAX_LOADS_DB_PATH)
         num_max_loads = len(max_loads_db)
         max_loads = list(map(max_loads_db.get, range(num_max_loads)))
         max_loads_db.close()
         return max_loads
 
-    def open_backlog(self) -> list:
-        backlog_db = TinyDB(DBPaths.BACKLOG_DB_PATH)
+    def open_backlog(self) -> list:  # TODO: rename?
+        backlog_db = TinyDB(self.db_paths.BACKLOG_DB_PATH)
         num_tasks = len(backlog_db)
         backlog = list(map(backlog_db.get, range(num_tasks)))
         backlog_db.close()
         return backlog
 
     def get_day(self, day: Date) -> List[Task]:
-        day_tasks: List[Task] = []
+        day_tasks: List[Task] = []  # TODO:
+
         return day_tasks
 
     def get_days(self) -> list:
-        days: list = []
+        days: list = []  # TODO:
+
         return days
 
-    def back_up_databases(self) -> None:
+    def back_up_databases(self) -> None:  # TODO:
+
         ...
 
-    def save_projects(self) -> None:
+    def save_projects(self) -> None:  # TODO:
+
         projects = ...
 
-    def save_tasks(self) -> None:
+    def save_tasks(self) -> None:  # TODO:
+
         tasks = ...
 
-    def save_days(self) -> None:  # !! to include max_loads
+    def save_days(self) -> None:  # !! change to day, including max_loads?# TODO:
+        # TODO:
+
         days = ...
 
-    def save_backlog(self) -> None:
+    def save_backlog(self) -> None:  # TODO:
+
         backlog = ...
 
-    def _check_object_consistency(self) -> bool:
+    def _check_object_consistency(self) -> bool:  # TODO:
+
         ...
         is_consistent = True
         return is_consistent
 
-    def _check_database_consistency(self) -> bool:
+    def _check_database_consistency(self) -> bool:  # TODO:
+
         ...
         is_consistent = True
         return is_consistent
 
-    def add_project(
+    def add_project(  # TODO:
         self,
         name: str,
         link: str = "",
@@ -110,68 +124,99 @@ class Gantt:
     ) -> None:
         ...
 
-    def add_task(self) -> None:
+    def add_task(self) -> None:  # TODO:
+
         ...
 
-    def set_max_loads(self) -> None:
+    def set_max_loads(self) -> None:  # TODO:
+
         ...
 
-    def show_detailed(self) -> None:
+    def show_detailed(self) -> None:  # TODO:
+
         ...
 
     def __repr__(
         self,
     ) -> str:
-        return ""
+        return ""  # TODO:
 
-    def show_day(self, date: Date) -> None:  # change to get_ and return object?
+    # change to get_ and return object?# TODO:
+    def show_day(self, date: Date) -> None:
+
         ...
 
-    def show_project(self, proj_id) -> None:  # change to get_ and return object?
+    # change to get_ and return object?# TODO:
+    def show_project(self, proj_id) -> None:
+
         ...
 
-    def show_task(self, task_id) -> None:  # change to get_ and return object?
+    # change to get_ and return object?# TODO:
+    def show_task(self, task_id) -> None:
+
         ...
 
-    def search_projects(self) -> None:
+    def search_projects(self) -> None:  # TODO:
+
         ...
 
-    def search_tasks(self) -> None:
+    def search_tasks(self) -> None:  # TODO:
+
         ...
 
-    def edit_project(self) -> None:
+    def edit_project(
+        self, project_index: int, key: str, value: Any
+    ) -> None:  # TODO: decide whether I like this interface
+
+        self.tasks[project_index].update({key: value})
+
+    def edit_task(self, task_index: int, key: str, value: Any) -> None:  # TODO: decide whether I like this interface
+
+        self.tasks[task_index].update({key: value})
+
+    def adjust_loads(self) -> None:  # TODO:
+
         ...
 
-    def edit_task(self) -> None:
-        ...
+    def change_task_date(self, task_index: int) -> None:  # TODO: decide whether redundant
 
-    def adjust_loads(self) -> None:
         ...
+        # change date of self.tasks[task_id]
+        # update self.days
+        # update self.projects if necessary
 
     # ---------------------------------------------------------------------------------
 
-    def add_project_interactive(self) -> None:
+    def add_project_interactive(self) -> None:  # TODO:
+
         ...
 
-    def add_task_interactive(self) -> None:
+    def add_task_interactive(self) -> None:  # TODO:
+
         ...
 
-    def set_max_loads_interactive(self) -> None:
+    def set_max_loads_interactive(self) -> None:  # TODO:
+
         ...
 
-    def search_projects_interactive(self) -> None:
+    def search_projects_interactive(self) -> None:  # TODO:
+
         ...
 
-    def search_tasks_interactive(self) -> None:
+    def search_tasks_interactive(self) -> None:  # TODO:
+
         ...
 
-    def edit_project_interactive(self) -> None:
+    def edit_project_interactive(self) -> None:  # TODO:
+
         ...
 
-    def edit_task_interactive(self) -> None:
+    def edit_task_interactive(self) -> None:  # TODO:
+
         ...
 
-    def adjust_loads_interactive(self) -> None:
+    def adjust_loads_interactive(self) -> None:  # TODO:
+
         ...
 
 
@@ -183,7 +228,7 @@ def get_gantt():
 
 
 #############################################################################################################3
-
+# TODO: incorporate, harvest all useful ideas, then delete
 
 # """
 #     def add_project(

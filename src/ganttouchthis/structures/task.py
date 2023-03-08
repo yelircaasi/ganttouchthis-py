@@ -45,6 +45,7 @@ class Color(Enum):
         return self.__repr__()
 
 
+# TODO: rework interface to work well with Gantt
 class Task:
     def __init__(
         self,

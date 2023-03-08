@@ -1,8 +1,10 @@
-from ganttouchthis import Gantt
+from ganttouchthis import get_gantt
 
-g = Gantt(start_empty=True)
+g = get_gantt()
+g.configure(start_empty=True)
 
 
+# TODO:
 def test_save_example_projects_db():
     ...
 

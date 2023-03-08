@@ -7,21 +7,19 @@ from ganttouchthis.structures.task import Priority, Task, schedule_tasks
 from ganttouchthis.structures.temporal import DayLoads, DayTasks
 from ganttouchthis.utils.date import Date
 from ganttouchthis.utils.json import CustomEncoder
-from ganttouchthis.utils.spacer import expand_tasks
+from ganttouchthis.utils.task_segment_expansion import expand_task_segments
 
+# TODO: determine whether still needed
 AdjustmentAlg = Literal["EVEN", "RIGID", "ROLLOVER"]
 
 
-class AdjustmentParams(TypedDict):
-    new_start_date: Date
-    new_end_date: Date
-
-
+# TODO: determine if really a good idea
 @dataclass
 class ProjectInit:
     ...
 
 
+# TODO: rework to fit well with Gantt
 class Project:
     def __init__(
         self,
@@ -40,7 +38,7 @@ class Project:
         """ """
         self.name = name
         self.link = link
-        self.task_list = task_list or expand_tasks(tasks)
+        self.task_list = task_list or expand_task_segments(tasks)
         self.tasks = tasks
         self.start = start
         self.end = end
