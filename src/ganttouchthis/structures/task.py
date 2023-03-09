@@ -27,11 +27,14 @@ class Priority(Enum):
         return f"{self.name} ({self.value}/10)"
 
     def __str__(self) -> str:
-        return self.__repr__()
+        return self.name
+
+    def __int__(self) -> int:
+        return self.value
 
 
 class Color(Enum):
-    GRAY = -1
+    NONE = -1
     BLUE = 0
     PURPLE = 1
     YELLOW = 2
@@ -55,7 +58,7 @@ class Task:
         subtasks: list = ["1"],
         duration: int = 30,
         priority: Priority = Priority.UNDEFINED,
-        color: Color = Color.GRAY,
+        color: Color = Color.NONE,
         description: str = "",
     ) -> None:
 

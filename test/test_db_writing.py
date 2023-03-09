@@ -1,7 +1,7 @@
 from ganttouchthis import get_gantt
 
 g = get_gantt()
-g.configure(start_empty=True)
+g.setup(start_empty=True, base_db_path="/tmp/gantt")
 
 
 # TODO:

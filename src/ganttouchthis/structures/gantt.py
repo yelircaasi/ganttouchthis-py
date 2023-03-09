@@ -1,5 +1,6 @@
 from collections import defaultdict
 from operator import itemgetter
+from pathlib import Path
 from typing import Any, Callable, ClassVar, Iterable, List, Optional, Union
 
 from tinydb import Query, TinyDB
@@ -10,6 +11,7 @@ from ganttouchthis.structures.task import Priority, Task, schedule_tasks
 from ganttouchthis.structures.temporal import DayLoads, DayTasks
 from ganttouchthis.utils.date import Date, date_range
 from ganttouchthis.utils.db import DBPaths
+from ganttouchthis.utils.json import dejsonify, jsonify
 
 # TODO: clean up imports
 # from ganttouchthis.utils.dotdict import dotdict, as_dotdict
@@ -19,50 +21,54 @@ DEFAULT_MAX_LOAD: int = 240
 
 
 class Gantt:
-    def __init__(self, start_empty: bool = False) -> None:
+    def __init__(self) -> None:
         self.db_paths = DBPaths()
         self.query = Query()
         self.default_max_load = DEFAULT_MAX_LOAD
         self.projects: list = []
         self.tasks: list = []
-        self.max_loads: list = []
         self.backlog: list = []
-        self.days = self.get_days()
+        self.days: dict = {}
 
-    def configure(self, cfg_dict: Optional[dict] = None) -> None:
-        start_empty = False if not cfg_dict else cfg_dict["start_empty"]
-        self.projects = self.open_projects() if start_empty else self.projects
-        self.tasks = self.open_tasks() if start_empty else self.tasks
-        self.max_loads = self.open_max_loads() if start_empty else self.days
-        self.backlog = self.open_backlog() if start_empty else self.backlog
+    def setup(
+        self,
+        start_empty: bool = False,
+        base_db_path: Union[None, str, Path] = None,
+        default_max_load: Union[None, int] = DEFAULT_MAX_LOAD,
+    ) -> None:
+        if base_db_path:
+            self.db_paths = DBPaths(base_db_path)
+        self.default_max_load = default_max_load or self.default_max_load
+        self.projects = self.open_projects() if not start_empty else self.projects
+        self.tasks = self.open_tasks() if not start_empty else self.tasks
+        self.days = self.open_days() if not start_empty else self.get_days()
+        self.backlog = self.open_backlog() if not start_empty else self.backlog
 
     def open_projects(self) -> list:  # TODO: rename?
         projects_db = TinyDB(self.db_paths.PROJECTS_DB_PATH)
         num_projects = len(projects_db)
-        projects = list(map(projects_db.get, range(num_projects)))
+        projects = list(map(lambda i: dejsonify(projects_db.get(doc_id=i + 1)), range(num_projects)))
         projects_db.close()
         return projects
 
     def open_tasks(self) -> list:  # TODO: rename?
         tasks_db = TinyDB(self.db_paths.TASKS_DB_PATH)
         num_tasks = len(tasks_db)
-        tasks = list(map(tasks_db.get, range(num_tasks)))
+        tasks = list(map(lambda i: dejsonify(tasks_db.get(doc_id=i + 1)), range(num_tasks)))
         tasks_db.close()
         return tasks
 
     # TODO: rename?
-    # # !! change to day, including max_loads?
-    def open_max_loads(self) -> list:
-        max_loads_db = TinyDB(self.db_paths.MAX_LOADS_DB_PATH)
-        num_max_loads = len(max_loads_db)
-        max_loads = list(map(max_loads_db.get, range(num_max_loads)))
-        max_loads_db.close()
-        return max_loads
+    def open_days(self) -> dict:
+        days_db = TinyDB(self.db_paths.DAYS_DB_PATH)
+        days = map(dejsonify, days_db.all())
+        days_db.close()
+        return {d["date"]: d for d in days}
 
     def open_backlog(self) -> list:  # TODO: rename?
         backlog_db = TinyDB(self.db_paths.BACKLOG_DB_PATH)
         num_tasks = len(backlog_db)
-        backlog = list(map(backlog_db.get, range(num_tasks)))
+        backlog = list(map(lambda i: dejsonify(backlog_db.get(doc_id=i + 1)), range(num_tasks)))
         backlog_db.close()
         return backlog
 
@@ -71,8 +77,8 @@ class Gantt:
 
         return day_tasks
 
-    def get_days(self) -> list:
-        days: list = []  # TODO:
+    def get_days(self) -> dict:
+        days: dict = {}  # TODO:
 
         return days
 
@@ -88,7 +94,7 @@ class Gantt:
 
         tasks = ...
 
-    def save_days(self) -> None:  # !! change to day, including max_loads?# TODO:
+    def save_days(self) -> None:  # !! change to day, including days?# TODO:
         # TODO:
 
         days = ...
