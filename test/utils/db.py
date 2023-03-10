@@ -9,8 +9,8 @@ from ganttouchthis.utils.json import dejsonify, jsonify
 def make_data():
 
     zero_date = Date(2023, 4, 3)
-    projects = [
-        {
+    projects = {
+        1: {
             "id": 1,
             "name": "One Book",
             "link": "",
@@ -24,7 +24,7 @@ def make_data():
             "groups": ["python"],
             "description": "a book to read",
         },
-        {
+        2: {
             "id": 2,
             "name": "Еще книга",
             "link": "",
@@ -38,7 +38,7 @@ def make_data():
             "groups": ["russian", "fiction"],
             "description": "",
         },
-        {
+        3: {
             "id": 3,
             "name": "Book the Third",
             "link": "",
@@ -52,10 +52,10 @@ def make_data():
             "groups": ["docker", "devops"],
             "description": "a book on best practices with docker",
         },
-    ]
+    }
     # schedule_tasks("hash", "One Book", ["1", "2", "3", "4"], zero_date, zero_date + 50, 1, None, Priority.MEDIUM, 30)
-    tasks = [
-        {
+    tasks = {
+        1: {
             "id": 1,
             "project": 1,
             "date": Date(2023, 4, 3),
@@ -68,7 +68,7 @@ def make_data():
             "groups": ["python"],
             "description": "a book to read",
         },
-        {
+        2: {
             "id": 2,
             "project": 1,
             "date": Date(2023, 4, 9),
@@ -81,7 +81,7 @@ def make_data():
             "groups": ["python"],
             "description": "a book to read",
         },
-        {
+        3: {
             "id": 3,
             "project": 1,
             "date": Date(2023, 4, 15),
@@ -94,7 +94,7 @@ def make_data():
             "groups": ["python"],
             "description": "a book to read",
         },
-        {
+        4: {
             "id": 4,
             "project": 1,
             "date": Date(2023, 4, 21),
@@ -107,7 +107,7 @@ def make_data():
             "groups": ["python"],
             "description": "a book to read",
         },
-        {
+        5: {
             "id": 5,
             "project": 2,
             "date": Date(2023, 4, 3),
@@ -120,7 +120,7 @@ def make_data():
             "groups": ["russian", "fiction"],
             "description": "",
         },
-        {
+        6: {
             "id": 6,
             "project": 3,
             "date": Date(2023, 4, 3),
@@ -133,7 +133,7 @@ def make_data():
             "groups": ["docker", "devops"],
             "description": "a book on best practices with docker",
         },
-        {
+        7: {
             "id": 7,
             "project": 3,
             "date": Date(2023, 4, 12),
@@ -146,7 +146,7 @@ def make_data():
             "groups": ["docker", "devops"],
             "description": "a book on best practices with docker",
         },
-        {
+        8: {
             "id": 8,
             "project": 3,
             "date": Date(2023, 4, 21),
@@ -159,7 +159,7 @@ def make_data():
             "groups": ["docker", "devops"],
             "description": "a book on best practices with docker",
         },
-    ]
+    }
     days = {
         Date(2023, 4, 3): {"date": Date(2023, 4, 3), "max_load": 240, "tasks": [1, 5, 6]},
         Date(2023, 4, 4): {"date": Date(2023, 4, 4), "max_load": 240, "tasks": []},
@@ -203,12 +203,12 @@ def make_data():
 def write_data(db_path, projects, tasks, days, backlog):
     db = TinyDB(db_path / "projects.json")
     db.truncate()
-    for doc in projects:
+    for doc in projects.values():
         db.insert(jsonify(doc))
     db.close()
     db = TinyDB(db_path / "tasks.json")
     db.truncate()
-    for doc in tasks:
+    for doc in tasks.values():
         db.insert(jsonify(doc))
     db.close()
     db = TinyDB(db_path / "days.json")
@@ -225,13 +225,13 @@ def write_data(db_path, projects, tasks, days, backlog):
 
 def read_data(db_path):
     db = TinyDB(db_path / "projects.json")
-    projects = list(map(dejsonify, db.all()))
+    projects = {d["id"]: d for d in list(map(dejsonify, db.all()))}
     db.close()
     db = TinyDB(db_path / "tasks.json")
-    tasks = list(map(dejsonify, db.all()))
+    tasks = {d["id"]: d for d in list(map(dejsonify, db.all()))}
     db.close()
     db = TinyDB(db_path / "days.json")
-    days = list(map(dejsonify, db.all()))
+    days = {d["date"]: d for d in list(map(dejsonify, db.all()))}
     db.close()
     db = TinyDB(db_path / "backlog.json")
     backlog = list(map(dejsonify, db.all()))

@@ -43,8 +43,8 @@ def test_open_nonexistent_db():
     assert str(g.db_paths.DAYS_DB_PATH).endswith("/test/data/nonexistent_db/days.json")
     assert str(g.db_paths.BACKLOG_DB_PATH).endswith("/test/data/nonexistent_db/backlog.json")
 
-    assert g.projects == []
-    assert g.tasks == []
+    assert g.projects == {}
+    assert g.tasks == {}
     assert g.days == {}
     assert g.backlog == []
 
@@ -55,8 +55,8 @@ def test_open_empty():
     test_data_path = Path(__file__).parent / "data/read_empty_db"
     g.setup(base_db_path=test_data_path)
 
-    assert g.projects == []
-    assert g.tasks == []
+    assert g.projects == {}
+    assert g.tasks == {}
     assert g.days == {}
     assert g.backlog == []
 
@@ -67,15 +67,18 @@ def test_open_nonempty():
     write_data(test_data_path, projects, tasks, days, backlog)
     g.setup(base_db_path=test_data_path)
 
-    for i, p in enumerate(g.projects):
+    for i, p in g.projects.items():
         for k, v in p.items():
             assert p[k] == projects[i][k]
-    for i, t in enumerate(g.tasks):
+    for i, t in g.tasks.items():
         for k, v in t.items():
             assert t[k] == tasks[i][k]
     for i, b in enumerate(g.backlog):
         for k, v in b.items():
             assert b[k] == backlog[i][k]
+    # for d, day in g.days.items():
+    #     for k, v in day.items():
+    #         assert v == days[d][k]
     for d, day in g.days.items():
         for k, v in day.items():
             assert v == days[d][k]

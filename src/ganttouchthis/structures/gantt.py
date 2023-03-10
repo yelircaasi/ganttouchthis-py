@@ -1,3 +1,4 @@
+import os
 from collections import defaultdict
 from operator import itemgetter
 from pathlib import Path
@@ -29,6 +30,35 @@ class Gantt:
         self.tasks: list = []
         self.backlog: list = []
         self.days: dict = {}
+        self.project_keys = {
+            "id",
+            "name",
+            "link",
+            "tasks",
+            "priority",
+            "start",
+            "end",
+            "interval",
+            "cluster",
+            "duration",
+            "groups",
+            "description",
+        }
+        self.task_keys = {
+            "id",
+            "project",
+            "date",
+            "name",
+            "link",
+            "subtasks",
+            "duration",
+            "priority",
+            "color",
+            "groups",
+            "description",
+        }
+        self.day_keys = {"date", "max_load", "tasks"}
+        self.backlog_keys = {"name", "tasks", "groups"}
 
     def setup(
         self,
@@ -44,28 +74,31 @@ class Gantt:
         self.days = self.open_days() if not start_empty else self.get_days()
         self.backlog = self.open_backlog() if not start_empty else self.backlog
 
-    def open_projects(self) -> list:  # TODO: rename?
+    def open_projects(self) -> list:
         projects_db = TinyDB(self.db_paths.PROJECTS_DB_PATH)
         num_projects = len(projects_db)
-        projects = list(map(lambda i: dejsonify(projects_db.get(doc_id=i + 1)), range(num_projects)))
+        projects = dict(map(lambda i: (i + 1, dejsonify(projects_db.get(doc_id=i + 1))), range(num_projects)))
         projects_db.close()
+        for k in projects:
+            projects[k].update({"id": k})
         return projects
 
-    def open_tasks(self) -> list:  # TODO: rename?
+    def open_tasks(self) -> list:
         tasks_db = TinyDB(self.db_paths.TASKS_DB_PATH)
         num_tasks = len(tasks_db)
-        tasks = list(map(lambda i: dejsonify(tasks_db.get(doc_id=i + 1)), range(num_tasks)))
+        tasks = dict(map(lambda i: (i + 1, dejsonify(tasks_db.get(doc_id=i + 1))), range(num_tasks)))
         tasks_db.close()
+        for k in tasks:
+            tasks[k].update({"id": k})
         return tasks
 
-    # TODO: rename?
     def open_days(self) -> dict:
         days_db = TinyDB(self.db_paths.DAYS_DB_PATH)
         days = map(dejsonify, days_db.all())
         days_db.close()
         return {d["date"]: d for d in days}
 
-    def open_backlog(self) -> list:  # TODO: rename?
+    def open_backlog(self) -> list:
         backlog_db = TinyDB(self.db_paths.BACKLOG_DB_PATH)
         num_tasks = len(backlog_db)
         backlog = list(map(lambda i: dejsonify(backlog_db.get(doc_id=i + 1)), range(num_tasks)))
@@ -86,37 +119,87 @@ class Gantt:
 
         ...
 
-    def save_projects(self, save_dir: Union[Path, str] = "") -> None:  # TODO:
+    def save_projects(self, save_dir: Union[Path, str] = "") -> None:
         if not save_dir:
-            save_dir = self.db_paths.PROJECTS_DB_PATH
-        db = TinyDB(Path(save_dir) / "projects.json")
-        for doc in self.projects:
+            save_dir = self.db_paths.DB_PATH
+        save_dir = Path(save_dir)
+        if not save_dir.exists():
+            save_dir.mkdir()
+        save_path = save_dir / "projects.json"
+        os.rename(save_path, "/tmp/projects.json")
+        save_path.touch()
+        db = TinyDB(save_path)
+        db.truncate()
+        for doc in self.projects.values():
             db.insert(jsonify(doc))
         db.close()
 
-    def save_tasks(self, save_dir: Union[Path, str] = "") -> None:  # TODO:
+    def save_tasks(self, save_dir: Union[Path, str] = "") -> None:
         if not save_dir:
-            save_dir = self.db_paths.TASKS_DB_PATH
-        db = TinyDB(Path(save_dir) / "tasks.json")
-        for doc in self.tasks:
+            save_dir = self.db_paths.DB_PATH
+        save_dir = Path(save_dir)
+        if not save_dir.exists():
+            save_dir.mkdir()
+        save_path = save_dir / "tasks.json"
+        os.rename(save_path, "/tmp/tasks.json")
+        save_path.touch()
+        db = TinyDB(save_path)
+        db.truncate()
+        for doc in self.tasks.values():
             db.insert(jsonify(doc))
         db.close()
 
-    def save_days(self, save_dir: Union[Path, str] = "") -> None:  # !! change to day, including days?# TODO:
+    def save_days(self, save_dir: Union[Path, str] = "") -> None:
         if not save_dir:
-            save_dir = self.db_paths.DAYS_DB_PATH
-        db = TinyDB(Path(save_dir) / "days.json")
+            save_dir = self.db_paths.DB_PATH
+        save_dir = Path(save_dir)
+        if not save_dir.exists():
+            save_dir.mkdir()
+        save_path = save_dir / "days.json"
+        os.rename(save_path, "/tmp/days.json")
+        save_path.touch()
+        db = TinyDB(save_path)
+        db.truncate()
         for doc in self.days.values():
             db.insert(jsonify(doc))
         db.close()
 
-    def save_backlog(self, save_dir: Union[Path, str] = "") -> None:  # TODO:
+    def save_backlog(self, save_dir: Union[Path, str] = "") -> None:
         if not save_dir:
-            save_dir = self.db_paths.BACKLOG_DB_PATH
-        db = TinyDB(Path(save_dir) / "backlog.json")
+            save_dir = self.db_paths.DB_PATH
+        save_dir = Path(save_dir)
+        if not save_dir.exists():
+            save_dir.mkdir()
+        save_path = save_dir / "backlog.json"
+        os.rename(save_path, "/tmp/backlog.json")
+        save_path.touch()
+        db = TinyDB(save_path)
+        db.truncate()
         for doc in self.backlog:
             db.insert(jsonify(doc))
         db.close()
+
+    def edit_project(self, project_index: int, key: str, value: Any) -> None:
+        self.projects[project_index][key] = value
+        if key == "start":
+            ...
+        elif key == "end":
+            ...
+        elif key == "interval":
+            ...
+        elif key in self.task_keys:
+            ...
+        self.tasks[project_index].update({key: value})
+
+    def edit_task(self, task_index: int, key: str, value: Any) -> None:
+
+        self.tasks[task_index].update({key: value})
+
+    def edit_day(self, date, key, value):
+        ...
+
+    def edit_backlog(self, item_index: int, key: str, value: Any):
+        ...
 
     def _check_object_consistency(self) -> bool:  # TODO:
 
@@ -185,16 +268,6 @@ class Gantt:
 
         ...
 
-    def edit_project(
-        self, project_index: int, key: str, value: Any
-    ) -> None:  # TODO: decide whether I like this interface
-
-        self.tasks[project_index].update({key: value})
-
-    def edit_task(self, task_index: int, key: str, value: Any) -> None:  # TODO: decide whether I like this interface
-
-        self.tasks[task_index].update({key: value})
-
     def adjust_loads(self) -> None:  # TODO:
 
         ...
@@ -233,6 +306,14 @@ class Gantt:
         ...
 
     def edit_task_interactive(self) -> None:  # TODO:
+
+        ...
+
+    def edit_day_interactive(self) -> None:  # TODO:
+
+        ...
+
+    def edit_backlog_interactive(self) -> None:  # TODO:
 
         ...
 
