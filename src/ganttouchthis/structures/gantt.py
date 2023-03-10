@@ -86,22 +86,37 @@ class Gantt:
 
         ...
 
-    def save_projects(self) -> None:  # TODO:
+    def save_projects(self, save_dir: Union[Path, str] = "") -> None:  # TODO:
+        if not save_dir:
+            save_dir = self.db_paths.PROJECTS_DB_PATH
+        db = TinyDB(Path(save_dir) / "projects.json")
+        for doc in self.projects:
+            db.insert(jsonify(doc))
+        db.close()
 
-        projects = ...
+    def save_tasks(self, save_dir: Union[Path, str] = "") -> None:  # TODO:
+        if not save_dir:
+            save_dir = self.db_paths.TASKS_DB_PATH
+        db = TinyDB(Path(save_dir) / "tasks.json")
+        for doc in self.tasks:
+            db.insert(jsonify(doc))
+        db.close()
 
-    def save_tasks(self) -> None:  # TODO:
+    def save_days(self, save_dir: Union[Path, str] = "") -> None:  # !! change to day, including days?# TODO:
+        if not save_dir:
+            save_dir = self.db_paths.DAYS_DB_PATH
+        db = TinyDB(Path(save_dir) / "days.json")
+        for doc in self.days.values():
+            db.insert(jsonify(doc))
+        db.close()
 
-        tasks = ...
-
-    def save_days(self) -> None:  # !! change to day, including days?# TODO:
-        # TODO:
-
-        days = ...
-
-    def save_backlog(self) -> None:  # TODO:
-
-        backlog = ...
+    def save_backlog(self, save_dir: Union[Path, str] = "") -> None:  # TODO:
+        if not save_dir:
+            save_dir = self.db_paths.BACKLOG_DB_PATH
+        db = TinyDB(Path(save_dir) / "backlog.json")
+        for doc in self.backlog:
+            db.insert(jsonify(doc))
+        db.close()
 
     def _check_object_consistency(self) -> bool:  # TODO:
 

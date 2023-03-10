@@ -6,7 +6,7 @@ from ganttouchthis import Color, Date, Priority
 from ganttouchthis.utils.json import dejsonify, jsonify
 
 
-def make_data(db_path):
+def make_data():
 
     zero_date = Date(2023, 4, 3)
     projects = [
@@ -197,6 +197,10 @@ def make_data(db_path):
         {"name": "Python. Сборник упражнений", "tasks": "34", "groups": ["python"]},
     ]
 
+    return (projects, tasks, days, backlog)
+
+
+def write_data(db_path, projects, tasks, days, backlog):
     db = TinyDB(db_path / "projects.json")
     db.truncate()
     for doc in projects:
@@ -218,12 +222,18 @@ def make_data(db_path):
         db.insert(jsonify(doc))
     db.close()
 
-    return (projects, tasks, days, backlog)
 
-
-def get_data(db_path):
-    projects = []
-    tasks = []
-    days = []
-    backlog = []
+def read_data(db_path):
+    db = TinyDB(db_path / "projects.json")
+    projects = list(map(dejsonify, db.all()))
+    db.close()
+    db = TinyDB(db_path / "tasks.json")
+    tasks = list(map(dejsonify, db.all()))
+    db.close()
+    db = TinyDB(db_path / "days.json")
+    days = list(map(dejsonify, db.all()))
+    db.close()
+    db = TinyDB(db_path / "backlog.json")
+    backlog = list(map(dejsonify, db.all()))
+    db.close()
     return (projects, tasks, days, backlog)

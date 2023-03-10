@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-from test.utils.db import make_data
+from test.utils.db import make_data, write_data
 
 from tinydb import TinyDB
 
@@ -52,7 +52,7 @@ def test_open_nonexistent_db():
 
 
 def test_open_empty():
-    test_data_path = Path(__file__).parent / "data/empty_db"
+    test_data_path = Path(__file__).parent / "data/read_empty_db"
     g.setup(base_db_path=test_data_path)
 
     assert g.projects == []
@@ -62,20 +62,20 @@ def test_open_empty():
 
 
 def test_open_nonempty():
-    test_data_path = Path(__file__).parent / "data/nonempty_db"
+    test_data_path = Path(__file__).parent / "data/read_nonempty_db"
+    projects, tasks, days, backlog = make_data()
+    write_data(test_data_path, projects, tasks, days, backlog)
     g.setup(base_db_path=test_data_path)
 
-    projects, tasks, days, backlog = make_data(test_data_path)
-
     for i, p in enumerate(g.projects):
         for k, v in p.items():
             assert p[k] == projects[i][k]
-    for i, p in enumerate(g.projects):
-        for k, v in p.items():
-            assert p[k] == projects[i][k]
-    for i, p in enumerate(g.projects):
-        for k, v in p.items():
-            assert p[k] == projects[i][k]
+    for i, t in enumerate(g.tasks):
+        for k, v in t.items():
+            assert t[k] == tasks[i][k]
+    for i, b in enumerate(g.backlog):
+        for k, v in b.items():
+            assert b[k] == backlog[i][k]
     for d, day in g.days.items():
         for k, v in day.items():
             assert v == days[d][k]
