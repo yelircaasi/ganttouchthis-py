@@ -1,7 +1,8 @@
 from pathlib import Path
-from test.utils.db import make_data, read_data
 
 from ganttouchthis import get_gantt
+
+from .utils.db import make_data, read_data
 
 # from ganttouchthis.utils.json import dejsonify
 
@@ -40,12 +41,12 @@ def test_save_nonempty():
     for i, t in tasks.items():
         for k, v in t.items():
             assert t[k] == tasks_[i][k]
-    for i, b in enumerate(g.backlog):
-        for k, v in b.items():
-            assert b[k] == backlog_[i][k]
     for d, day in days.items():
         for k, v in day.items():
             assert v == days_[d][k]
+    for i, b in g.backlog.items():
+        for k, v in b.items():
+            assert b[k] == backlog_[i][k]
 
     # assert projects == projects_
     # assert tasks == tasks_

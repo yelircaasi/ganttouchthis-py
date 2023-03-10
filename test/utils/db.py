@@ -181,21 +181,21 @@ def make_data():
         Date(2023, 4, 20): {"date": Date(2023, 4, 20), "max_load": 240, "tasks": []},
         Date(2023, 4, 21): {"date": Date(2023, 4, 21), "max_load": 240, "tasks": [4, 8]},
     }
-    backlog = [
-        {
+    backlog = {
+        1: {
             "name": "Pranav Rajpurkar et al.: SQuAD: 100,000+ Questions for Machine Comprehension of Text. EMNLP 2015.",
             "tasks": "1",
             "groups": ["papers"],
         },
-        {
+        2: {
             "name": "Minjoon Soo et al.: Bi-Directional Attention Flow for Machine Comprehension. ICLR 2015.",
             "tasks": "1",
             "groups": ["papers"],
         },
-        {"name": "HelloChinese", "tasks": "1", "groups": ["language_study"]},
-        {"name": "Автоматизация рутинных задач с помощью Python", "tasks": "8,A", "groups": ["python"]},
-        {"name": "Python. Сборник упражнений", "tasks": "34", "groups": ["python"]},
-    ]
+        3: {"name": "HelloChinese", "tasks": "1", "groups": ["language_study"]},
+        4: {"name": "Автоматизация рутинных задач с помощью Python", "tasks": "8,A", "groups": ["python"]},
+        5: {"name": "Python. Сборник упражнений", "tasks": "34", "groups": ["python"]},
+    }
 
     return (projects, tasks, days, backlog)
 
@@ -218,7 +218,7 @@ def write_data(db_path, projects, tasks, days, backlog):
     db.close()
     db = TinyDB(db_path / "backlog.json")
     db.truncate()
-    for doc in backlog:
+    for doc in backlog.values():
         db.insert(jsonify(doc))
     db.close()
 
@@ -234,6 +234,6 @@ def read_data(db_path):
     days = {d["date"]: d for d in list(map(dejsonify, db.all()))}
     db.close()
     db = TinyDB(db_path / "backlog.json")
-    backlog = list(map(dejsonify, db.all()))
+    backlog = {i + 1: d for i, d in enumerate(map(dejsonify, db.all()))}
     db.close()
     return (projects, tasks, days, backlog)

@@ -1,10 +1,11 @@
 import os
 from pathlib import Path
-from test.utils.db import make_data, write_data
 
 from tinydb import TinyDB
 
 from ganttouchthis import Date, Priority, get_gantt
+
+from .utils.db import make_data, write_data
 
 g = get_gantt()
 
@@ -19,10 +20,10 @@ def test_configure_paths_start_empty():
     assert str(g.db_paths.DAYS_DB_PATH).endswith("/test/data/empty_db/days.json")
     assert str(g.db_paths.BACKLOG_DB_PATH).endswith("/test/data/empty_db/backlog.json")
 
-    assert g.projects == []
-    assert g.tasks == []
+    assert g.projects == {}
+    assert g.tasks == {}
     assert g.days == {}
-    assert g.backlog == []
+    assert g.backlog == {}
 
 
 def test_open_nonexistent_db():
@@ -46,7 +47,7 @@ def test_open_nonexistent_db():
     assert g.projects == {}
     assert g.tasks == {}
     assert g.days == {}
-    assert g.backlog == []
+    assert g.backlog == {}
 
     rmdir(nonexistent_db)
 
@@ -58,7 +59,7 @@ def test_open_empty():
     assert g.projects == {}
     assert g.tasks == {}
     assert g.days == {}
-    assert g.backlog == []
+    assert g.backlog == {}
 
 
 def test_open_nonempty():
@@ -73,15 +74,16 @@ def test_open_nonempty():
     for i, t in g.tasks.items():
         for k, v in t.items():
             assert t[k] == tasks[i][k]
-    for i, b in enumerate(g.backlog):
-        for k, v in b.items():
-            assert b[k] == backlog[i][k]
+
     # for d, day in g.days.items():
     #     for k, v in day.items():
     #         assert v == days[d][k]
     for d, day in g.days.items():
         for k, v in day.items():
             assert v == days[d][k]
+    for i, b in g.backlog.items():
+        for k, v in b.items():
+            assert b[k] == backlog[i][k]
     # assert g.projects == projects
     # assert g.tasks == tasks
     # assert g.days == days

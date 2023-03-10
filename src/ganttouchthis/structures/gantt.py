@@ -26,9 +26,9 @@ class Gantt:
         self.db_paths = DBPaths()
         self.query = Query()
         self.default_max_load = DEFAULT_MAX_LOAD
-        self.projects: list = []
-        self.tasks: list = []
-        self.backlog: list = []
+        self.projects: dict = {}
+        self.tasks: dict = {}
+        self.backlog: dict = {}
         self.days: dict = {}
         self.project_keys = {
             "id",
@@ -101,8 +101,10 @@ class Gantt:
     def open_backlog(self) -> list:
         backlog_db = TinyDB(self.db_paths.BACKLOG_DB_PATH)
         num_tasks = len(backlog_db)
-        backlog = list(map(lambda i: dejsonify(backlog_db.get(doc_id=i + 1)), range(num_tasks)))
+        backlog = dict(map(lambda i: (i + 1, dejsonify(backlog_db.get(doc_id=i + 1))), range(num_tasks)))
         backlog_db.close()
+        # for k in backlog:
+        #     backlog[k].update({"id": k})
         return backlog
 
     def get_day(self, day: Date) -> List[Task]:
@@ -175,7 +177,7 @@ class Gantt:
         save_path.touch()
         db = TinyDB(save_path)
         db.truncate()
-        for doc in self.backlog:
+        for doc in self.backlog.values():
             db.insert(jsonify(doc))
         db.close()
 
