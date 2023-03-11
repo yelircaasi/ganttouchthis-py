@@ -3,9 +3,10 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Dict, Literal, Optional, TypedDict, Union
 
-from ganttouchthis.structures.task import Priority, Task, schedule_tasks
-from ganttouchthis.structures.temporal import DayLoads, DayTasks
+from ganttouchthis.structures.task import Task
+from ganttouchthis.structures.temporal import schedule_tasks
 from ganttouchthis.utils.date import Date
+from ganttouchthis.utils.enums import Color, Priority
 from ganttouchthis.utils.json import CustomEncoder
 from ganttouchthis.utils.task_segment_expansion import expand_task_segments
 
@@ -48,17 +49,18 @@ class Project:
         self.groups = groups
         self.hash = hex(hash((self.name, tuple(self.task_list))))
         self.duration = duration
-        self.task_schedule = schedule_tasks(
-            self.hash,
-            self.name,
-            self.task_list,
-            start or Date.today(),
-            end=end,
-            cluster=cluster,
-            interval=interval,
-            priority=self.priority,
-            duration=self.duration,
-        )
+        self.task_schedule: dict = {}
+        # schedule_tasks(
+        #     self.hash,
+        #     self.name,
+        #     self.task_list,
+        #     start or Date.today(),
+        #     end=end,
+        #     cluster=cluster,
+        #     interval=interval,
+        #     priority=self.priority,
+        #     duration=self.duration,
+        # )
 
     def as_dict(self):
         return {

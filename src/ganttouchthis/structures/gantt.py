@@ -8,8 +8,8 @@ from tinydb import Query, TinyDB
 
 from ganttouchthis.structures.backlog import BacklogItem
 from ganttouchthis.structures.project import AdjustmentAlg, Project
-from ganttouchthis.structures.task import Priority, Task, schedule_tasks
-from ganttouchthis.structures.temporal import DayLoads, DayTasks
+from ganttouchthis.structures.task import Color, Priority, Task
+from ganttouchthis.structures.temporal import schedule_tasks
 from ganttouchthis.utils.date import Date, date_range
 from ganttouchthis.utils.db import DBPaths
 from ganttouchthis.utils.json import dejsonify, jsonify
@@ -74,7 +74,7 @@ class Gantt:
         self.days = self.open_days() if not start_empty else self.get_days()
         self.backlog = self.open_backlog() if not start_empty else self.backlog
 
-    def open_projects(self) -> list:
+    def open_projects(self) -> dict:
         projects_db = TinyDB(self.db_paths.PROJECTS_DB_PATH)
         num_projects = len(projects_db)
         projects = dict(map(lambda i: (i + 1, dejsonify(projects_db.get(doc_id=i + 1))), range(num_projects)))
@@ -83,7 +83,7 @@ class Gantt:
             projects[k].update({"id": k})
         return projects
 
-    def open_tasks(self) -> list:
+    def open_tasks(self) -> dict:
         tasks_db = TinyDB(self.db_paths.TASKS_DB_PATH)
         num_tasks = len(tasks_db)
         tasks = dict(map(lambda i: (i + 1, dejsonify(tasks_db.get(doc_id=i + 1))), range(num_tasks)))
@@ -98,7 +98,7 @@ class Gantt:
         days_db.close()
         return {d["date"]: d for d in days}
 
-    def open_backlog(self) -> list:
+    def open_backlog(self) -> dict:
         backlog_db = TinyDB(self.db_paths.BACKLOG_DB_PATH)
         num_tasks = len(backlog_db)
         backlog = dict(map(lambda i: (i + 1, dejsonify(backlog_db.get(doc_id=i + 1))), range(num_tasks)))
@@ -107,8 +107,8 @@ class Gantt:
         #     backlog[k].update({"id": k})
         return backlog
 
-    def get_day(self, day: Date) -> List[Task]:
-        day_tasks: List[Task] = []  # TODO:
+    def get_day(self, day: Date) -> dict:
+        day_tasks: dict = {}  # TODO:
 
         return day_tasks
 
@@ -181,26 +181,69 @@ class Gantt:
             db.insert(jsonify(doc))
         db.close()
 
-    def edit_project(self, project_index: int, key: str, value: Any) -> None:
-        self.projects[project_index][key] = value
-        if key == "start":
-            ...
-        elif key == "end":
-            ...
-        elif key == "interval":
-            ...
-        elif key in self.task_keys:
-            ...
-        self.tasks[project_index].update({key: value})
+    def edit_project(
+        self, project_id: int, key: str, value: Any
+    ) -> None:  ########################################################################
+        if key in {"name", "link", "priority", "duration", "groups", "description"}:
+            self.projects[project_id][key] = value
+            task_ids = self.tasks_from_project(project_id)
+            for task in task_ids:
+                self._edit_task_from_project(task, key, value)
+        elif key in {"start", "end", "interval", "cluster", "tasks"}:
+            print("Requested edit not possible: {key} -> {value}. Use the method 'reschedule_tasks' instead.")
+        else:
+            print("Requested edit not possible: {key} -> {value}.")
 
-    def edit_task(self, task_index: int, key: str, value: Any) -> None:
+    def edit_task(self, task_id: int, key: str, value: Any) -> None:
+        if key in {"duration", "priority", "color"}:
+            self.tasks[task_id].update({key: value})
+        elif key == "date":
+            old_date = Date.fromordinal(self.tasks[task_id][key].toordinal())
+            self.tasks[task_id][key] = value
+            self.days[old_date]["tasks"].remove(task_id)
+            self.days[value]["tasks"].append(task_id).sort()
+            # * could add check for sequential consistency, but I prefer the flexibility -> warning?
+        elif key == "subtasks":
+            print("Warning! Be sure to edit other tasks affected by the change in subtask partitioning.")
+            self.tasks[task_id][key] = value
+            # * could implement this in a more sophisticated manner
+        elif key in {"name", "link", "groups", "description"}:
+            print("Requested edit not possible: {key} -> {value}. Edit via project.")
+        else:
+            print("Requested edit not possible: {key} -> {value}.")
 
-        self.tasks[task_index].update({key: value})
+    def _edit_task_from_project(self, task_id: int, key: str, value: Any) -> None:
+        if key in {"name", "link", "priority", "duration", "groups", "description"}:
+            self.tasks[task_id][key] = value
+        else:
+            print("Requested edit not possible: {key} -> {value}.")
 
-    def edit_day(self, date, key, value):
-        ...
+    def edit_day(self, date: Date, key: str, value: str):
+        if key == "tasks":
+            print("Requested edit not possible: {key} -> {value}. Edit via tasks.")
+        elif key == "max_load":
+            self.days[date][key] = value
+        else:
+            print("Requested edit not possible: {key} -> {value}.")
 
-    def edit_backlog(self, item_index: int, key: str, value: Any):
+    def edit_backlog(self, item_id: int, key: str, value: Any):
+        if key in {"name", "tasks", "groups"}:
+            self.backlog[item_id][key] = value
+        else:
+            print("Requested edit not possible: {key} -> {value}.")
+
+    def tasks_from_project(self, project_id: int) -> List[int]:
+        return [k for k, v in self.tasks.items() if v["project"] == project_id]
+
+    def reschedule_tasks(  # TODO
+        self,
+        project_id: int,
+        start: Optional[Date] = None,
+        end: Optional[Date] = None,
+        interval: Optional[int] = None,
+        cluster: Optional[int] = None,
+        tasks: Optional[str] = None,
+    ) -> None:
         ...
 
     def _check_object_consistency(self) -> bool:  # TODO:
@@ -221,18 +264,76 @@ class Gantt:
         link: str = "",
         tasks="1",
         priority: Priority = Priority.UNDEFINED,
-        groups: set = set(),
         start: Date = Date.today() + 1,
         end: Union[Date, None] = Date.today() + 30,
         interval: Union[int, None] = None,
         cluster: int = 1,
         duration: int = 30,
+        groups: set = set(),
+        description: str = "",
     ) -> None:
-        ...
+        project_id = 1 if not self.projects else max(self.projects) + 1
+        self.projects.update(
+            {
+                "id": project_id,
+                "name": name,
+                "link": link,
+                "tasks": tasks,
+                "priority": priority,
+                "start": start,
+                "end": end,
+                "interval": interval,
+                "cluster": cluster,
+                "duration": duration,
+                "groups": groups,
+                "description": description,
+            }
+        )
+        schedule = schedule_tasks(
+            start=start,
+            end=end,
+            interval=interval,
+            cluster=cluster,
+            tasks=tasks,
+        )
+        for d, subtasks in schedule.items():
+            task_id = 1 if not self.tasks else max(self.tasks) + 1
+            self.tasks.update(
+                {
+                    task_id: {
+                        "id": task_id,
+                        "project": project_id,
+                        "date": d,
+                        "name": name,
+                        "link": link,
+                        "subtasks": subtasks,
+                        "duration": duration,  # duration applies to full task/cluster, not single item
+                        "priority": priority,
+                        "color": Color.NONE,
+                        "groups": groups,
+                        "description": description,
+                    }
+                }
+            )
+            if not d in self.days:
+                self.days.update({d: {"date": d, "max_load": self.default_max_load, "tasks": []}})
+            self.days[d]["tasks"].append(task_id)
 
-    def add_task(self) -> None:  # TODO:
-
-        ...
+    # def add_task(
+    #     self,
+    #     id,
+    #     project,
+    #     date,
+    #     name,
+    #     link,
+    #     subtasks,
+    #     duration,
+    #     priority,
+    #     color,
+    #     groups,
+    #     description
+    # ) -> None:
+    #     ...
 
     def set_max_loads(self) -> None:  # TODO:
 
@@ -274,7 +375,7 @@ class Gantt:
 
         ...
 
-    def change_task_date(self, task_index: int) -> None:  # TODO: decide whether redundant
+    def change_task_date(self, task_id: int) -> None:  # TODO: decide whether redundant
 
         ...
         # change date of self.tasks[task_id]
