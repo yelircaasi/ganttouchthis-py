@@ -14,10 +14,6 @@ from ganttouchthis.utils.date import Date, date_range
 from ganttouchthis.utils.db import DBPaths
 from ganttouchthis.utils.json import dejsonify, jsonify
 
-# TODO: clean up imports
-# from ganttouchthis.utils.dotdict import dotdict, as_dotdict
-# from ganttouchthis.utils.task_segment_expansion import expand_task_segments
-
 DEFAULT_MAX_LOAD: int = 240
 
 
@@ -121,6 +117,12 @@ class Gantt:
 
         ...
 
+    def save_all(self, save_dir: Union[Path, str] = "") -> None:
+        self.save_projects(save_dir)
+        self.save_tasks(save_dir)
+        self.save_days(save_dir)
+        self.save_backlog(save_dir)
+
     def save_projects(self, save_dir: Union[Path, str] = "") -> None:
         if not save_dir:
             save_dir = self.db_paths.DB_PATH
@@ -152,6 +154,7 @@ class Gantt:
         db.close()
 
     def save_days(self, save_dir: Union[Path, str] = "") -> None:
+        self.days = dict(sorted([(k, v) for k, v in self.days.items()]))
         if not save_dir:
             save_dir = self.db_paths.DB_PATH
         save_dir = Path(save_dir)
@@ -201,7 +204,8 @@ class Gantt:
             old_date = Date.fromordinal(self.tasks[task_id][key].toordinal())
             self.tasks[task_id][key] = value
             self.days[old_date]["tasks"].remove(task_id)
-            self.days[value]["tasks"].append(task_id).sort()
+            self.days[value]["tasks"].append(task_id)
+            self.days[value]["tasks"].sort()
             # * could add check for sequential consistency, but I prefer the flexibility -> warning?
         elif key == "subtasks":
             print("Warning! Be sure to edit other tasks affected by the change in subtask partitioning.")
@@ -265,7 +269,7 @@ class Gantt:
         tasks="1",
         priority: Priority = Priority.UNDEFINED,
         start: Date = Date.today() + 1,
-        end: Union[Date, None] = Date.today() + 30,
+        end: Union[Date, None] = None,
         interval: Union[int, None] = None,
         cluster: int = 1,
         duration: int = 30,
@@ -273,8 +277,8 @@ class Gantt:
         description: str = "",
     ) -> None:
         project_id = 1 if not self.projects else max(self.projects) + 1
-        self.projects.update(
-            {
+        self.projects.update({
+            project_id: {
                 "id": project_id,
                 "name": name,
                 "link": link,
@@ -288,7 +292,7 @@ class Gantt:
                 "groups": groups,
                 "description": description,
             }
-        )
+        })
         schedule = schedule_tasks(
             start=start,
             end=end,
@@ -318,6 +322,8 @@ class Gantt:
             if not d in self.days:
                 self.days.update({d: {"date": d, "max_load": self.default_max_load, "tasks": []}})
             self.days[d]["tasks"].append(task_id)
+        self.days = dict(sorted([(k, v) for k, v in self.days.items()]))
+
 
     # def add_task(
     #     self,
@@ -371,12 +377,41 @@ class Gantt:
 
         ...
 
-    def adjust_loads(self) -> None:  # TODO:
+    def adjust_loads(self, start: Date, end: Date) -> None:  # TODO:
+        d = start
+        while d < end:
+            if not d in self.days:
+                self.days.update(
+                    {d: {"date": d, "max_load": self.default_max_load, "tasks": []}})
+            print(d)
+            day_tasks = [self.tasks[i] for i in self.days[d]["tasks"]]
+            day_tasks.sort(key=lambda t: t["priority"].value, reverse=True)
+            print(day_tasks)
+            max_load = self.days[d]["max_load"]
+            total_load = sum(map(lambda t: t["duration"], day_tasks))
+            while total_load > max_load:
+                print(30 * "=" + "\n" + str(total_load) + "\n" + 30 * "=")
+                task_to_move = day_tasks.pop()
+                id_to_move = task_to_move["id"]
+                self.edit_task(id_to_move, "date", d + 1)
+                total_load -= task_to_move["duration"]
+            d += 1
+        self.days = dict(sorted([(k, v) for k, v in self.days.items()]))
 
-        ...
-
+# day = start_day
+#         # while day < end_day:
+#         #     print(30 * "=" + "\n" + str(day) + "\n" + 30 * "=")
+#         #     tasks = self.get_tasks(day, sort_key=lambda t: (t["priority"], t["duration"]))
+#         #     total = sum(map(lambda t: t["duration"], tasks))
+#         #     while total > self.max_loads[day]:
+#         #         print(30 * "=" + "\n" + str(total) + "\n" + 30 * "=")
+#         #         task_to_move = tasks.pop()
+#         #         print(task_to_move)
+#         #         self.edit_task(task_to_move["hash"], "date", str(Date.fromisoformat(task_to_move["date"]) + 1))
+#         #         total = sum(map(lambda t: t["duration"], tasks))
+#         #     day += 1
     def change_task_date(self, task_id: int) -> None:  # TODO: decide whether redundant
-
+        
         ...
         # change date of self.tasks[task_id]
         # update self.days

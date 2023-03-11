@@ -1,7 +1,8 @@
 from ganttouchthis import BacklogItem, Date, Gantt, Priority, Project, Task
 
-zero_date = Date(2023, 3, 6)
+zero_date = Date(2023, 3, 12)
 g = Gantt()
+g.setup(start_empty=True)
 
 g.add_project(
     name="Cleaning",
@@ -473,7 +474,7 @@ g.add_project(
     cluster=2,
     duration=30,
 )
-# """
+# """ ------------------------------------------------------------------------------------------------------------------
 g.add_project(
     name="Изучаем Python, том 2",
     tasks="26-41,D",
