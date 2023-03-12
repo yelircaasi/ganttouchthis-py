@@ -25,10 +25,11 @@ class BacklogItem:
         print(
             "\n".join(
                 (
-                    "" f"Name:          {self.name}",
+                    "",
+                    f"Name:          {self.name}",
                     f"  Link:        {self.link}",
                     f"  Tasks:       {self.tasks}",
-                    f"  Groups:      {self.tags}",
+                    f"  Tags:        {self.tags}",
                     f"  Description: {self.description}",
                 )
             )

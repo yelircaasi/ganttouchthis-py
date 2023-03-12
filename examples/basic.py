@@ -1,4 +1,4 @@
-from ganttouchthis import Date, Priority, Project, Task, get_gantt
+from ganttouchthis import TODAY, Date, Priority, Project, Task, get_gantt
 
 g = get_gantt()
 g.setup()

@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-from typing import Any, List, Optional, Union
+from typing import Any, Callable, List, Literal, Optional, Union
 
 from tinydb import Query, TinyDB
 
@@ -14,6 +14,7 @@ from ganttouchthis.utils.enums import Status
 from ganttouchthis.utils.temporal import schedule_tasks
 
 DEFAULT_MAX_LOAD: int = 240
+TODAY = Date.today()
 
 
 class Gantt:
@@ -67,6 +68,45 @@ class Gantt:
 
     def vb(self, limit: int = 50) -> None:
         print("".join((str(v) for v in list(self.backlog.values())[:limit])))
+
+    def byname(self) -> None:
+        structure = input("Please enter p/t/b for projects/tasks/backlog, respectively: ")[0].lower()
+        substring = input("Substring to search for: ").strip().lower()
+        print("".join(map(str, self.search_by_name(structure, substring))))
+
+    def search_by_name(self, structure: str, substring: str) -> list:
+        return [
+            v
+            for v in {"p": self.projects, "t": self.tasks, "b": self.backlog}[structure].values()
+            if substring in v.name.lower()
+        ]
+
+    def bytag(self) -> None:
+        structure = input("Please enter p/t/b for projects/tasks/backlog, respectively: ")[0].lower()
+        substring = input("Substring to search for: ").strip().lower()
+        print("".join(map(str, self.search_by_tag(structure, substring))))
+
+    def search_by_tag(self, structure: str, substring: str) -> list:
+        return [
+            v
+            for v in {"p": self.projects, "t": self.tasks, "b": self.backlog}[structure].values()
+            if substring in v.tags
+        ]
+
+    def dayloads(self, start: Date = TODAY, end: Date = TODAY + 7) -> None:
+        for day in date_range(start, end):
+            if not day in self.days:
+                self.days.update({day: Day(day, max_load=self.default_max_load, tasks=[])})
+            total = sum(map(lambda t: self.tasks[t].duration, self.days[day].tasks))
+            print(f"{str(day)}: {total: >4} min")
+
+    def showday(self, day: Date = TODAY, key: Optional[Callable] = lambda x: -x.priority.value) -> None:
+        if not day in self.days:
+            self.days.update({day: Day(day, max_load=self.default_max_load, tasks=[])})
+        tasks = [self.tasks[i] for i in self.days[day].tasks]
+        if key:
+            tasks.sort(key=key)
+        print("".join(map(str, tasks)))
 
     def setup(
         self,
@@ -269,7 +309,7 @@ class Gantt:
         link: str = "",
         tasks="1",
         priority: Priority = Priority.UNDEFINED,
-        start: Date = Date.today() + 1,
+        start: Date = TODAY + 1,
         end: Union[Date, None] = None,
         interval: Union[int, None] = None,
         cluster: int = 1,

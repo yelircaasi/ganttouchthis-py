@@ -101,7 +101,8 @@ class Project:
             f"\n\n{self.name} ({self.id})"
             + "\n ".join(
                 (
-                    "" f"Link:        {self.link}",
+                    "",
+                    f"Link:        {self.link}",
                     f"Tasks:       {self.tasks}",
                     f"Priority:    {self.priority.name}",
                     f"Start:       {str(self.start)}",
@@ -109,7 +110,7 @@ class Project:
                     f"Interval:    {str(self.interval)}",
                     f"Cluster:     {str(self.cluster)}",
                     f"Duration:    {self.duration} min",
-                    f"Groups:      {', '.join(self.tags)}",
+                    f"Tags:        {', '.join(self.tags)}",
                     f"Description: {self.description}",
                 )
             )
