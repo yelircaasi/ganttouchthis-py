@@ -36,7 +36,7 @@ def table(array2d_: List[List[Union[str, int]]], head=True) -> str:
 
     if head:
         top = "┏━{}━┓".format("━┳━".join(map(lambda i: i * "━", widths)))
-        middle = textline(array2d[0], thick=True)  # "┃ {} ┃".format(" ┃ ".join(array2d[0]))
+        middle = textline(array2d[0], thick=True)
         joiner = "┡━{}━┩".format("━╇━".join(map(lambda i: i * "━", widths)))
 
         return "\n".join(("", top, middle, joiner, line.join(map(textline, array2d[1:])), bottom))

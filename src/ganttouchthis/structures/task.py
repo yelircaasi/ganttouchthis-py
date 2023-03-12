@@ -55,7 +55,6 @@ class Task:
         }
 
     def __repr__(self) -> str:
-        # task_str = box(f"{self.date}: {self.name[:20]} | {', '.join(self.subtasks)} (T{self.id} | P{self.project})")
         return "\n" + multibox((str(self.date), self.name, ", ".join(self.subtasks), f"T{self.id} P{self.project}"))
 
     def detailed(self):

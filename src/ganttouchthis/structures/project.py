@@ -6,22 +6,13 @@ from typing import Dict, Literal, Optional, TypedDict, Union
 from ganttouchthis.structures.task import Task
 from ganttouchthis.utils.date import Date
 from ganttouchthis.utils.enums import Color, Priority
-from ganttouchthis.utils.json import CustomEncoder
 from ganttouchthis.utils.repr import multibox
 from ganttouchthis.utils.task_segment_expansion import expand_task_segments
 from ganttouchthis.utils.temporal import schedule_tasks
 
-# TODO: determine whether still needed
 AdjustmentAlg = Literal["EVEN", "RIGID", "ROLLOVER"]
 
 
-# TODO: determine if really a good idea
-@dataclass
-class ProjectInit:
-    ...
-
-
-# TODO: rework to fit well with Gantt
 class Project:
     def __init__(
         self,
@@ -37,7 +28,6 @@ class Project:
         duration: int = 30,
         groups: set = set(),
         description: str = "",
-        # task_list: list = [],
     ) -> None:
         """ """
         self.id = id_
@@ -52,7 +42,6 @@ class Project:
         self.duration = duration
         self.groups = groups
         self.description = description
-        # self.task_list = task_list or expand_task_segments(tasks)
         self.keys = {
             "id",
             "name",
@@ -82,7 +71,6 @@ class Project:
             "duration": self.duration,
             "groups": list(self.groups),
             "description": self.description,
-            # "task_list": self.task_list,
         }
 
     @classmethod
@@ -104,9 +92,6 @@ class Project:
         )
 
     def __repr__(self) -> str:
-        # return f"\n\n{self.name} ({self.hash})\n\n" + "\n ".join(
-        #     map(lambda kv: f"{kv[0]}:\n{kv[1]}\n", self.task_schedule.items())
-        # )
         return "\n".join(
             ("", multibox((self.name, self.tasks, f"{str(self.start)} ─ {str(self.end)}", f"ID: {self.id}")), "")
         )

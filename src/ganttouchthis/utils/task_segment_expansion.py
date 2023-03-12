@@ -1,7 +1,6 @@
 import re
 
 
-# TODO: refactor
 def expand_task_segments(task_abbr: str) -> list:
     def expand_block(block):
         if not task_abbr:
@@ -34,15 +33,7 @@ def expand_task_segments(task_abbr: str) -> list:
                     raise error
             else:
                 raise error
-        # elif re.match("[^\d\-]{2}", block[:2]):
-        #     return [block]
-        # elif block.isalnum():
-        #     letter, num = block[0], block[1:]
-        #     if not letter.isalpha() and num.isnumeric():
-        #         raise error
-        #     return list(map(lambda x: letter + str(x), range(1, int(num) + 1)))
         else:
-            # raise error
             return [block]
 
     tasks = []

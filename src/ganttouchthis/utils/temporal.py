@@ -6,28 +6,6 @@ from more_itertools import batched
 from ganttouchthis.utils.date import Date
 from ganttouchthis.utils.task_segment_expansion import expand_task_segments
 
-# from .task import Task
-
-
-# # TODO: determine whether any of this is really necessary
-# @dataclass
-# class DayTasks:
-#     tasks: List[Task]
-
-#     def __repr__(self) -> str:
-#         return "\n\n".join(map(str, self.tasks))
-
-#     def __str__(self) -> str:
-#         return self.__repr__()
-
-
-# class DayLoads:
-#     def __init__(self, dates: List[Date], loads: List[int]):
-#         self.dict = dict(zip(dates, loads))
-
-#     def __repr__(self) -> str:
-#         return "\nDay loads:\n----------------\n" + "\n".join([f"{str(k)}: {v:>4}" for k, v in self.dict.items()])
-
 
 def schedule_tasks(
     start: Date,

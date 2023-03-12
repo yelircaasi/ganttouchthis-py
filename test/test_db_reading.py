@@ -71,20 +71,15 @@ def test_open_nonempty():
     for i, p in g.projects.items():
         for k, v in p.todict().items():
             assert p.__dict__[k] == projects[i].__dict__[k]
+
     for i, t in g.tasks.items():
         for k, v in t.todict().items():
             assert t.__dict__[k] == tasks[i].__dict__[k]
 
-    # for d, day in g.days.items():
-    #     for k, v in day.items():
-    #         assert v == days[d][k]
     for d, day in g.days.items():
         for k, v in day.todict().items():
             assert day.__dict__[k] == days[d].__dict__[k]
+
     for i, b in g.backlog.items():
         for k, v in b.todict().items():
             assert b.__dict__[k] == backlog[i].__dict__[k]
-    # assert g.projects == projects
-    # assert g.tasks == tasks
-    # assert g.days == days
-    # assert g.backlog == backlog

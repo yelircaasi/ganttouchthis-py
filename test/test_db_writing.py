@@ -4,10 +4,7 @@ from ganttouchthis import Task, get_gantt
 
 from .utils.db import make_data, read_data
 
-# from ganttouchthis.utils.json import dejsonify
-
 g = get_gantt()
-# g.setup(start_empty=True, base_db_path="/tmp/gantt")
 
 
 # TODO:
@@ -47,8 +44,3 @@ def test_save_nonempty():
     for i, b in g.backlog.items():
         for k, v in b.todict().items():
             assert b.__dict__[k] == backlog_[i].__dict__[k]
-
-    # assert projects == projects_
-    # assert tasks == tasks_
-    # assert days == days_
-    # assert backlog == backlog_

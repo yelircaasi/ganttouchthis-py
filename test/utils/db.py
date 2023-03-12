@@ -9,7 +9,6 @@ from ganttouchthis.structures.day import Day
 from ganttouchthis.structures.project import Project
 from ganttouchthis.structures.task import Task
 from ganttouchthis.utils.enums import Status
-from ganttouchthis.utils.json import dejsonify, jsonify
 
 
 def make_data():
