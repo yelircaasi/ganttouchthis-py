@@ -124,13 +124,13 @@ class Gantt:
 
     def open_projects(self) -> dict:
         projects_db = TinyDB(self.db_paths.PROJECTS_DB_PATH)
-        projects = dict(map(lambda t: (t["id"], Project.fromdict(t)), projects_db.all()))
+        projects = {p.id: p for p in map(Project.fromdict, projects_db.all())}
         projects_db.close()
         return projects
 
     def open_tasks(self) -> dict:
         tasks_db = TinyDB(self.db_paths.TASKS_DB_PATH)
-        tasks = dict(map(lambda t: (t["id"], Task.fromdict(t)), tasks_db.all()))
+        tasks = {t.id: t for t in map(Task.fromdict, tasks_db.all())}
         tasks_db.close()
         return tasks
 
@@ -228,11 +228,19 @@ class Gantt:
         db.close()
 
     def editp(self) -> None:
-        ...
+        id_ = int(input("Project ID: "))
+        key = input("Attribute to edit (name|link|priority|duration|tags|description): ")
+        value = {"duration": lambda x: int(x), "priority": lambda x: Priority[x], "tags": lambda x: int(x),}.get(
+            key, lambda x: str(x)
+        )(input("New value: "))
+        self.edit_project(id_, key, value)
 
     def edit_project(self, project_id: int, key: str, value: Any) -> None:
         if key in {"name", "link", "priority", "duration", "tags", "description"}:
-            self.projects[project_id].__dict__[key] = value
+            if key == "tags":
+                self.projects[project_id].tags.add(value)
+            else:
+                self.projects[project_id].__dict__[key] = value
             task_ids = self.tasks_from_project(project_id)
             for task in task_ids:
                 self._edit_task_from_project(task, key, value)
@@ -242,9 +250,8 @@ class Gantt:
             print("Requested edit not possible: {key} -> {value}.")
 
     def editt(self) -> None:
-        id_ = int(input("Project ID: "))
+        id_ = int(input("Task ID: "))
         key = input("Attribute to edit (duration|priority|color|status|date|subtasks): ")
-        value = input("New value: ")
         value = {
             "duration": lambda x: int(x),
             "priority": lambda x: Priority[x],
@@ -257,7 +264,7 @@ class Gantt:
 
     def edit_task(self, task_id: int, key: str, value: Any) -> None:
         if key in {"duration", "priority", "color", "status"}:
-            self.tasks[task_id].update({key: value})
+            self.tasks[task_id].__dict__[key] = value
         elif key == "date":
             old_date = Date.fromordinal(self.tasks[task_id].__dict__[key].toordinal())
             self.tasks[task_id].__dict__[key] = value
@@ -275,7 +282,9 @@ class Gantt:
             print("Requested edit not possible: {key} -> {value}.")
 
     def _edit_task_from_project(self, task_id: int, key: str, value: Any) -> None:
-        if key in {"name", "link", "priority", "duration", "tags", "description"}:
+        if key == "tags":
+            self.tasks[task_id].tags.add(value)
+        elif key in {"name", "link", "priority", "duration", "description"}:
             self.tasks[task_id].__dict__[key] = value
         else:
             print("Requested edit not possible: {key} -> {value}.")
@@ -309,7 +318,7 @@ class Gantt:
             print("Requested edit not possible: {key} -> {value}.")
 
     def tasks_from_project(self, project_id: int) -> List[int]:
-        return [k for k, v in self.tasks.items() if v["project"] == project_id]
+        return [k for k, v in self.tasks.items() if v.project == project_id]
 
     def reschedule_tasks(
         self,
@@ -436,19 +445,19 @@ class Gantt:
         d = Date.fromordinal(start.toordinal())
         while d <= end:
             if not d in self.days:
-                self.days.update({d: {"date": d, "max_load": self.default_max_load, "tasks": []}})
+                self.days.update({d: Day(d, max_load=self.default_max_load, tasks=[])})
             print(d)
-            day_tasks = [self.tasks[i] for i in self.days[d]["tasks"]]
-            day_tasks.sort(key=lambda t: t["priority"].value, reverse=True)
+            day_tasks = [self.tasks[i] for i in self.days[d].tasks]
+            day_tasks.sort(key=lambda t: t.priority.value, reverse=True)
             print(day_tasks)
-            max_load = self.days[d]["max_load"]
-            total_load = sum(map(lambda t: t["duration"], day_tasks))
+            max_load = self.days[d].max_load
+            total_load = sum(map(lambda t: t.duration, day_tasks))
             while total_load > max_load:
                 print(30 * "=" + "\n" + str(total_load) + "\n" + 30 * "=")
                 task_to_move = day_tasks.pop()
-                id_to_move = task_to_move["id"]
+                id_to_move = task_to_move.id
                 self.edit_task(id_to_move, "date", d + 1)
-                total_load -= task_to_move["duration"]
+                total_load -= task_to_move.duration
             d += 1
         self.days = dict(sorted([(k, v) for k, v in self.days.items()]))
 

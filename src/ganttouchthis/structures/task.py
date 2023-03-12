@@ -56,7 +56,14 @@ class Task:
 
     def __repr__(self) -> str:
         return "\n" + multibox(
-            (str(self.date), self.name, ", ".join(self.subtasks), self.priority.name, f"T{self.id} P{self.project}")
+            (
+                str(self.date),
+                self.name,
+                ", ".join(self.subtasks),
+                f"{self.duration} min",
+                self.priority.name,
+                f"P{self.project} T{self.id}",
+            )
         )
 
     def detailed(self):
