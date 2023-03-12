@@ -4,6 +4,7 @@ from typing import Any, Dict, Tuple
 from tinydb import TinyDB
 
 from ganttouchthis import Color, Date, Priority
+from ganttouchthis.structures.project import Project
 from ganttouchthis.structures.task import Task
 from ganttouchthis.utils.enums import Status
 from ganttouchthis.utils.json import dejsonify, jsonify
@@ -13,48 +14,48 @@ def make_data():
 
     zero_date = Date(2023, 4, 3)
     projects = {
-        1: {
-            "id": 1,
-            "name": "One Book",
-            "link": "",
-            "tasks": "3,A",
-            "priority": Priority.MEDIUM,
-            "start": zero_date,
-            "end": zero_date + 20,
-            "interval": None,
-            "cluster": 1,
-            "duration": 30,
-            "groups": ["python"],
-            "description": "a book to read",
-        },
-        2: {
-            "id": 2,
-            "name": "Еще книга",
-            "link": "",
-            "tasks": "3",
-            "priority": Priority.HIGH,
-            "start": zero_date,
-            "end": None,
-            "interval": 4,
-            "cluster": 3,
-            "duration": 90,
-            "groups": ["russian", "fiction"],
-            "description": "",
-        },
-        3: {
-            "id": 3,
-            "name": "Book the Third",
-            "link": "",
-            "tasks": "0-2,A0-A1",
-            "priority": Priority.WISH,
-            "start": zero_date,
-            "end": zero_date + 20,
-            "interval": None,
-            "cluster": 2,
-            "duration": 60,
-            "groups": ["docker", "devops"],
-            "description": "a book on best practices with docker",
-        },
+        1: Project(
+            1,
+            "One Book",
+            link="",
+            tasks="3,A",
+            priority=Priority.MEDIUM,
+            start=zero_date,
+            end=zero_date + 20,
+            interval=None,
+            cluster=1,
+            duration=30,
+            groups={"python"},
+            description="a book to read",
+        ),
+        2: Project(
+            2,
+            "Еще книга",
+            link="",
+            tasks="3",
+            priority=Priority.HIGH,
+            start=zero_date,
+            end=None,
+            interval=4,
+            cluster=3,
+            duration=90,
+            groups={"russian", "fiction"},
+            description="",
+        ),
+        3: Project(
+            3,
+            "Book the Third",
+            link="",
+            tasks="0-2,A0-A1",
+            priority=Priority.WISH,
+            start=zero_date,
+            end=zero_date + 20,
+            interval=None,
+            cluster=2,
+            duration=60,
+            groups={"docker", "devops"},
+            description="a book on best practices with docker",
+        ),
     }
     # schedule_tasks("hash", "One Book", ["1", "2", "3", "4"], zero_date, zero_date + 50, 1, None, Priority.MEDIUM, 30)
     tasks = {
@@ -69,7 +70,7 @@ def make_data():
             duration=30,
             priority=Priority.MEDIUM,
             color=Color.NONE,
-            groups=["python"],
+            groups={"python"},
             description="a book to read",
         ),
         2: Task(
@@ -83,7 +84,7 @@ def make_data():
             duration=30,
             priority=Priority.MEDIUM,
             color=Color.NONE,
-            groups=["python"],
+            groups={"python"},
             description="a book to read",
         ),
         3: Task(
@@ -97,7 +98,7 @@ def make_data():
             duration=30,
             priority=Priority.MEDIUM,
             color=Color.NONE,
-            groups=["python"],
+            groups={"python"},
             description="a book to read",
         ),
         4: Task(
@@ -111,7 +112,7 @@ def make_data():
             duration=90,
             priority=Priority.MEDIUM,
             color=Color.NONE,
-            groups=["python"],
+            groups={"python"},
             description="a book to read",
         ),
         5: Task(
@@ -125,7 +126,7 @@ def make_data():
             duration=30,
             priority=Priority.HIGH,
             color=Color.NONE,
-            groups=["russian", "fiction"],
+            groups={"russian", "fiction"},
             description="",
         ),
         6: Task(
@@ -139,7 +140,7 @@ def make_data():
             duration=60,
             priority=Priority.WISH,
             color=Color.NONE,
-            groups=["docker", "devops"],
+            groups={"docker", "devops"},
             description="a book on best practices with docker",
         ),
         7: Task(
@@ -153,7 +154,7 @@ def make_data():
             duration=60,
             priority=Priority.WISH,
             color=Color.NONE,
-            groups=["docker", "devops"],
+            groups={"docker", "devops"},
             description="a book on best practices with docker",
         ),
         8: Task(
@@ -167,7 +168,7 @@ def make_data():
             duration=60,
             priority=Priority.WISH,
             color=Color.NONE,
-            groups=["docker", "devops"],
+            groups={"docker", "devops"},
             description="a book on best practices with docker",
         ),
     }
@@ -215,7 +216,7 @@ def write_data(db_path, projects, tasks, days, backlog):
     db = TinyDB(db_path / "projects.json")
     db.truncate()
     for doc in projects.values():
-        db.insert(jsonify(doc))
+        db.insert(doc.todict())
     db.close()
     db = TinyDB(db_path / "tasks.json")
     db.truncate()
@@ -234,12 +235,12 @@ def write_data(db_path, projects, tasks, days, backlog):
     db.close()
 
 
-DictTuple = Tuple[Dict[int, Dict[str, Any]], Dict[int, Task], Dict[Date, Dict[str, Any]], Dict[int, Dict[str, Any]]]
+DictTuple = Tuple[Dict[int, Project], Dict[int, Task], Dict[Date, Dict[str, Any]], Dict[int, Dict[str, Any]]]
 
 
 def read_data(db_path) -> DictTuple:
     db = TinyDB(db_path / "projects.json")
-    projects: Dict[int, Dict[str, Any]] = {d["id"]: d for d in list(map(dejsonify, db.all()))}
+    projects: Dict[int, Project] = {d.id: d for d in map(Project.fromdict, db.all())}
     db.close()
     db = TinyDB(db_path / "tasks.json")
     tasks: Dict[int, Task] = {d.id: d for d in map(Task.fromdict, db.all())}

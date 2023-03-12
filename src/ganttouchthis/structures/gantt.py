@@ -56,7 +56,7 @@ class Gantt:
             "description",
         }
         self.day_keys = {"date", "max_load", "tasks"}
-        self.backlog_keys = {"name", "tasks", "groups"}
+        self.backlog_keys = {"name", "link", "tasks", "groups", "description"}
 
     def setup(
         self,
@@ -75,10 +75,11 @@ class Gantt:
     def open_projects(self) -> dict:
         projects_db = TinyDB(self.db_paths.PROJECTS_DB_PATH)
         num_projects = len(projects_db)
-        projects = dict(map(lambda i: (i + 1, dejsonify(projects_db.get(doc_id=i + 1))), range(num_projects)))
+        # projects = dict(map(lambda i: (i + 1, dejsonify(projects_db.get(doc_id=i + 1))), range(num_projects)))
+        projects = dict(map(lambda t: (t["id"], Project.fromdict(t)), projects_db.all()))
         projects_db.close()
-        for k in projects:
-            projects[k].update({"id": k})
+        # for k in projects:
+        #     projects[k].update({"id": k})
         return projects
 
     def open_tasks(self) -> dict:
@@ -136,7 +137,7 @@ class Gantt:
         db = TinyDB(save_path)
         db.truncate()
         for doc in self.projects.values():
-            db.insert(jsonify(doc))
+            db.insert(doc.todict())
         db.close()
 
     def save_tasks(self, save_dir: Union[Path, str] = "") -> None:
@@ -281,20 +282,20 @@ class Gantt:
         project_id = 1 if not self.projects else max(self.projects) + 1
         self.projects.update(
             {
-                project_id: {
-                    "id": project_id,
-                    "name": name,
-                    "link": link,
-                    "tasks": tasks,
-                    "priority": priority,
-                    "start": start,
-                    "end": end,
-                    "interval": interval,
-                    "cluster": cluster,
-                    "duration": duration,
-                    "groups": groups,
-                    "description": description,
-                }
+                project_id: Project(
+                    project_id,
+                    name,
+                    link=link,
+                    tasks=tasks,
+                    priority=priority,
+                    start=start,
+                    end=end,
+                    interval=interval,
+                    cluster=cluster,
+                    duration=duration,
+                    groups=groups,
+                    description=description,
+                )
             }
         )
         schedule = schedule_tasks(
@@ -319,7 +320,7 @@ class Gantt:
                         duration=duration,  # duration applies to full task/cluster, not single item
                         priority=priority,
                         color=Color.NONE,
-                        groups=list(groups),
+                        groups=groups,
                         description=description,
                     )
                 }

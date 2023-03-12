@@ -36,8 +36,8 @@ def test_save_nonempty():
     projects_, tasks_, days_, backlog_ = read_data(save_path)
 
     for i, p in projects.items():
-        for k, v in p.items():
-            assert p[k] == projects_[i][k]
+        for k, v in p.todict().items():
+            assert p.__dict__[k] == projects_[i].__dict__[k]
     for i, t in tasks.items():
         for k, v in t.todict().items():
             assert t.__dict__[k] == tasks_[i].__dict__[k]

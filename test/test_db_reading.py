@@ -69,8 +69,8 @@ def test_open_nonempty():
     g.setup(base_db_path=test_data_path)
 
     for i, p in g.projects.items():
-        for k, v in p.items():
-            assert p[k] == projects[i][k]
+        for k, v in p.todict().items():
+            assert p.__dict__[k] == projects[i].__dict__[k]
     for i, t in g.tasks.items():
         for k, v in t.todict().items():
             assert t.__dict__[k] == tasks[i].__dict__[k]

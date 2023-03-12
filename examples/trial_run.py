@@ -30,6 +30,7 @@ tasks1 = g.get_day(Date.today() + 3)
 
 
 p = Project(
+    id_=3,
     name="Python лучшие инструменты и практики",
     tasks="17,A",
     priority=Priority.MEDIUM,

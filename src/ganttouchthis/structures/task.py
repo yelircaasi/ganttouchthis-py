@@ -22,7 +22,7 @@ class Task:
         duration: int = 30,
         priority: Priority = Priority.UNDEFINED,
         color: Color = Color.NONE,
-        groups: list = [],
+        groups: set = set(),
         description: str = "",
     ) -> None:
 
@@ -107,6 +107,6 @@ class Task:
             duration=json_dict["duration"],
             priority=Priority[json_dict["priority"]],
             color=Color[json_dict["color"]],
-            groups=json_dict["groups"],
+            groups=set(json_dict["groups"]),
             description=json_dict["description"],
         )
