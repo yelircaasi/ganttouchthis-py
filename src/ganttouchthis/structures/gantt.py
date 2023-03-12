@@ -227,6 +227,9 @@ class Gantt:
             db.insert(doc.todict())
         db.close()
 
+    def editp(self) -> None:
+        ...
+
     def edit_project(self, project_id: int, key: str, value: Any) -> None:
         if key in {"name", "link", "priority", "duration", "tags", "description"}:
             self.projects[project_id].__dict__[key] = value
@@ -237,6 +240,20 @@ class Gantt:
             print("Requested edit not possible: {key} -> {value}. Use the method 'reschedule_tasks' instead.")
         else:
             print("Requested edit not possible: {key} -> {value}.")
+
+    def editt(self) -> None:
+        id_ = int(input("Project ID: "))
+        key = input("Attribute to edit (duration|priority|color|status|date|subtasks): ")
+        value = input("New value: ")
+        value = {
+            "duration": lambda x: int(x),
+            "priority": lambda x: Priority[x],
+            "color": lambda x: Color[x],
+            "status": lambda x: Status[x],
+            "date": lambda x: Date.fromisoformat(x),
+            "subtasks": lambda x: eval(x),
+        }.get(key, str)(input("New value: "))
+        self.edit_task(id_, key, value)
 
     def edit_task(self, task_id: int, key: str, value: Any) -> None:
         if key in {"duration", "priority", "color", "status"}:
@@ -263,7 +280,13 @@ class Gantt:
         else:
             print("Requested edit not possible: {key} -> {value}.")
 
-    def edit_day(self, date: Date, key: str, value: str):
+    def editd(self) -> None:
+        id_ = Date.fromisoformat(input("Date (yyyy-mm-dd): ")) or TODAY - 50  # just for typing
+        print("Attribute to edit: max_load")
+        value = int(input("New value: "))
+        self.edit_day(id_, "max_load", value)
+
+    def edit_day(self, date: Date, key: str, value: int):
         if key == "tasks":
             print("Requested edit not possible: {key} -> {value}. Edit via tasks.")
         elif key == "max_load":
@@ -271,9 +294,17 @@ class Gantt:
         else:
             print("Requested edit not possible: {key} -> {value}.")
 
-    def edit_backlog(self, item_id: int, key: str, value: Any):
-        if key in {"name", "tasks", "tags"}:
+    def editb(self) -> None:
+        id_ = int(input("Project ID: "))
+        key = input("Attribute to edit: ")
+        value = input("New value: ")
+        self.edit_backlog(id_, key, value)
+
+    def edit_backlog(self, item_id: int, key: str, value: str):
+        if key in {"name", "tasks"}:
             self.backlog[item_id].__dict__[key] = value
+        elif key == "tags":
+            self.backlog[item_id].__dict__[key].tags.add(value)
         else:
             print("Requested edit not possible: {key} -> {value}.")
 
