@@ -72,8 +72,8 @@ def test_open_nonempty():
         for k, v in p.items():
             assert p[k] == projects[i][k]
     for i, t in g.tasks.items():
-        for k, v in t.items():
-            assert t[k] == tasks[i][k]
+        for k, v in t.todict().items():
+            assert t.__dict__[k] == tasks[i].__dict__[k]
 
     # for d, day in g.days.items():
     #     for k, v in day.items():

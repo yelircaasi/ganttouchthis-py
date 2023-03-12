@@ -9,10 +9,11 @@ from tinydb import Query, TinyDB
 from ganttouchthis.structures.backlog import BacklogItem
 from ganttouchthis.structures.project import AdjustmentAlg, Project
 from ganttouchthis.structures.task import Color, Priority, Task
-from ganttouchthis.structures.temporal import schedule_tasks
 from ganttouchthis.utils.date import Date, date_range
 from ganttouchthis.utils.db import DBPaths
+from ganttouchthis.utils.enums import Status
 from ganttouchthis.utils.json import dejsonify, jsonify
+from ganttouchthis.utils.temporal import schedule_tasks
 
 DEFAULT_MAX_LOAD: int = 240
 
@@ -44,6 +45,7 @@ class Gantt:
             "id",
             "project",
             "date",
+            "status",
             "name",
             "link",
             "subtasks",
@@ -82,10 +84,9 @@ class Gantt:
     def open_tasks(self) -> dict:
         tasks_db = TinyDB(self.db_paths.TASKS_DB_PATH)
         num_tasks = len(tasks_db)
-        tasks = dict(map(lambda i: (i + 1, dejsonify(tasks_db.get(doc_id=i + 1))), range(num_tasks)))
+        # tasks = dict(map(lambda i: (i + 1, dejsonify(tasks_db.get(doc_id=i + 1))), range(num_tasks)))
+        tasks = dict(map(lambda t: (t["id"], Task.fromdict(t)), tasks_db.all()))
         tasks_db.close()
-        for k in tasks:
-            tasks[k].update({"id": k})
         return tasks
 
     def open_days(self) -> dict:
@@ -150,7 +151,8 @@ class Gantt:
         db = TinyDB(save_path)
         db.truncate()
         for doc in self.tasks.values():
-            db.insert(jsonify(doc))
+            # db.insert(jsonify(doc))
+            db.insert(doc.todict())
         db.close()
 
     def save_days(self, save_dir: Union[Path, str] = "") -> None:
@@ -198,7 +200,7 @@ class Gantt:
             print("Requested edit not possible: {key} -> {value}.")
 
     def edit_task(self, task_id: int, key: str, value: Any) -> None:
-        if key in {"duration", "priority", "color"}:
+        if key in {"duration", "priority", "color", "status"}:
             self.tasks[task_id].update({key: value})
         elif key == "date":
             old_date = Date.fromordinal(self.tasks[task_id][key].toordinal())
@@ -277,22 +279,24 @@ class Gantt:
         description: str = "",
     ) -> None:
         project_id = 1 if not self.projects else max(self.projects) + 1
-        self.projects.update({
-            project_id: {
-                "id": project_id,
-                "name": name,
-                "link": link,
-                "tasks": tasks,
-                "priority": priority,
-                "start": start,
-                "end": end,
-                "interval": interval,
-                "cluster": cluster,
-                "duration": duration,
-                "groups": groups,
-                "description": description,
+        self.projects.update(
+            {
+                project_id: {
+                    "id": project_id,
+                    "name": name,
+                    "link": link,
+                    "tasks": tasks,
+                    "priority": priority,
+                    "start": start,
+                    "end": end,
+                    "interval": interval,
+                    "cluster": cluster,
+                    "duration": duration,
+                    "groups": groups,
+                    "description": description,
+                }
             }
-        })
+        )
         schedule = schedule_tasks(
             start=start,
             end=end,
@@ -304,42 +308,26 @@ class Gantt:
             task_id = 1 if not self.tasks else max(self.tasks) + 1
             self.tasks.update(
                 {
-                    task_id: {
-                        "id": task_id,
-                        "project": project_id,
-                        "date": d,
-                        "name": name,
-                        "link": link,
-                        "subtasks": subtasks,
-                        "duration": duration,  # duration applies to full task/cluster, not single item
-                        "priority": priority,
-                        "color": Color.NONE,
-                        "groups": groups,
-                        "description": description,
-                    }
+                    task_id: Task(
+                        task_id,
+                        project_id,
+                        name,
+                        date=d,
+                        status=Status.SCHEDULED,
+                        link=link,
+                        subtasks=subtasks,
+                        duration=duration,  # duration applies to full task/cluster, not single item
+                        priority=priority,
+                        color=Color.NONE,
+                        groups=list(groups),
+                        description=description,
+                    )
                 }
             )
             if not d in self.days:
                 self.days.update({d: {"date": d, "max_load": self.default_max_load, "tasks": []}})
             self.days[d]["tasks"].append(task_id)
         self.days = dict(sorted([(k, v) for k, v in self.days.items()]))
-
-
-    # def add_task(
-    #     self,
-    #     id,
-    #     project,
-    #     date,
-    #     name,
-    #     link,
-    #     subtasks,
-    #     duration,
-    #     priority,
-    #     color,
-    #     groups,
-    #     description
-    # ) -> None:
-    #     ...
 
     def set_max_loads(self) -> None:  # TODO:
 
@@ -381,8 +369,7 @@ class Gantt:
         d = start
         while d < end:
             if not d in self.days:
-                self.days.update(
-                    {d: {"date": d, "max_load": self.default_max_load, "tasks": []}})
+                self.days.update({d: {"date": d, "max_load": self.default_max_load, "tasks": []}})
             print(d)
             day_tasks = [self.tasks[i] for i in self.days[d]["tasks"]]
             day_tasks.sort(key=lambda t: t["priority"].value, reverse=True)
@@ -398,20 +385,20 @@ class Gantt:
             d += 1
         self.days = dict(sorted([(k, v) for k, v in self.days.items()]))
 
-# day = start_day
-#         # while day < end_day:
-#         #     print(30 * "=" + "\n" + str(day) + "\n" + 30 * "=")
-#         #     tasks = self.get_tasks(day, sort_key=lambda t: (t["priority"], t["duration"]))
-#         #     total = sum(map(lambda t: t["duration"], tasks))
-#         #     while total > self.max_loads[day]:
-#         #         print(30 * "=" + "\n" + str(total) + "\n" + 30 * "=")
-#         #         task_to_move = tasks.pop()
-#         #         print(task_to_move)
-#         #         self.edit_task(task_to_move["hash"], "date", str(Date.fromisoformat(task_to_move["date"]) + 1))
-#         #         total = sum(map(lambda t: t["duration"], tasks))
-#         #     day += 1
+    # day = start_day
+    #         # while day < end_day:
+    #         #     print(30 * "=" + "\n" + str(day) + "\n" + 30 * "=")
+    #         #     tasks = self.get_tasks(day, sort_key=lambda t: (t["priority"], t["duration"]))
+    #         #     total = sum(map(lambda t: t["duration"], tasks))
+    #         #     while total > self.max_loads[day]:
+    #         #         print(30 * "=" + "\n" + str(total) + "\n" + 30 * "=")
+    #         #         task_to_move = tasks.pop()
+    #         #         print(task_to_move)
+    #         #         self.edit_task(task_to_move["hash"], "date", str(Date.fromisoformat(task_to_move["date"]) + 1))
+    #         #         total = sum(map(lambda t: t["duration"], tasks))
+    #         #     day += 1
     def change_task_date(self, task_id: int) -> None:  # TODO: decide whether redundant
-        
+
         ...
         # change date of self.tasks[task_id]
         # update self.days
@@ -563,7 +550,7 @@ def get_gantt():
 #     # def edit_project(self, hash: str, key: str, value: Any) -> None:
 
 #     #     self.projects[hash].__dict__.update({key: value})
-#     #     self.project_db.update(self.projects[hash].as_dict(), self.query.hash == hash)
+#     #     self.project_db.update(self.projects[hash].todict(), self.query.hash == hash)
 
 #     def edit_task(self, hash: str, key: str, value: Any) -> None:
 #         ...
@@ -579,7 +566,7 @@ def get_gantt():
 
 #         # else:
 #         #     self.projects[project_hash].task_schedule[day].__dict__.update({key: value})
-#         #     update = self.projects[project_hash].task_schedule[day].as_dict()
+#         #     update = self.projects[project_hash].task_schedule[day].todict()
 #         # self.tasks_db.update(update, self.query.hash == hash)
 
 #     def search_projects(

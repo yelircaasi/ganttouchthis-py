@@ -1,8 +1,11 @@
 from pathlib import Path
+from typing import Any, Dict, Tuple
 
 from tinydb import TinyDB
 
 from ganttouchthis import Color, Date, Priority
+from ganttouchthis.structures.task import Task
+from ganttouchthis.utils.enums import Status
 from ganttouchthis.utils.json import dejsonify, jsonify
 
 
@@ -55,110 +58,118 @@ def make_data():
     }
     # schedule_tasks("hash", "One Book", ["1", "2", "3", "4"], zero_date, zero_date + 50, 1, None, Priority.MEDIUM, 30)
     tasks = {
-        1: {
-            "id": 1,
-            "project": 1,
-            "date": Date(2023, 4, 3),
-            "name": "One Book",
-            "link": "",
-            "subtasks": "1",
-            "duration": 30,
-            "priority": Priority.MEDIUM,
-            "color": Color.NONE,
-            "groups": ["python"],
-            "description": "a book to read",
-        },
-        2: {
-            "id": 2,
-            "project": 1,
-            "date": Date(2023, 4, 9),
-            "name": "One Book",
-            "link": "",
-            "subtasks": "2",
-            "duration": 30,
-            "priority": Priority.MEDIUM,
-            "color": Color.NONE,
-            "groups": ["python"],
-            "description": "a book to read",
-        },
-        3: {
-            "id": 3,
-            "project": 1,
-            "date": Date(2023, 4, 15),
-            "name": "One Book",
-            "link": "",
-            "subtasks": "3",
-            "duration": 30,
-            "priority": Priority.MEDIUM,
-            "color": Color.NONE,
-            "groups": ["python"],
-            "description": "a book to read",
-        },
-        4: {
-            "id": 4,
-            "project": 1,
-            "date": Date(2023, 4, 21),
-            "name": "One Book",
-            "link": "",
-            "subtasks": "4",
-            "duration": 90,
-            "priority": Priority.MEDIUM,
-            "color": Color.NONE,
-            "groups": ["python"],
-            "description": "a book to read",
-        },
-        5: {
-            "id": 5,
-            "project": 2,
-            "date": Date(2023, 4, 3),
-            "name": "Еще книга",
-            "link": "",
-            "subtasks": "1, 2, 3",
-            "duration": 30,
-            "priority": Priority.HIGH,
-            "color": Color.NONE,
-            "groups": ["russian", "fiction"],
-            "description": "",
-        },
-        6: {
-            "id": 6,
-            "project": 3,
-            "date": Date(2023, 4, 3),
-            "name": "Book the Third",
-            "link": "",
-            "subtasks": "0, 1",
-            "duration": 60,
-            "priority": Priority.WISH,
-            "color": Color.NONE,
-            "groups": ["docker", "devops"],
-            "description": "a book on best practices with docker",
-        },
-        7: {
-            "id": 7,
-            "project": 3,
-            "date": Date(2023, 4, 12),
-            "name": "Book the Third",
-            "link": "",
-            "subtasks": "2, A0",
-            "duration": 60,
-            "priority": Priority.WISH,
-            "color": Color.NONE,
-            "groups": ["docker", "devops"],
-            "description": "a book on best practices with docker",
-        },
-        8: {
-            "id": 8,
-            "project": 3,
-            "date": Date(2023, 4, 21),
-            "name": "Book the Third",
-            "link": "",
-            "subtasks": "A1",
-            "duration": 60,
-            "priority": Priority.WISH,
-            "color": Color.NONE,
-            "groups": ["docker", "devops"],
-            "description": "a book on best practices with docker",
-        },
+        1: Task(
+            1,
+            1,
+            "One Book",
+            date=Date(2023, 4, 3),
+            status=Status.IN_PROGRESS,
+            link="",
+            subtasks="1",
+            duration=30,
+            priority=Priority.MEDIUM,
+            color=Color.NONE,
+            groups=["python"],
+            description="a book to read",
+        ),
+        2: Task(
+            2,
+            1,
+            "One Book",
+            date=Date(2023, 4, 9),
+            status=Status.SCHEDULED,
+            link="",
+            subtasks="2",
+            duration=30,
+            priority=Priority.MEDIUM,
+            color=Color.NONE,
+            groups=["python"],
+            description="a book to read",
+        ),
+        3: Task(
+            3,
+            1,
+            "One Book",
+            date=Date(2023, 4, 15),
+            status=Status.SCHEDULED,
+            link="",
+            subtasks="3",
+            duration=30,
+            priority=Priority.MEDIUM,
+            color=Color.NONE,
+            groups=["python"],
+            description="a book to read",
+        ),
+        4: Task(
+            4,
+            1,
+            "One Book",
+            date=Date(2023, 4, 21),
+            status=Status.SCHEDULED,
+            link="",
+            subtasks="4",
+            duration=90,
+            priority=Priority.MEDIUM,
+            color=Color.NONE,
+            groups=["python"],
+            description="a book to read",
+        ),
+        5: Task(
+            5,
+            2,
+            "Еще книга",
+            date=Date(2023, 4, 3),
+            status=Status.SCHEDULED,
+            link="",
+            subtasks="1, 2, 3",
+            duration=30,
+            priority=Priority.HIGH,
+            color=Color.NONE,
+            groups=["russian", "fiction"],
+            description="",
+        ),
+        6: Task(
+            6,
+            3,
+            "Book the Third",
+            date=Date(2023, 4, 3),
+            status=Status.IN_PROGRESS,
+            link="",
+            subtasks="0, 1",
+            duration=60,
+            priority=Priority.WISH,
+            color=Color.NONE,
+            groups=["docker", "devops"],
+            description="a book on best practices with docker",
+        ),
+        7: Task(
+            7,
+            3,
+            "Book the Third",
+            date=Date(2023, 4, 12),
+            status=Status.SCHEDULED,
+            link="",
+            subtasks="2, A0",
+            duration=60,
+            priority=Priority.WISH,
+            color=Color.NONE,
+            groups=["docker", "devops"],
+            description="a book on best practices with docker",
+        ),
+        8: Task(
+            8,
+            3,
+            "Book the Third",
+            date=Date(2023, 4, 21),
+            status=Status.SCHEDULED,
+            link="",
+            subtasks="A1",
+            duration=60,
+            priority=Priority.WISH,
+            color=Color.NONE,
+            groups=["docker", "devops"],
+            description="a book on best practices with docker",
+        ),
     }
     days = {
         Date(2023, 4, 3): {"date": Date(2023, 4, 3), "max_load": 240, "tasks": [1, 5, 6]},
@@ -209,7 +220,7 @@ def write_data(db_path, projects, tasks, days, backlog):
     db = TinyDB(db_path / "tasks.json")
     db.truncate()
     for doc in tasks.values():
-        db.insert(jsonify(doc))
+        db.insert(doc.todict())
     db.close()
     db = TinyDB(db_path / "days.json")
     db.truncate()
@@ -223,17 +234,20 @@ def write_data(db_path, projects, tasks, days, backlog):
     db.close()
 
 
-def read_data(db_path):
+DictTuple = Tuple[Dict[int, Dict[str, Any]], Dict[int, Task], Dict[Date, Dict[str, Any]], Dict[int, Dict[str, Any]]]
+
+
+def read_data(db_path) -> DictTuple:
     db = TinyDB(db_path / "projects.json")
-    projects = {d["id"]: d for d in list(map(dejsonify, db.all()))}
+    projects: Dict[int, Dict[str, Any]] = {d["id"]: d for d in list(map(dejsonify, db.all()))}
     db.close()
     db = TinyDB(db_path / "tasks.json")
-    tasks = {d["id"]: d for d in list(map(dejsonify, db.all()))}
+    tasks: Dict[int, Task] = {d.id: d for d in map(Task.fromdict, db.all())}
     db.close()
     db = TinyDB(db_path / "days.json")
-    days = {d["date"]: d for d in list(map(dejsonify, db.all()))}
+    days: Dict[Date, Dict[str, Any]] = {d["date"]: d for d in list(map(dejsonify, db.all()))}
     db.close()
     db = TinyDB(db_path / "backlog.json")
-    backlog = {i + 1: d for i, d in enumerate(map(dejsonify, db.all()))}
+    backlog: Dict[int, Dict[str, Any]] = {i + 1: d for i, d in enumerate(map(dejsonify, db.all()))}
     db.close()
     return (projects, tasks, days, backlog)

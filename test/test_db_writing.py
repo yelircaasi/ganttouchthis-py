@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from ganttouchthis import get_gantt
+from ganttouchthis import Task, get_gantt
 
 from .utils.db import make_data, read_data
 
@@ -39,8 +39,8 @@ def test_save_nonempty():
         for k, v in p.items():
             assert p[k] == projects_[i][k]
     for i, t in tasks.items():
-        for k, v in t.items():
-            assert t[k] == tasks_[i][k]
+        for k, v in t.todict().items():
+            assert t.__dict__[k] == tasks_[i].__dict__[k]
     for d, day in days.items():
         for k, v in day.items():
             assert v == days_[d][k]

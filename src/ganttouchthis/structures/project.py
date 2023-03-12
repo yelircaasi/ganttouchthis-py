@@ -4,11 +4,11 @@ from enum import Enum
 from typing import Dict, Literal, Optional, TypedDict, Union
 
 from ganttouchthis.structures.task import Task
-from ganttouchthis.structures.temporal import schedule_tasks
 from ganttouchthis.utils.date import Date
 from ganttouchthis.utils.enums import Color, Priority
 from ganttouchthis.utils.json import CustomEncoder
 from ganttouchthis.utils.task_segment_expansion import expand_task_segments
+from ganttouchthis.utils.temporal import schedule_tasks
 
 # TODO: determine whether still needed
 AdjustmentAlg = Literal["EVEN", "RIGID", "ROLLOVER"]
@@ -62,7 +62,7 @@ class Project:
         #     duration=self.duration,
         # )
 
-    def as_dict(self):
+    def todict(self):
         return {
             "hash": self.hash,
             "name": self.name,
@@ -79,7 +79,7 @@ class Project:
         }
 
     @classmethod
-    def from_dict(cls, proj_dict) -> "Project":
+    def fromdict(cls, proj_dict) -> "Project":
         return cls(
             name=proj_dict["name"],
             link=proj_dict["link"],

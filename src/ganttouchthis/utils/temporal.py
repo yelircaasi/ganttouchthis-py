@@ -51,4 +51,4 @@ def schedule_tasks(
     else:
         raise ValueError("Invalid parameter configuration. Either `end` or `interval` must be specified.")
 
-    return {start + (i + i * gap): ", ".join(task_chunk) for i, task_chunk in enumerate(task_chunks)}
+    return {start + (i + i * gap): task_chunk for i, task_chunk in enumerate(task_chunks)}

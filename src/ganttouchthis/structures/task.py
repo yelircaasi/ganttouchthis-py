@@ -5,71 +5,108 @@ from typing import List, Optional, Tuple, Union
 from more_itertools import batched
 
 from ganttouchthis.utils.date import Date
-from ganttouchthis.utils.enums import Color, Priority
+from ganttouchthis.utils.enums import Color, Priority, Status
+from ganttouchthis.utils.repr import box, multibox
 
 
-# TODO: rework interface to work well with Gantt
 class Task:
     def __init__(
         self,
-        project_hash: str,
+        id_: int,
+        project: int,
+        name: str,
         date: Optional[Date] = Date.today(),
-        name: str = "",
+        status: Status = Status.SCHEDULED,
+        link: str = "",
         subtasks: list = ["1"],
         duration: int = 30,
         priority: Priority = Priority.UNDEFINED,
         color: Color = Color.NONE,
+        groups: list = [],
         description: str = "",
     ) -> None:
 
-        self.project_hash = project_hash
-        self.date = date
+        self.id = id_
+        self.project = project
         self.name = name
+        self.date = date
+        self.status = status
+        self.link = link
         self.subtasks = subtasks
-        self.hash = hex(hash((name, tuple(subtasks))))
         self.duration = duration
         self.priority = priority
         self.color = color
+        self.groups = groups
         self.description = description
 
+        self.keys = {
+            "id",
+            "project",
+            "date",
+            "status",
+            "name",
+            "link",
+            "subtasks",
+            "duration",
+            "priority",
+            "color",
+            "groups",
+            "description",
+        }
+
     def __repr__(self) -> str:
+        # task_str = box(f"{self.date}: {self.name[:20]} | {', '.join(self.subtasks)} (T{self.id} | P{self.project})")
+        return "\n" + multibox((str(self.date), self.name, ", ".join(self.subtasks), f"T{self.id} P{self.project}"))
+
+    def detailed(self):
         task_str = "\n    ".join(
             (
-                f"    Date:        {str(self.date)}",
+                "",
+                f"ID:          {self.id}",
+                f"Project:     {self.project}",
                 f"Name:        {self.name}",
+                f"Date:        {str(self.date)}",
+                f"Status:      {str(self.status)}",
                 f"Subtasks:    {', '.join(self.subtasks)}",
                 f"Duration:    {str(self.duration)} min",
                 f"Priority:    {str(self.priority)}",
                 f"Color:       {str(self.color)}",
+                f"Groups:      {', '.join(self.groups)}",
                 f"Description: {self.description}",
-                f"Hash:        {self.hash}",
-                f"Project Hash: {self.project_hash}",
+                "",
             )
         )
-        return task_str
+        print(task_str)
 
-    def as_dict(self):
+    def todict(self):
         return {
-            "project_hash": self.project_hash,
-            "hash": self.hash,
-            "date": str(self.date),
+            "id": self.id,
+            "project": self.project,
             "name": self.name,
+            "date": str(self.date),
+            "status": str(self.status),
+            "link": self.link,
             "subtasks": self.subtasks,
             "duration": self.duration,
-            "priority": self.priority.value,
-            "color": self.color.name,
+            "priority": str(self.priority),
+            "color": str(self.color),
+            "groups": list(self.groups),
             "description": self.description,
         }
 
     @classmethod
-    def from_dict(cls, json_dict):
+    def fromdict(cls, json_dict):
         return cls(
-            project_hash=json_dict["project_hash"],
+            json_dict["id"],
+            json_dict["project"],
+            json_dict["name"],
             date=Date.fromisoformat(json_dict["date"]),
-            name=json_dict["name"],
+            status=Status[json_dict["status"]],
+            link=json_dict["link"],
             subtasks=json_dict["subtasks"],
             duration=json_dict["duration"],
-            priority=Priority(json_dict["priority"]),
+            priority=Priority[json_dict["priority"]],
             color=Color[json_dict["color"]],
+            groups=json_dict["groups"],
             description=json_dict["description"],
         )

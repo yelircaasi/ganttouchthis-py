@@ -39,3 +39,22 @@ class Color(Enum):
 
     def __str__(self) -> str:
         return self.__repr__()
+
+    def __int__(self) -> int:
+        return self.value
+
+
+class Status(Enum):
+    NONE = -1
+    SCHEDULED = 0
+    IN_PROGRESS = 1
+    COMPLETED = 2
+
+    def __repr__(self) -> str:
+        return f"{self.name} ({self.value})"
+
+    def __str__(self) -> str:
+        return self.name
+
+    def __int__(self) -> int:
+        return self.value
