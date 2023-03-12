@@ -7,6 +7,7 @@ from typing import Any, Callable, ClassVar, Iterable, List, Optional, Union
 from tinydb import Query, TinyDB
 
 from ganttouchthis.structures.backlog import BacklogItem
+from ganttouchthis.structures.day import Day
 from ganttouchthis.structures.project import AdjustmentAlg, Project
 from ganttouchthis.structures.task import Color, Priority, Task
 from ganttouchthis.utils.date import Date, date_range
@@ -74,7 +75,7 @@ class Gantt:
 
     def open_projects(self) -> dict:
         projects_db = TinyDB(self.db_paths.PROJECTS_DB_PATH)
-        num_projects = len(projects_db)
+        # num_projects = len(projects_db)
         # projects = dict(map(lambda i: (i + 1, dejsonify(projects_db.get(doc_id=i + 1))), range(num_projects)))
         projects = dict(map(lambda t: (t["id"], Project.fromdict(t)), projects_db.all()))
         projects_db.close()
@@ -84,7 +85,7 @@ class Gantt:
 
     def open_tasks(self) -> dict:
         tasks_db = TinyDB(self.db_paths.TASKS_DB_PATH)
-        num_tasks = len(tasks_db)
+        # num_tasks = len(tasks_db)
         # tasks = dict(map(lambda i: (i + 1, dejsonify(tasks_db.get(doc_id=i + 1))), range(num_tasks)))
         tasks = dict(map(lambda t: (t["id"], Task.fromdict(t)), tasks_db.all()))
         tasks_db.close()
@@ -92,18 +93,19 @@ class Gantt:
 
     def open_days(self) -> dict:
         days_db = TinyDB(self.db_paths.DAYS_DB_PATH)
-        days = map(dejsonify, days_db.all())
+        days = map(Day.fromdict, days_db.all())
         days_db.close()
-        return {d["date"]: d for d in days}
+        return {d.date: d for d in days}
 
     def open_backlog(self) -> dict:
         backlog_db = TinyDB(self.db_paths.BACKLOG_DB_PATH)
-        num_tasks = len(backlog_db)
-        backlog = dict(map(lambda i: (i + 1, dejsonify(backlog_db.get(doc_id=i + 1))), range(num_tasks)))
+        # num_tasks = len(backlog_db)
+        # backlog = dict(map(lambda i: (i + 1, dejsonify(backlog_db.get(doc_id=i + 1))), range(num_tasks)))
+        backlog = map(BacklogItem.fromdict, backlog_db.all())
         backlog_db.close()
         # for k in backlog:
         #     backlog[k].update({"id": k})
-        return backlog
+        return {i + 1: d for i, d in enumerate(backlog)}
 
     def get_day(self, day: Date) -> dict:
         day_tasks: dict = {}  # TODO:
@@ -169,7 +171,7 @@ class Gantt:
         db = TinyDB(save_path)
         db.truncate()
         for doc in self.days.values():
-            db.insert(jsonify(doc))
+            db.insert(doc.todict())
         db.close()
 
     def save_backlog(self, save_dir: Union[Path, str] = "") -> None:
@@ -184,14 +186,14 @@ class Gantt:
         db = TinyDB(save_path)
         db.truncate()
         for doc in self.backlog.values():
-            db.insert(jsonify(doc))
+            db.insert(doc.todict())
         db.close()
 
     def edit_project(
         self, project_id: int, key: str, value: Any
     ) -> None:  ########################################################################
         if key in {"name", "link", "priority", "duration", "groups", "description"}:
-            self.projects[project_id][key] = value
+            self.projects[project_id].__dict__[key] = value
             task_ids = self.tasks_from_project(project_id)
             for task in task_ids:
                 self._edit_task_from_project(task, key, value)
@@ -204,15 +206,15 @@ class Gantt:
         if key in {"duration", "priority", "color", "status"}:
             self.tasks[task_id].update({key: value})
         elif key == "date":
-            old_date = Date.fromordinal(self.tasks[task_id][key].toordinal())
-            self.tasks[task_id][key] = value
-            self.days[old_date]["tasks"].remove(task_id)
-            self.days[value]["tasks"].append(task_id)
-            self.days[value]["tasks"].sort()
+            old_date = Date.fromordinal(self.tasks[task_id].__dict__[key].toordinal())
+            self.tasks[task_id].__dict__[key] = value
+            self.days[old_date].tasks.remove(task_id)
+            self.days[value].tasks.append(task_id)
+            self.days[value].tasks.sort()
             # * could add check for sequential consistency, but I prefer the flexibility -> warning?
         elif key == "subtasks":
             print("Warning! Be sure to edit other tasks affected by the change in subtask partitioning.")
-            self.tasks[task_id][key] = value
+            self.tasks[task_id].__dict__[key] = value
             # * could implement this in a more sophisticated manner
         elif key in {"name", "link", "groups", "description"}:
             print("Requested edit not possible: {key} -> {value}. Edit via project.")
@@ -221,7 +223,7 @@ class Gantt:
 
     def _edit_task_from_project(self, task_id: int, key: str, value: Any) -> None:
         if key in {"name", "link", "priority", "duration", "groups", "description"}:
-            self.tasks[task_id][key] = value
+            self.tasks[task_id].__dict__[key] = value
         else:
             print("Requested edit not possible: {key} -> {value}.")
 
@@ -229,13 +231,13 @@ class Gantt:
         if key == "tasks":
             print("Requested edit not possible: {key} -> {value}. Edit via tasks.")
         elif key == "max_load":
-            self.days[date][key] = value
+            self.days[date].__dict__[key] = value
         else:
             print("Requested edit not possible: {key} -> {value}.")
 
     def edit_backlog(self, item_id: int, key: str, value: Any):
         if key in {"name", "tasks", "groups"}:
-            self.backlog[item_id][key] = value
+            self.backlog[item_id].__dict__[key] = value
         else:
             print("Requested edit not possible: {key} -> {value}.")
 

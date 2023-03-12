@@ -53,6 +53,20 @@ class Project:
         self.groups = groups
         self.description = description
         # self.task_list = task_list or expand_task_segments(tasks)
+        self.keys = {
+            "id",
+            "name",
+            "link",
+            "tasks",
+            "priority",
+            "start",
+            "end",
+            "interval",
+            "cluster",
+            "duration",
+            "groups",
+            "description",
+        }
 
     def todict(self):
         return {

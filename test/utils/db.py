@@ -4,6 +4,8 @@ from typing import Any, Dict, Tuple
 from tinydb import TinyDB
 
 from ganttouchthis import Color, Date, Priority
+from ganttouchthis.structures.backlog import BacklogItem
+from ganttouchthis.structures.day import Day
 from ganttouchthis.structures.project import Project
 from ganttouchthis.structures.task import Task
 from ganttouchthis.utils.enums import Status
@@ -173,40 +175,40 @@ def make_data():
         ),
     }
     days = {
-        Date(2023, 4, 3): {"date": Date(2023, 4, 3), "max_load": 240, "tasks": [1, 5, 6]},
-        Date(2023, 4, 4): {"date": Date(2023, 4, 4), "max_load": 240, "tasks": []},
-        Date(2023, 4, 5): {"date": Date(2023, 4, 5), "max_load": 240, "tasks": []},
-        Date(2023, 4, 6): {"date": Date(2023, 4, 6), "max_load": 240, "tasks": []},
-        Date(2023, 4, 7): {"date": Date(2023, 4, 7), "max_load": 240, "tasks": []},
-        Date(2023, 4, 8): {"date": Date(2023, 4, 8), "max_load": 240, "tasks": []},
-        Date(2023, 4, 9): {"date": Date(2023, 4, 9), "max_load": 240, "tasks": [2]},
-        Date(2023, 4, 10): {"date": Date(2023, 4, 10), "max_load": 240, "tasks": []},
-        Date(2023, 4, 11): {"date": Date(2023, 4, 11), "max_load": 240, "tasks": []},
-        Date(2023, 4, 12): {"date": Date(2023, 4, 12), "max_load": 240, "tasks": [7]},
-        Date(2023, 4, 13): {"date": Date(2023, 4, 13), "max_load": 240, "tasks": []},
-        Date(2023, 4, 14): {"date": Date(2023, 4, 14), "max_load": 240, "tasks": []},
-        Date(2023, 4, 15): {"date": Date(2023, 4, 15), "max_load": 240, "tasks": [3]},
-        Date(2023, 4, 16): {"date": Date(2023, 4, 16), "max_load": 240, "tasks": []},
-        Date(2023, 4, 17): {"date": Date(2023, 4, 17), "max_load": 240, "tasks": []},
-        Date(2023, 4, 18): {"date": Date(2023, 4, 18), "max_load": 240, "tasks": []},
-        Date(2023, 4, 19): {"date": Date(2023, 4, 19), "max_load": 240, "tasks": []},
-        Date(2023, 4, 20): {"date": Date(2023, 4, 20), "max_load": 240, "tasks": []},
-        Date(2023, 4, 21): {"date": Date(2023, 4, 21), "max_load": 240, "tasks": [4, 8]},
+        Date(2023, 4, 3): Day(Date(2023, 4, 3), max_load=240, tasks=[1, 5, 6]),
+        Date(2023, 4, 4): Day(Date(2023, 4, 4), max_load=240, tasks=[]),
+        Date(2023, 4, 5): Day(Date(2023, 4, 5), max_load=240, tasks=[]),
+        Date(2023, 4, 6): Day(Date(2023, 4, 6), max_load=240, tasks=[]),
+        Date(2023, 4, 7): Day(Date(2023, 4, 7), max_load=240, tasks=[]),
+        Date(2023, 4, 8): Day(Date(2023, 4, 8), max_load=240, tasks=[]),
+        Date(2023, 4, 9): Day(Date(2023, 4, 9), max_load=240, tasks=[2]),
+        Date(2023, 4, 10): Day(Date(2023, 4, 10), max_load=240, tasks=[]),
+        Date(2023, 4, 11): Day(Date(2023, 4, 11), max_load=240, tasks=[]),
+        Date(2023, 4, 12): Day(Date(2023, 4, 12), max_load=240, tasks=[7]),
+        Date(2023, 4, 13): Day(Date(2023, 4, 13), max_load=240, tasks=[]),
+        Date(2023, 4, 14): Day(Date(2023, 4, 14), max_load=240, tasks=[]),
+        Date(2023, 4, 15): Day(Date(2023, 4, 15), max_load=240, tasks=[3]),
+        Date(2023, 4, 16): Day(Date(2023, 4, 16), max_load=240, tasks=[]),
+        Date(2023, 4, 17): Day(Date(2023, 4, 17), max_load=240, tasks=[]),
+        Date(2023, 4, 18): Day(Date(2023, 4, 18), max_load=240, tasks=[]),
+        Date(2023, 4, 19): Day(Date(2023, 4, 19), max_load=240, tasks=[]),
+        Date(2023, 4, 20): Day(Date(2023, 4, 20), max_load=240, tasks=[]),
+        Date(2023, 4, 21): Day(Date(2023, 4, 21), max_load=240, tasks=[4, 8]),
     }
     backlog = {
-        1: {
-            "name": "Pranav Rajpurkar et al.: SQuAD: 100,000+ Questions for Machine Comprehension of Text. EMNLP 2015.",
-            "tasks": "1",
-            "groups": ["papers"],
-        },
-        2: {
-            "name": "Minjoon Soo et al.: Bi-Directional Attention Flow for Machine Comprehension. ICLR 2015.",
-            "tasks": "1",
-            "groups": ["papers"],
-        },
-        3: {"name": "HelloChinese", "tasks": "1", "groups": ["language_study"]},
-        4: {"name": "Автоматизация рутинных задач с помощью Python", "tasks": "8,A", "groups": ["python"]},
-        5: {"name": "Python. Сборник упражнений", "tasks": "34", "groups": ["python"]},
+        1: BacklogItem(
+            "Pranav Rajpurkar et al.: SQuAD: 100,000+ Questions for Machine Comprehension of Text. EMNLP 2015.",
+            tasks="1",
+            groups={"papers"},
+        ),
+        2: BacklogItem(
+            "Minjoon Soo et al.: Bi-Directional Attention Flow for Machine Comprehension. ICLR 2015.",
+            tasks="1",
+            groups={"papers"},
+        ),
+        3: BacklogItem("HelloChinese", tasks="1", groups={"language_study"}),
+        4: BacklogItem("Автоматизация рутинных задач с помощью Python", tasks="8,A", groups={"python"}),
+        5: BacklogItem("Python. Сборник упражнений", tasks="34", groups={"python"}),
     }
 
     return (projects, tasks, days, backlog)
@@ -226,16 +228,16 @@ def write_data(db_path, projects, tasks, days, backlog):
     db = TinyDB(db_path / "days.json")
     db.truncate()
     for doc in days.values():
-        db.insert(jsonify(doc))
+        db.insert(doc.todict())
     db.close()
     db = TinyDB(db_path / "backlog.json")
     db.truncate()
     for doc in backlog.values():
-        db.insert(jsonify(doc))
+        db.insert(doc.todict())
     db.close()
 
 
-DictTuple = Tuple[Dict[int, Project], Dict[int, Task], Dict[Date, Dict[str, Any]], Dict[int, Dict[str, Any]]]
+DictTuple = Tuple[Dict[int, Project], Dict[int, Task], Dict[Date, Day], Dict[int, BacklogItem]]
 
 
 def read_data(db_path) -> DictTuple:
@@ -246,9 +248,9 @@ def read_data(db_path) -> DictTuple:
     tasks: Dict[int, Task] = {d.id: d for d in map(Task.fromdict, db.all())}
     db.close()
     db = TinyDB(db_path / "days.json")
-    days: Dict[Date, Dict[str, Any]] = {d["date"]: d for d in list(map(dejsonify, db.all()))}
+    days: Dict[Date, Day] = {d.date: d for d in map(Day.fromdict, db.all())}
     db.close()
     db = TinyDB(db_path / "backlog.json")
-    backlog: Dict[int, Dict[str, Any]] = {i + 1: d for i, d in enumerate(map(dejsonify, db.all()))}
+    backlog: Dict[int, BacklogItem] = {i + 1: d for i, d in enumerate(map(BacklogItem.fromdict, db.all()))}
     db.close()
     return (projects, tasks, days, backlog)

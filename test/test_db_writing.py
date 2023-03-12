@@ -42,11 +42,11 @@ def test_save_nonempty():
         for k, v in t.todict().items():
             assert t.__dict__[k] == tasks_[i].__dict__[k]
     for d, day in days.items():
-        for k, v in day.items():
-            assert v == days_[d][k]
+        for k, v in day.todict().items():
+            assert day.__dict__[k] == days_[d].__dict__[k]
     for i, b in g.backlog.items():
-        for k, v in b.items():
-            assert b[k] == backlog_[i][k]
+        for k, v in b.todict().items():
+            assert b.__dict__[k] == backlog_[i].__dict__[k]
 
     # assert projects == projects_
     # assert tasks == tasks_
