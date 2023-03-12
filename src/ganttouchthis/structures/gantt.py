@@ -328,8 +328,8 @@ class Gantt:
                 }
             )
             if not d in self.days:
-                self.days.update({d: {"date": d, "max_load": self.default_max_load, "tasks": []}})
-            self.days[d]["tasks"].append(task_id)
+                self.days.update({d: Day(d, max_load=self.default_max_load, tasks=[])})
+            self.days[d].tasks.append(task_id)
         self.days = dict(sorted([(k, v) for k, v in self.days.items()]))
 
     def set_max_loads(self) -> None:  # TODO:

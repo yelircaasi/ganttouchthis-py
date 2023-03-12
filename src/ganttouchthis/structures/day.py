@@ -17,7 +17,8 @@ class Day:
 
     def __repr__(self) -> str:
         tasks = ", ".join(map(str, self.tasks))
-        return "\n" + multibox(list(map(str, (self.date, self.max_load, tasks))))
+        max_load = f"{self.max_load} min"
+        return "\n" + multibox((str(self.date), max_load, tasks))
 
     def detailed(self) -> None:
         print(
