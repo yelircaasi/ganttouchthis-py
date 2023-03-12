@@ -26,7 +26,7 @@ class Project:
         interval: Union[int, None] = None,
         cluster: int = 1,
         duration: int = 30,
-        groups: set = set(),
+        tags: set = set(),
         description: str = "",
     ) -> None:
         """ """
@@ -40,7 +40,7 @@ class Project:
         self.interval = interval
         self.cluster = cluster
         self.duration = duration
-        self.groups = groups
+        self.tags = tags
         self.description = description
         self.keys = {
             "id",
@@ -53,7 +53,7 @@ class Project:
             "interval",
             "cluster",
             "duration",
-            "groups",
+            "tags",
             "description",
         }
 
@@ -69,7 +69,7 @@ class Project:
             "interval": self.interval,
             "cluster": self.cluster,
             "duration": self.duration,
-            "groups": list(self.groups),
+            "tags": list(self.tags),
             "description": self.description,
         }
 
@@ -86,7 +86,7 @@ class Project:
             interval=proj_dict["interval"],
             cluster=proj_dict["cluster"],
             duration=proj_dict["duration"],
-            groups=set(proj_dict["groups"]),
+            tags=set(proj_dict["tags"]),
             description=proj_dict["description"],
             # task_list=proj_dict["task_list"],
         )
@@ -109,7 +109,7 @@ class Project:
                     f"Interval:    {str(self.interval)}",
                     f"Cluster:     {str(self.cluster)}",
                     f"Duration:    {self.duration} min",
-                    f"Groups:      {', '.join(self.groups)}",
+                    f"Groups:      {', '.join(self.tags)}",
                     f"Description: {self.description}",
                 )
             )

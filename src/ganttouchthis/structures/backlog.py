@@ -9,17 +9,17 @@ class BacklogItem:
         name: str,
         link: str = "",
         tasks: str = "",
-        groups: set = set(),
+        tags: set = set(),
         description: str = "",
     ) -> None:
         self.name = name
         self.link = link
         self.tasks = tasks
-        self.groups = groups
+        self.tags = tags
         self.description = description
 
     def __repr__(self) -> str:
-        return multibox((self.name, self.tasks, ", ".join(self.groups)))
+        return multibox((self.name, self.tasks, ", ".join(self.tags)))
 
     def detailed(self) -> None:
         print(
@@ -28,7 +28,7 @@ class BacklogItem:
                     "" f"Name:          {self.name}",
                     f"  Link:        {self.link}",
                     f"  Tasks:       {self.tasks}",
-                    f"  Groups:      {self.groups}",
+                    f"  Groups:      {self.tags}",
                     f"  Description: {self.description}",
                 )
             )
@@ -39,7 +39,7 @@ class BacklogItem:
             "name": self.name,
             "link": self.link,
             "tasks": self.tasks,
-            "groups": list(self.groups),
+            "tags": list(self.tags),
             "description": self.description,
         }
 
@@ -49,6 +49,6 @@ class BacklogItem:
             name=json_dict["name"],
             link=json_dict["link"],
             tasks=json_dict["tasks"],
-            groups=set(json_dict["groups"]),
+            tags=set(json_dict["tags"]),
             description=json_dict["description"],
         )

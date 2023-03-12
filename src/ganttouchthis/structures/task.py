@@ -22,7 +22,7 @@ class Task:
         duration: int = 30,
         priority: Priority = Priority.UNDEFINED,
         color: Color = Color.NONE,
-        groups: set = set(),
+        tags: set = set(),
         description: str = "",
     ) -> None:
 
@@ -36,7 +36,7 @@ class Task:
         self.duration = duration
         self.priority = priority
         self.color = color
-        self.groups = groups
+        self.tags = tags
         self.description = description
 
         self.keys = {
@@ -50,7 +50,7 @@ class Task:
             "duration",
             "priority",
             "color",
-            "groups",
+            "tags",
             "description",
         }
 
@@ -70,7 +70,7 @@ class Task:
                 f"Duration:    {str(self.duration)} min",
                 f"Priority:    {str(self.priority)}",
                 f"Color:       {str(self.color)}",
-                f"Groups:      {', '.join(self.groups)}",
+                f"Groups:      {', '.join(self.tags)}",
                 f"Description: {self.description}",
                 "",
             )
@@ -89,7 +89,7 @@ class Task:
             "duration": self.duration,
             "priority": str(self.priority),
             "color": str(self.color),
-            "groups": list(self.groups),
+            "tags": list(self.tags),
             "description": self.description,
         }
 
@@ -106,6 +106,6 @@ class Task:
             duration=json_dict["duration"],
             priority=Priority[json_dict["priority"]],
             color=Color[json_dict["color"]],
-            groups=set(json_dict["groups"]),
+            tags=set(json_dict["tags"]),
             description=json_dict["description"],
         )

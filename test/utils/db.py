@@ -26,7 +26,7 @@ def make_data():
             interval=None,
             cluster=1,
             duration=30,
-            groups={"python"},
+            tags={"python"},
             description="a book to read",
         ),
         2: Project(
@@ -40,7 +40,7 @@ def make_data():
             interval=4,
             cluster=3,
             duration=90,
-            groups={"russian", "fiction"},
+            tags={"russian", "fiction"},
             description="",
         ),
         3: Project(
@@ -54,7 +54,7 @@ def make_data():
             interval=None,
             cluster=2,
             duration=60,
-            groups={"docker", "devops"},
+            tags={"docker", "devops"},
             description="a book on best practices with docker",
         ),
     }
@@ -71,7 +71,7 @@ def make_data():
             duration=30,
             priority=Priority.MEDIUM,
             color=Color.NONE,
-            groups={"python"},
+            tags={"python"},
             description="a book to read",
         ),
         2: Task(
@@ -85,7 +85,7 @@ def make_data():
             duration=30,
             priority=Priority.MEDIUM,
             color=Color.NONE,
-            groups={"python"},
+            tags={"python"},
             description="a book to read",
         ),
         3: Task(
@@ -99,7 +99,7 @@ def make_data():
             duration=30,
             priority=Priority.MEDIUM,
             color=Color.NONE,
-            groups={"python"},
+            tags={"python"},
             description="a book to read",
         ),
         4: Task(
@@ -113,7 +113,7 @@ def make_data():
             duration=90,
             priority=Priority.MEDIUM,
             color=Color.NONE,
-            groups={"python"},
+            tags={"python"},
             description="a book to read",
         ),
         5: Task(
@@ -127,7 +127,7 @@ def make_data():
             duration=30,
             priority=Priority.HIGH,
             color=Color.NONE,
-            groups={"russian", "fiction"},
+            tags={"russian", "fiction"},
             description="",
         ),
         6: Task(
@@ -141,7 +141,7 @@ def make_data():
             duration=60,
             priority=Priority.WISH,
             color=Color.NONE,
-            groups={"docker", "devops"},
+            tags={"docker", "devops"},
             description="a book on best practices with docker",
         ),
         7: Task(
@@ -155,7 +155,7 @@ def make_data():
             duration=60,
             priority=Priority.WISH,
             color=Color.NONE,
-            groups={"docker", "devops"},
+            tags={"docker", "devops"},
             description="a book on best practices with docker",
         ),
         8: Task(
@@ -169,7 +169,7 @@ def make_data():
             duration=60,
             priority=Priority.WISH,
             color=Color.NONE,
-            groups={"docker", "devops"},
+            tags={"docker", "devops"},
             description="a book on best practices with docker",
         ),
     }
@@ -198,16 +198,16 @@ def make_data():
         1: BacklogItem(
             "Pranav Rajpurkar et al.: SQuAD: 100,000+ Questions for Machine Comprehension of Text. EMNLP 2015.",
             tasks="1",
-            groups={"papers"},
+            tags={"papers"},
         ),
         2: BacklogItem(
             "Minjoon Soo et al.: Bi-Directional Attention Flow for Machine Comprehension. ICLR 2015.",
             tasks="1",
-            groups={"papers"},
+            tags={"papers"},
         ),
-        3: BacklogItem("HelloChinese", tasks="1", groups={"language_study"}),
-        4: BacklogItem("Автоматизация рутинных задач с помощью Python", tasks="8,A", groups={"python"}),
-        5: BacklogItem("Python. Сборник упражнений", tasks="34", groups={"python"}),
+        3: BacklogItem("HelloChinese", tasks="1", tags={"language_study"}),
+        4: BacklogItem("Автоматизация рутинных задач с помощью Python", tasks="8,A", tags={"python"}),
+        5: BacklogItem("Python. Сборник упражнений", tasks="34", tags={"python"}),
     }
 
     return (projects, tasks, days, backlog)

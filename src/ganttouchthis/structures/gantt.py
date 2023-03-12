@@ -36,7 +36,7 @@ class Gantt:
             "interval",
             "cluster",
             "duration",
-            "groups",
+            "tags",
             "description",
         }
         self.task_keys = {
@@ -50,11 +50,23 @@ class Gantt:
             "duration",
             "priority",
             "color",
-            "groups",
+            "tags",
             "description",
         }
         self.day_keys = {"date", "max_load", "tasks"}
-        self.backlog_keys = {"name", "link", "tasks", "groups", "description"}
+        self.backlog_keys = {"name", "link", "tasks", "tags", "description"}
+
+    def vp(self, limit: int = 50) -> None:
+        print("".join((str(v) for v in list(self.projects.values())[:limit])))
+
+    def vt(self, limit: int = 50) -> None:
+        print("".join((str(v) for v in list(self.tasks.values())[:limit])))
+
+    def vd(self, limit: int = 50) -> None:
+        print("".join((str(v) for v in list(self.days.values())[:limit])))
+
+    def vb(self, limit: int = 50) -> None:
+        print("".join((str(v) for v in list(self.backlog.values())[:limit])))
 
     def setup(
         self,
@@ -176,7 +188,7 @@ class Gantt:
         db.close()
 
     def edit_project(self, project_id: int, key: str, value: Any) -> None:
-        if key in {"name", "link", "priority", "duration", "groups", "description"}:
+        if key in {"name", "link", "priority", "duration", "tags", "description"}:
             self.projects[project_id].__dict__[key] = value
             task_ids = self.tasks_from_project(project_id)
             for task in task_ids:
@@ -200,13 +212,13 @@ class Gantt:
             print("Warning! Be sure to edit other tasks affected by the change in subtask partitioning.")
             self.tasks[task_id].__dict__[key] = value
             # * could implement this in a more sophisticated manner
-        elif key in {"name", "link", "groups", "description"}:
+        elif key in {"name", "link", "tags", "description"}:
             print("Requested edit not possible: {key} -> {value}. Edit via project.")
         else:
             print("Requested edit not possible: {key} -> {value}.")
 
     def _edit_task_from_project(self, task_id: int, key: str, value: Any) -> None:
-        if key in {"name", "link", "priority", "duration", "groups", "description"}:
+        if key in {"name", "link", "priority", "duration", "tags", "description"}:
             self.tasks[task_id].__dict__[key] = value
         else:
             print("Requested edit not possible: {key} -> {value}.")
@@ -220,7 +232,7 @@ class Gantt:
             print("Requested edit not possible: {key} -> {value}.")
 
     def edit_backlog(self, item_id: int, key: str, value: Any):
-        if key in {"name", "tasks", "groups"}:
+        if key in {"name", "tasks", "tags"}:
             self.backlog[item_id].__dict__[key] = value
         else:
             print("Requested edit not possible: {key} -> {value}.")
@@ -262,7 +274,7 @@ class Gantt:
         interval: Union[int, None] = None,
         cluster: int = 1,
         duration: int = 30,
-        groups: set = set(),
+        tags: set = set(),
         description: str = "",
     ) -> None:
         project_id = 1 if not self.projects else max(self.projects) + 1
@@ -279,7 +291,7 @@ class Gantt:
                     interval=interval,
                     cluster=cluster,
                     duration=duration,
-                    groups=groups,
+                    tags=tags,
                     description=description,
                 )
             }
@@ -306,7 +318,7 @@ class Gantt:
                         duration=duration,  # duration applies to full task/cluster, not single item
                         priority=priority,
                         color=Color.NONE,
-                        groups=groups,
+                        tags=tags,
                         description=description,
                     )
                 }
