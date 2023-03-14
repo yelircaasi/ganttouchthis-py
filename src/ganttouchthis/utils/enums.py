@@ -1,6 +1,12 @@
 from enum import Enum
 
 
+class Adjustment(Enum):
+    ROLLOVER = 0
+    RIGID = 1
+    BALANCE = 2
+
+
 class Priority(Enum):
     FINISHED = -2
     UNDEFINED = -1

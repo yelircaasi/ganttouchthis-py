@@ -6,11 +6,11 @@ from tinydb import Query, TinyDB
 
 from ganttouchthis.structures.backlog import BacklogItem
 from ganttouchthis.structures.day import Day
-from ganttouchthis.structures.project import AdjustmentAlg, Project
-from ganttouchthis.structures.task import Color, Priority, Task
+from ganttouchthis.structures.project import Project
+from ganttouchthis.structures.task import Task
 from ganttouchthis.utils.date import Date, date_range
 from ganttouchthis.utils.db import DBPaths
-from ganttouchthis.utils.enums import Status
+from ganttouchthis.utils.enums import Adjustment, Color, Priority, Status
 from ganttouchthis.utils.temporal import schedule_tasks
 
 DEFAULT_MAX_LOAD: int = 240
@@ -289,6 +289,10 @@ class Gantt:
         else:
             print("Requested edit not possible: {key} -> {value}.")
 
+    def add_project_interactive(self) -> None:
+
+        ...
+
     def editd(self) -> None:
         id_ = Date.fromisoformat(input("Date (yyyy-mm-dd): ")) or TODAY - 50  # just for typing
         print("Attribute to edit: max_load")
@@ -461,14 +465,6 @@ class Gantt:
             d += 1
         self.days = dict(sorted([(k, v) for k, v in self.days.items()]))
 
-    def add_project_interactive(self) -> None:
-
-        ...
-
-    def add_task_interactive(self) -> None:
-
-        ...
-
     def set_max_loads_interactive(self) -> None:
 
         ...
@@ -478,22 +474,6 @@ class Gantt:
         ...
 
     def search_tasks_interactive(self) -> None:
-
-        ...
-
-    def edit_project_interactive(self) -> None:
-
-        ...
-
-    def edit_task_interactive(self) -> None:
-
-        ...
-
-    def edit_day_interactive(self) -> None:
-
-        ...
-
-    def edit_backlog_interactive(self) -> None:
 
         ...
 

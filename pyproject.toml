@@ -13,7 +13,7 @@ taskw = "^2.0.0"
 tinydb = "^4.7.1"
 
 
-[tool.poetry.tag.dev.dependencies]
+[tool.poetry.group.dev.dependencies]
 pre-commit = "^2.21.0"
 #black = { version = "22.12.0", extras = ["jupyter"] }
 rinohtype = "0.5.3"

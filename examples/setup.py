@@ -15,6 +15,26 @@ g.add_project(
     duration=60,
 )
 g.add_project(
+    name="The Well-Grounded Python Developer",
+    tasks="12",
+    priority=Priority.CRITICAL,
+    tags={"python"},
+    start=zero_date,
+    end=zero_date + 2,
+    cluster=2,
+    duration=20,
+)
+g.add_project(
+    name="Python Testing with pytest",
+    tasks="16,A2",
+    priority=Priority.CRITICAL,
+    tags={"python"},
+    start=zero_date,
+    end=zero_date + 15,
+    cluster=3,
+    duration=30,
+)
+g.add_project(
     name="Python лучшие инструменты и практики",
     tasks="17,A",
     priority=Priority.CRITICAL,

@@ -10,8 +10,6 @@ from ganttouchthis.utils.repr import multibox
 from ganttouchthis.utils.task_segment_expansion import expand_task_segments
 from ganttouchthis.utils.temporal import schedule_tasks
 
-AdjustmentAlg = Literal["EVEN", "RIGID", "ROLLOVER"]
-
 
 class Project:
     def __init__(
