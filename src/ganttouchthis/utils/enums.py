@@ -5,6 +5,7 @@ class Adjustment(Enum):
     ROLLOVER = 0
     RIGID = 1
     BALANCE = 2
+    MANUAL = 3
 
 
 class Priority(Enum):

@@ -1,6 +1,6 @@
 from ganttouchthis import BacklogItem, Date, Gantt, Priority, Project, Task
 
-zero_date = Date(2023, 3, 12)
+zero_date = Date(2023, 3, 16)
 g = Gantt()
 g.setup(start_empty=True)
 

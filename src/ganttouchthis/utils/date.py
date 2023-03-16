@@ -80,6 +80,11 @@ class Date:
 
 
 def date_range(date1: Date, date2: Date, inclusive: bool = True) -> list:
+    reverse = False
+    if date1 > date2:
+        date1, date2 = date2, date1
+        reverse = True
+
     if not inclusive:
         date2 -= 1
 
@@ -88,5 +93,8 @@ def date_range(date1: Date, date2: Date, inclusive: bool = True) -> list:
 
     while date_i < date2:
         dates.append(date_i := date_i + 1)
+
+    if reverse:
+        dates.reverse()
 
     return dates
