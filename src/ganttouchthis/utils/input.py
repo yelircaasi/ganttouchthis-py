@@ -13,8 +13,10 @@ def date_input(prompt_start: str = "Date", prompt_body: str = "") -> Date:
     else:
         d = Date.fromisoformat(date_string)
     if not d:
-        raise ValueError("Expect a date string (yyyy-mm-dd) or an integer.")
+        print("Expect a date string (yyyy-mm-dd) or an integer.")
+        d = date_input
     return d
+
 
 def option_input(options: Iterable[str], box: bool = True) -> str:
     func = option_input_with_box if box else option_input_without_box
@@ -37,16 +39,16 @@ def option_input_with_box(options: Iterable[str]) -> str:
     print_options = options[:]
     print_options[0] += " (default)"
     width = max(26, max(map(len, print_options)) + 7)
-    line = width * '─'
+    line = width * "─"
     print(f"┌{line}┐")
     print(f"│ {'Please select an option:': <{width-2}} │")
     print(f"├{line}┤")
     for i, option in enumerate(options, start=1):
         print(f"│{i: >3}) {option: <{width-6}} │")
     print(f"└{line}┘")
-    
+
     return parse_input(options)
-    
+
 
 def option_input_without_box(options: Iterable[str]) -> str:
     options = list(options)

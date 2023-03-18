@@ -91,7 +91,17 @@ class Project:
 
     def __repr__(self) -> str:
         return "\n".join(
-            ("", multibox((self.name, self.tasks, f"{str(self.start)} ─ {str(self.end)}", f"ID: {self.id}")), "")
+            (
+                multibox(
+                    (
+                        self.name,
+                        self.tasks[:25] + "..." * (len(self.tasks) > 25),
+                        f"{str(self.start)} ─ {str(self.end)}",
+                        f"ID: {self.id}",
+                    )
+                ),
+                "",
+            )
         )
 
     def detailed(self) -> None:
