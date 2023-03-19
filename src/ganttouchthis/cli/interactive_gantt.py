@@ -25,6 +25,7 @@ class InteractiveGantt(Gantt):
     def interactive_show_upcoming_tasks(self) -> None:
         num_days = validated_input("Number of days to show", int)
         for day in date_range(TODAY, TODAY + num_days):
+            self.ensure_day(day)
             print()
             print(box(str(day)))
             for t in self.days[day].tasks:
@@ -33,6 +34,7 @@ class InteractiveGantt(Gantt):
     def interactive_show_upcoming_loads(self) -> None:
         num_days = validated_input("Number of days to show", int)
         for day in date_range(TODAY, TODAY + num_days):
+            self.ensure_day(day)
             print(multibox((str(day), str(sum((self.tasks[t].duration for t in self.days[day].tasks))))))
 
     def interactive_show_current_projects(self) -> None:
