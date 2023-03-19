@@ -4,16 +4,6 @@ zero_date = Date(2023, 3, 19)
 g = get_gantt()
 g.setup()
 
-# g.add_backlog_item(BacklogItem(
-#     name="Cleaning",
-#     tasks="kitchen - basic,den - basic,living room - basic,bathroom - basic,kitchen - deep,den - deep,extra room - basic,bathroom - deep,bedroom - deep,living room - deep,extra room - deep",
-#     priority=Priority.YESTERDAY,
-#     tags={"python"},
-#     start=zero_date - 1,
-#     interval=1,
-#     cluster=3,
-#     duration=60,
-# ))
 g.add_project(
     name="The Well-Grounded Python Developer",
     tasks="12",

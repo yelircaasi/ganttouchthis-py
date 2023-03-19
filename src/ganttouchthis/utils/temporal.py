@@ -20,7 +20,7 @@ def schedule_tasks(
     task_chunks = list(batched(task_list, cluster if cluster else 1))
     nchunks = len(task_chunks)
     if len(task_chunks) == 1:
-        return {start: task_list[0]}
+        return {start: task_chunks[0]}
     elif end:
         ndays = int(end) - int(start)
         gap = int((ndays - nchunks) / (nchunks - 1))

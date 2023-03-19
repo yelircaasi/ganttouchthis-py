@@ -1,12 +1,13 @@
 import os
+import re
 from pathlib import Path
 from typing import Any, Callable, Dict, List, Literal, Optional, Union
 
 from tinydb import Query, TinyDB
 
-from ganttouchthis import Gantt
 from ganttouchthis.structures.backlog import BacklogItem
 from ganttouchthis.structures.day import Day
+from ganttouchthis.structures.gantt import Gantt
 from ganttouchthis.structures.project import Project
 from ganttouchthis.structures.task import Task
 from ganttouchthis.utils.date import Date, date_range
@@ -32,8 +33,7 @@ class InteractiveGantt(Gantt):
     def interactive_show_upcoming_loads(self) -> None:
         num_days = validated_input("Number of days to show", int)
         for day in date_range(TODAY, TODAY + num_days):
-            print(multibox(
-                (str(day), str(sum((self.tasks[t].duration for t in self.days[day].tasks))))))
+            print(multibox((str(day), str(sum((self.tasks[t].duration for t in self.days[day].tasks))))))
 
     def interactive_show_current_projects(self) -> None:
         num_days = validated_input("How far into the future to look", int)
@@ -52,8 +52,7 @@ class InteractiveGantt(Gantt):
             self.interactive_edit_day()
 
     def interactive_search(self) -> None:
-        tosearch = option_input(
-            ["Project", "Task", "Day", "Backlog", "Done"]).lower()
+        tosearch = option_input(["Project", "Task", "Day", "Backlog", "Completed"]).lower()
         self.clear_output()
         if tosearch == "project":
             self.interactive_search_project()
@@ -63,12 +62,11 @@ class InteractiveGantt(Gantt):
             self.interactive_search_day()
         elif tosearch == "backlog":
             self.interactive_search_backlog()
-        elif tosearch == "done":
-            self.interactive_search_done()
+        elif tosearch == "completed":
+            self.interactive_search_completed()
 
     def interactive_adjust(self) -> None:
-        algorithm = Adjustment[option_input(
-            ["manual", "rollover", "rigid", "balance"]).upper()]
+        algorithm = Adjustment[option_input(["manual", "rollover", "rigid", "balance"]).upper()]
         if algorithm == Adjustment.MANUAL:
             self.adjust_loads_manual()
         else:
@@ -83,12 +81,9 @@ class InteractiveGantt(Gantt):
         name = validated_input("Name")
         link = validated_input("Link", default="")
         tasks = validated_input("Tasks (string)")
-        priority = validated_input(
-            "Priority", lambda x: Priority[x.upper().replace(" ", "_")])
-        start = validated_input(
-            "Start date (offset from today)", lambda x: TODAY + int(x))
-        end = validated_input(
-            "End date (offset from today)", lambda x: TODAY + int(x))
+        priority = validated_input("Priority", lambda x: Priority[x.upper().replace(" ", "_")])
+        start = validated_input("Start date (offset from today)", lambda x: TODAY + int(x))
+        end = validated_input("End date (offset from today)", lambda x: TODAY + int(x))
         interval = validated_input("Interval", int)
         cluster = validated_input("Cluster", int, default=1)
         duration = validated_input("Duration", int, default=30)
@@ -168,15 +163,13 @@ class InteractiveGantt(Gantt):
                 return value == x
 
         elif key == "start":
-            value = validated_input(
-                "Start date", lambda x: Date.fromisoformat(x))
+            value = validated_input("Start date", lambda x: Date.fromisoformat(x))
 
             def search_condition(x):
                 return value == x
 
         elif key == "end":
-            value = validated_input(
-                "End date", lambda x: Date.fromisoformat(x))
+            value = validated_input("End date", lambda x: Date.fromisoformat(x))
 
             def search_condition(x):
                 return value == x
@@ -200,8 +193,7 @@ class InteractiveGantt(Gantt):
                 return value == x
 
         elif key == "tags":
-            value = validated_input(
-                "Tags (comma-separated)", lambda x: list(map(lambda y: y.strip(), x.split(","))))
+            value = validated_input("Tags (comma-separated)", lambda x: list(map(lambda y: y.strip(), x.split(","))))
 
             def search_condition(x):
                 return bool(value.intersection(x))
@@ -269,8 +261,7 @@ class InteractiveGantt(Gantt):
 
         elif key == "subtasks":
             value = validated_input(
-                "Subtasks (comma-separated)", lambda x: list(
-                    map(lambda y: y.strip(), x.split(",")))
+                "Subtasks (comma-separated)", lambda x: list(map(lambda y: y.strip(), x.split(",")))
             )
 
             def search_condition(x):
@@ -295,8 +286,7 @@ class InteractiveGantt(Gantt):
                 return value == x
 
         elif key == "tags":
-            value = validated_input(
-                "Tags (comma-separated)", lambda x: list(map(lambda y: y.strip(), x.split(","))))
+            value = validated_input("Tags (comma-separated)", lambda x: list(map(lambda y: y.strip(), x.split(","))))
 
             def search_condition(x):
                 return bool(value.intersection(x))
@@ -338,45 +328,54 @@ class InteractiveGantt(Gantt):
                 print(day)
 
     def interactive_search_backlog(self) -> None:
-        key = option_input(("name", "link", "tasks", "tags", "description"))
+        key = option_input(("name", "link", "tasks", "priority", "cluster", "duration", "tags", "description"))
+
         if key == "name":
             value = validated_input("Name", str)
-
-            def search_condition(x):
-                return value.lower() in x.lower()
+            matches = self.backlog_db.search(self.query.name.search(value, re.IGNORECASE))
 
         elif key == "link":
             value = validated_input("Link", str)
-
-            def search_condition(x):
-                return value.lower() in x.lower()
+            matches = self.backlog_db.search(self.query.link.search(value, re.IGNORECASE))
 
         elif key == "tasks":
             value = validated_input("Tasks (str)", str)
+            matches = self.backlog_db.search(self.query.tasks.search(value, re.IGNORECASE))
 
-            def search_condition(x):
-                return value.lower() in x.lower()
+        elif key == "priority":
+            value = validated_input("Priority", lambda x: str(Priority[x]))
+            matches = self.backlog_db.search(self.query.priority == value)
+
+        elif key == "cluster":
+            value = validated_input("Cluster", int)
+            matches = self.backlog_db.search(self.query.cluster == value)
+
+        elif key == "duration":
+            value = validated_input("Duration", int)
+            matches = self.backlog_db.search(self.query.duration == value)
 
         elif key == "tags":
-            value = validated_input(
-                "Tags (comma-separated)", lambda x: set(map(lambda y: y.strip(), x.split(","))))
+            value = validated_input("Tags (comma-separated)", lambda x: set(map(lambda y: y.strip(), x.split(","))))
 
-            def search_condition(x):
-                return bool(value.intersection(x))
+            def test_func(tag_set):
+                return bool(value.intersection(tag_set))
+
+            matches = self.backlog_db.search(self.query.tags.test(test_func))
 
         elif key == "description":
             value = validated_input("Description", str)
-
-            def search_condition(x):
-                return value in x
+            matches = self.backlog_db.search(self.query.description.search(value, re.IGNORECASE))
 
         else:
             print("Problem with key:", key)
-        for item in self.backlog.values():
-            if search_condition(item.__dict__[key]):
-                print(item)
 
-    def interactive_search_done(self) -> None:
+        # for item in self.backlog.values():
+        #     if search_condition(item.__dict__[key]):
+        #         print(item)
+        for completed_task in matches:
+            print(Task.fromdict(completed_task))
+
+    def interactive_search_completed(self) -> None:
         key = option_input(
             (
                 "id",
@@ -393,91 +392,57 @@ class InteractiveGantt(Gantt):
                 "description",
             )
         )
+        matches = []
         if key == "name":
-            value = validated_input(
-                "Name",
-            )
-
-            def search_condition(x):
-                return value.lower() in x.lower()
+            value = validated_input("Name")
+            matches = self.backlog_db.search(self.query.name.search(value, re.IGNORECASE))
 
         elif key == "link":
-            value = validated_input(
-                "Link",
-            )
-
-            def search_condition(x):
-                return value.lower() in x.lower()
+            value = validated_input("Link")
+            matches = self.backlog_db.search(self.query.link.search(value, re.IGNORECASE))
 
         elif key == "tasks":
-            value = validated_input(
-                "Tasks (string)",
-            )
-
-            def search_condition(x):
-                return value.lower() in x.lower()
+            value = validated_input("Tasks (string)")
+            matches = self.backlog_db.search(self.query.tasks.search(value, re.IGNORECASE))
 
         elif key == "priority":
-            value = validated_input("Priority", lambda x: Priority[x])
-
-            def search_condition(x):
-                return value == x
-
-        elif key == "start":
-            value = validated_input(
-                "Start date", lambda x: Date.fromisoformat(x))
-
-            def search_condition(x):
-                return value == x
-
-        elif key == "end":
-            value = validated_input(
-                "End date", lambda x: Date.fromisoformat(x))
-
-            def search_condition(x):
-                return value == x
+            value = validated_input("Priority", lambda x: str(Priority[x]))
+            matches = self.backlog_db.search(self.query.priority == value)
 
         elif key == "interval":
             value = validated_input("Interval", int)
-
-            def search_condition(x):
-                return value == x
+            matches = self.backlog_db.search(self.query.interval == value)
 
         elif key == "cluster":
             value = validated_input("Cluster", int)
-
-            def search_condition(x):
-                return value == x
+            matches = self.backlog_db.search(self.query.cluster == value)
 
         elif key == "duration":
             value = validated_input("Duration", int)
-
-            def search_condition(x):
-                return value == x
+            matches = self.backlog_db.search(self.query.duration == value)
 
         elif key == "tags":
-            value = validated_input(
-                "Tags (comma-separated)", lambda x: list(map(lambda y: y.strip(), x.split(","))))
+            value = validated_input("Tags (comma-separated)", lambda x: set(map(lambda y: y.strip(), x.split(","))))
 
-            def search_condition(x):
-                return bool(value.intersection(x))
+            def test_func(tag_set):
+                return bool(value.intersection(tag_set))
+
+            matches = self.backlog_db.search(self.query.tags.test(test_func))
 
         elif key == "description":
             value = validated_input("Description", str)
-
-            def search_condition(x):
-                return value.lower() in x.lower()
+            matches = self.backlog_db.search(self.query.description.search(value, re.IGNORECASE))
 
         else:
             print("Problem with key:", key)
-        for done_task in ...:  # !!
-            if search_condition(done_task):  # TODO: database
-                print(done_task)
+
+        for completed_task in matches:
+            print(BacklogItem.fromdict(completed_task))
 
     def interactive_edit_project(self) -> None:
         id_ = int(input("Project ID:\n "))
-        key = input(
-            "Attribute to edit (name|link|priority|duration|tags|description):\n ")
+        # key = input("Attribute to edit (name|link|priority|duration|tags|description):\n ")
+        key = option_input(("name", "link", "priority", "duration", "tags", "description"))
         value = {
             "duration": lambda x: int(x),
             "priority": lambda x: Priority[x.upper()],
@@ -487,8 +452,8 @@ class InteractiveGantt(Gantt):
 
     def interactive_edit_task(self) -> None:
         id_ = int(input("Task ID:\n "))
-        key = input(
-            "Attribute to edit (duration|priority|color|status|date|subtasks):\n ")
+        # key = input("Attribute to edit (duration|priority|color|status|date|subtasks):\n ")
+        key = option_input(("duration", "priority", "color", "status", "date", "subtasks"))
         value = {
             "duration": lambda x: int(x),
             "priority": lambda x: Priority[x.upper()],
@@ -500,8 +465,7 @@ class InteractiveGantt(Gantt):
         self.edit_task(id_, key, value)
 
     def interactive_edit_day(self) -> None:
-        id_ = Date.fromisoformat(
-            input("Date (yyyy-mm-dd):\n ")) or TODAY - 50  # just for typing
+        id_ = Date.fromisoformat(input("Date (yyyy-mm-dd):\n ")) or TODAY - 50  # just for typing
         print("Attribute to edit:\n max_load")
         value = int(input("New value:\n "))
         self.edit_day(id_, "max_load", value)

@@ -26,8 +26,8 @@ class Gantt:
         self.default_max_load = DEFAULT_MAX_LOAD
         self.projects: Dict[int, Project] = {}
         self.tasks: Dict[int, Task] = {}
-        self.backlog: Dict[int, BacklogItem] = {}
-        self.done: Dict[int, Task] = {}
+        # self.backlog: Dict[int, BacklogItem] = {}
+        self.completed: Dict[int, Task] = {}
         self.days: Dict[Date, Day] = {}
         self.project_keys = {
             "id",
@@ -58,11 +58,17 @@ class Gantt:
             "description",
         }
         self.day_keys = {"date", "max_load", "tasks"}
-        self.backlog_keys = {"name", "link", "tasks", "tags", "description"}
+        self.backlog_keys = {"name", "link", "tasks", "priority", "cluster", "duration", "tags", "description"}
+
         backlog_path = self.db_paths.DB_PATH / "backlog.json"
         if not backlog_path.exists():
             backlog_path.touch()
         self.backlog_db = TinyDB(backlog_path)
+        completed_path = self.db_paths.DB_PATH / "completed.json"
+        if not completed_path.exists():
+            completed_path.touch()
+        self.completed_db = TinyDB(completed_path)
+        self.query = Query()
 
     def show_today(self) -> None:
         self.ensure_day(TODAY)
@@ -117,7 +123,7 @@ class Gantt:
         self.projects = self.open_projects() if not start_empty else self.projects
         self.tasks = self.open_tasks() if not start_empty else self.tasks
         self.days = self.open_days() if not start_empty else self.get_days()
-        self.backlog = self.open_backlog() if not start_empty else self.backlog
+        # self.backlog = self.open_backlog() if not start_empty else self.backlog
         self.backlog_db = TinyDB(self.db_paths.DB_PATH / "backlog.json")
 
     def open_projects(self) -> dict:
@@ -138,11 +144,11 @@ class Gantt:
         days_db.close()
         return {d.date: d for d in days}
 
-    def open_backlog(self) -> dict:
-        backlog_db = TinyDB(self.db_paths.BACKLOG_DB_PATH)
-        backlog = map(BacklogItem.fromdict, backlog_db.all())
-        backlog_db.close()
-        return {i + 1: d for i, d in enumerate(backlog)}
+    # def open_backlog(self) -> dict:
+    #     backlog_db = TinyDB(self.db_paths.BACKLOG_DB_PATH)
+    #     backlog = map(BacklogItem.fromdict, backlog_db.all())
+    #     backlog_db.close()
+    #     return {i + 1: d for i, d in enumerate(backlog)}
 
     def ensure_day(self, day: Date) -> None:
         if not day in self.days:
@@ -167,8 +173,8 @@ class Gantt:
         print("Tasks saved.")
         self.save_days(save_dir)
         print("Days saved.")
-        self.save_done(save_dir)
-        print("Done tasks saved.")
+        # self.save_completed(save_dir)
+        # print("Completed tasks saved.")
 
     def save_projects(self, save_dir: Union[Path, str] = "") -> None:
         if not save_dir:
@@ -216,21 +222,21 @@ class Gantt:
             db.insert(doc.todict())
         db.close()
 
-    def save_done(self, save_dir: Union[Path, str] = "") -> None:
-        if not save_dir:
-            save_dir = self.db_paths.DB_PATH
-        save_dir = Path(save_dir)
-        if not save_dir.exists():
-            save_dir.mkdir()
-        save_path = save_dir / "done.json"
-        save_path.touch()
-        os.rename(save_path, "/tmp/done.json")
-        save_path.touch()
-        db = TinyDB(save_path)
-        db.truncate()
-        for doc in self.done.values():
-            db.insert(doc.todict())
-        db.close()
+    # def save_completed(self, save_dir: Union[Path, str] = "") -> None:
+    #     if not save_dir:
+    #         save_dir = self.db_paths.DB_PATH
+    #     save_dir = Path(save_dir)
+    #     if not save_dir.exists():
+    #         save_dir.mkdir()
+    #     save_path = save_dir / "completed.json"
+    #     save_path.touch()
+    #     os.rename(save_path, "/tmp/completed.json")
+    #     save_path.touch()
+    #     db = TinyDB(save_path)
+    #     db.truncate()
+    #     for doc in self.completed.values():
+    #         db.insert(doc.todict())
+    #     db.close()
 
     def edit_project(self, project_id: int, key: str, value: Any) -> None:
         if key in {"name", "link", "priority", "duration", "tags", "description"}:
@@ -249,7 +255,7 @@ class Gantt:
     def edit_task(self, task_id: int, key: str, value: Any) -> None:
         if (key == "status") and (value == Status.COMPLETED):
             task = Task.fromdict(self.tasks[task_id].todict())
-            self.done.update({task_id: task})
+            self.completed_db.insert(task.todict())
             del self.tasks[task_id]
             self.days[task.date].tasks.remove(task_id)
         elif key in {"duration", "priority", "color", "status"}:
@@ -286,11 +292,17 @@ class Gantt:
         else:
             print("Requested edit not possible: '{key}' -> {value}.")
 
-    def edit_backlog(self, item_id: int, key: str, value: str):
-        if key in {"name", "tasks"}:
-            self.backlog[item_id].__dict__[key] = value
+    def edit_backlog(self, item_id: int, key: str, value: Union[str, int, set, Priority]):
+        if key in {"name", "link", "tasks", "tasks", "cluster", "duration", "description"}:
+            self.backlog_db.update({key: value}, doc_id=item_id)
         elif key == "tags":
-            self.backlog[item_id].__dict__[key].tags.add(value)
+            tasks = list(self.backlog_db.get(doc_id=item_id)["tasks"])
+            tasks.append(value)
+            self.backlog.update({"tasks": tasks}, doc_id=item_id)
+        elif key == "priority":
+            self.backlog_db.update({key: str(value)}, doc_id=item_id)
+        elif key == "tags":
+            self.backlog_db.update({key: list(value)}, doc_id=item_id)
         else:
             print("Requested edit not possible: '{key}' -> {value}.")
 
@@ -357,7 +369,9 @@ class Gantt:
             cluster=cluster,
             tasks=tasks,
         )
+        print(schedule)
         for d, subtasks in schedule.items():
+            print(d, subtasks)
             task_id = 1 if not self.tasks else max(self.tasks) + 1
             self.tasks.update(
                 {

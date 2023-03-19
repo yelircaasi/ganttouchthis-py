@@ -1,14 +1,8 @@
-import json
-from dataclasses import dataclass
-from enum import Enum
-from typing import Dict, Literal, Optional, TypedDict, Union
+from typing import Optional, Union
 
-from ganttouchthis.structures.task import Task
 from ganttouchthis.utils.date import Date
-from ganttouchthis.utils.enums import Color, Priority
+from ganttouchthis.utils.enums import Priority
 from ganttouchthis.utils.repr import multibox
-from ganttouchthis.utils.task_segment_expansion import expand_task_segments
-from ganttouchthis.utils.temporal import schedule_tasks
 
 
 class Project:
@@ -86,21 +80,15 @@ class Project:
             duration=proj_dict["duration"],
             tags=set(proj_dict["tags"]),
             description=proj_dict["description"],
-            # task_list=proj_dict["task_list"],
         )
 
     def __repr__(self) -> str:
-        return "\n".join(
+        return multibox(
             (
-                multibox(
-                    (
-                        self.name,
-                        self.tasks[:25] + "..." * (len(self.tasks) > 25),
-                        f"{str(self.start)} ─ {str(self.end)}",
-                        f"ID: {self.id}",
-                    )
-                ),
-                "",
+                self.name,
+                self.tasks[:25] + "..." * (len(self.tasks) > 25),
+                f"{str(self.start)} ─ {str(self.end)}",
+                f"ID: {self.id}",
             )
         )
 
