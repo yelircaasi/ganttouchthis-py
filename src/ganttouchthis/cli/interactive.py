@@ -1,8 +1,9 @@
 import os
+from pathlib import Path
 from typing import Callable
 
 from ganttouchthis import TODAY, Date, Priority, Project, Task, get_gantt
-from ganttouchthis.utils.input import option_input
+from ganttouchthis.utils.input import option_input, validated_input
 
 
 def wrap(func: Callable) -> Callable:
@@ -19,7 +20,10 @@ def wrap(func: Callable) -> Callable:
 def run_interactive():
 
     g = get_gantt()
-    g.setup()
+    db_path = validated_input("Database base path", Path, default=Path.expanduser(Path("~/.cache/ganttouchthis/db")))
+    if not db_path.exists():
+        db_path.mkdir()
+    g.setup(base_db_path=db_path)
 
     zero_date = TODAY
     # g.add_project(
@@ -133,4 +137,3 @@ def run_interactive():
         option = option_input(option_dict.keys())
         print(option)
         option_dict[option]()
-        exit_ = option == "exit interactive"

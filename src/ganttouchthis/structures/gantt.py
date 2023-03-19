@@ -29,6 +29,7 @@ class Gantt:
         self.projects: Dict[int, Project] = {}
         self.tasks: Dict[int, Task] = {}
         self.backlog: Dict[int, BacklogItem] = {}
+        self.done: Dict[int, Task] = {}
         self.days: Dict[Date, Day] = {}
         self.project_keys = {
             "id",
@@ -60,6 +61,10 @@ class Gantt:
         }
         self.day_keys = {"date", "max_load", "tasks"}
         self.backlog_keys = {"name", "link", "tasks", "tags", "description"}
+        backlog_path = self.db_paths.DB_PATH / "backlog.json"
+        if not backlog_path.exists():
+            backlog_path.touch()
+        self.backlog_db = TinyDB(backlog_path)
 
     def show_today(self) -> None:
         self.ensure_day(TODAY)
@@ -214,6 +219,7 @@ class Gantt:
         self.tasks = self.open_tasks() if not start_empty else self.tasks
         self.days = self.open_days() if not start_empty else self.get_days()
         self.backlog = self.open_backlog() if not start_empty else self.backlog
+        self.backlog_db = TinyDB(self.db_paths.DB_PATH / "backlog.json")
 
     def open_projects(self) -> dict:
         projects_db = TinyDB(self.db_paths.PROJECTS_DB_PATH)
@@ -272,8 +278,8 @@ class Gantt:
         print("Tasks saved.")
         self.save_days(save_dir)
         print("Days saved.")
-        self.save_backlog(save_dir)
-        print("Backlog saved.")
+        self.save_done(save_dir)
+        print("Done tasks saved.")
 
     def save_projects(self, save_dir: Union[Path, str] = "") -> None:
         if not save_dir:
@@ -321,27 +327,30 @@ class Gantt:
             db.insert(doc.todict())
         db.close()
 
-    def save_backlog(self, save_dir: Union[Path, str] = "") -> None:
+    def save_done(self, save_dir: Union[Path, str] = "") -> None:
         if not save_dir:
             save_dir = self.db_paths.DB_PATH
         save_dir = Path(save_dir)
         if not save_dir.exists():
             save_dir.mkdir()
-        save_path = save_dir / "backlog.json"
-        os.rename(save_path, "/tmp/backlog.json")
+        save_path = save_dir / "done.json"
+        save_path.touch()
+        os.rename(save_path, "/tmp/done.json")
         save_path.touch()
         db = TinyDB(save_path)
         db.truncate()
-        for doc in self.backlog.values():
+        for doc in self.done.values():
             db.insert(doc.todict())
         db.close()
 
     def editp(self) -> None:
         id_ = int(input("Project ID:\n "))
         key = input("Attribute to edit (name|link|priority|duration|tags|description):\n ")
-        value = {"duration": lambda x: int(x), "priority": lambda x: Priority[x], "tags": lambda x: int(x),}.get(
-            key, lambda x: str(x)
-        )(input("New value:\n "))
+        value = {
+            "duration": lambda x: int(x),
+            "priority": lambda x: Priority[x.upper()],
+            "tags": lambda x: int(x),
+        }.get(key, lambda x: str(x))(input("New value:\n "))
         self.edit_project(id_, key, value)
 
     def edit_project(self, project_id: int, key: str, value: Any) -> None:
@@ -363,16 +372,21 @@ class Gantt:
         key = input("Attribute to edit (duration|priority|color|status|date|subtasks):\n ")
         value = {
             "duration": lambda x: int(x),
-            "priority": lambda x: Priority[x],
-            "color": lambda x: Color[x],
-            "status": lambda x: Status[x],
+            "priority": lambda x: Priority[x.upper()],
+            "color": lambda x: Color[x.upper()],
+            "status": lambda x: Status[x.upper()],
             "date": lambda x: Date.fromisoformat(x),
             "subtasks": lambda x: eval(x),
         }.get(key, str)(input("New value:\n "))
         self.edit_task(id_, key, value)
 
     def edit_task(self, task_id: int, key: str, value: Any) -> None:
-        if key in {"duration", "priority", "color", "status"}:
+        if (key == "status") and (value == Status.COMPLETED):
+            task = Task.fromdict(self.tasks[task_id].todict())
+            self.done.update({task_id: task})
+            del self.tasks[task_id]
+            self.days[task.date].tasks.remove(task_id)
+        elif key in {"duration", "priority", "color", "status"}:
             self.tasks[task_id].__dict__[key] = value
         elif key == "date":
             old_date = Date.fromordinal(self.tasks[task_id].__dict__[key].toordinal())
@@ -514,6 +528,30 @@ class Gantt:
         self.days = dict(sorted([(k, v) for k, v in self.days.items()]))
         print("\nProject added:")
         print(proj)
+
+    def add_backlog_item(
+        self,
+        name: str,
+        link: str = "",
+        tasks: str = "",
+        priority: Priority = Priority.WISH,
+        tags: set = set(),
+        cluster: int = 1,
+        duration: int = 30,
+        description: str = "",
+    ) -> None:
+        item = BacklogItem(
+            name=name,
+            link=link,
+            tasks=tasks,
+            priority=priority,
+            tags=tags,
+            cluster=cluster,
+            duration=duration,
+            description=description,
+        )
+        self.backlog_db.insert(item.todict())
+        print(item)
 
     def set_max_loads(self) -> None:
 

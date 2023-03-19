@@ -28,7 +28,7 @@ def test_save_nonempty():
     g.save_projects(save_path)
     g.save_tasks(save_path)
     g.save_days(save_path)
-    g.save_backlog(save_path)
+    g.save_done(save_path)
 
     projects_, tasks_, days_, backlog_ = read_data(save_path)
 
