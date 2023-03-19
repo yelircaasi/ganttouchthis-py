@@ -18,8 +18,6 @@ from ganttouchthis.utils.temporal import schedule_tasks
 DEFAULT_MAX_LOAD: int = 240
 TODAY = Date.today()
 
-# TODO: fix balanced adjust, add done database
-
 
 class Gantt:
     def __init__(self) -> None:
@@ -74,137 +72,38 @@ class Gantt:
         for task in tasks:
             print(task)
 
-    def interactive_show_upcoming_tasks(self) -> None:
-        num_days = validated_input("Number of days to show", int)
-        for day in date_range(TODAY, TODAY + num_days):
-            print()
-            print(box(str(day)))
-            for t in self.days[day].tasks:
-                print(self.tasks[t])
+    # def adjust(self) -> None:
+    #     algorithm = Adjustment[option_input(["manual", "rollover", "rigid", "balance"]).upper()]
+    #     start = date_input(prompt_start="Start date")
+    #     end = date_input(prompt_start="End date")
+    #     n: Optional[int] = None
+    #     if algorithm == Adjustment.RIGID:
+    #         n = int(input("Shift (number of days):\n "))
+    #     self.adjust_loads(start=start, end=end, algorithm=algorithm, n=n)
 
-    def interactive_show_upcoming_loads(self) -> None:
-        num_days = validated_input("Number of days to show", int)
-        for day in date_range(TODAY, TODAY + num_days):
-            print(multibox((str(day), str(sum((self.tasks[t].duration for t in self.days[day].tasks))))))
+    # def vp(self, limit: int = 50) -> None:
+    #     print("".join((str(v) for v in list(self.projects.values())[:limit])))
 
-    def interactive_show_current_projects(self) -> None:
-        num_days = validated_input("How far into the future to look", int)
-        for project in self.projects.values():
-            if project.start <= TODAY + num_days:
-                print(project)
+    # def vt(self, limit: int = 50) -> None:
+    #     print("".join((str(v) for v in list(self.tasks.values())[:limit])))
 
-    def interactive_edit(self) -> None:
-        toedit = option_input(["Project", "Task", "Day"]).lower()
-        self.clear_output()
-        if toedit == "project":
-            self.editp()
-        elif toedit == "task":
-            self.editt()
-        elif toedit == "day":
-            self.editd()
+    # def vd(self, limit: int = 50) -> None:
+    #     print("".join((str(v) for v in list(self.days.values())[:limit])))
 
-    def interactive_search(self) -> None:
-        tosearch = option_input(["Project", "Task", "Day", "Backlog", "Done"]).lower()
-        self.clear_output()
-        if tosearch == "project":
-            self.interactive_search_project()
-        elif tosearch == "task":
-            self.interactive_search_task()
-        elif tosearch == "day":
-            self.interactive_search_day()
-        elif tosearch == "backlog":
-            self.interactive_search_backlog()
-        elif tosearch == "done":
-            self.interactive_search_done()
+    # def vb(self, limit: int = 50) -> None:
+    #     print("".join((str(v) for v in list(self.backlog.values())[:limit])))
 
-    def interactive_adjust(self) -> None:
-        algorithm = Adjustment[option_input(["manual", "rollover", "rigid", "balance"]).upper()]
-        if algorithm == Adjustment.MANUAL:
-            self.adjust_loads_manual()
-        else:
-            n = None
-            if algorithm == Adjustment.RIGID:
-                n = validated_input("Number of days to shift back by", int)
-            start = date_input(prompt_start="Start date")
-            end = date_input(prompt_start="End date")
-            self.adjust_loads(start=start, end=end, algorithm=algorithm, n=n)
+    # def dayloads(self, start: Date = TODAY, end: Date = TODAY + 7) -> None:
+    #     loads: Dict[Date, int] = self.get_loads_by_day(start=start, end=end)
+    #     for day, total in loads.items():
+    #         print(f"{str(day)}: {total: >4} min")
 
-    def interactive_add_project(self) -> None:
-        name = validated_input("Name")
-        link = validated_input("Link", default="")
-        tasks = validated_input("Tasks (string)")
-        priority = validated_input("Priority", lambda x: Priority[x.upper().replace(" ", "_")])
-        start = validated_input("Start date (offset from today)", lambda x: TODAY + int(x))
-        end = validated_input("End date (offset from today)", lambda x: TODAY + int(x))
-        interval = validated_input("Interval", int)
-        cluster = validated_input("Cluster", int, default=1)
-        duration = validated_input("Duration", int, default=30)
-        tags = validated_input("Tags (comma-separated)", default="").split(",")
-        description = validated_input("Description", default="")
-        self.add_project(
-            name,
-            link,
-            tasks,
-            priority,
-            start,
-            end,
-            interval,
-            cluster,
-            duration,
-            tags,
-            description,
-        )
-
-    def interactive_set_maxes(self) -> None:
-        start = date_input(prompt_start="Start date")
-        end = date_input(prompt_start="End date")
-        for day in date_range(start, end):
-            new_load = validated_input(f"Duration for {str(day)}", int)
-            self.days[day].max_load = new_load
-
-    def interactive_save_all(self) -> None:
-        save_dir = input("Directory in which to save db .json files:\n ")
-        self.save_all(save_dir)
-
-    def clear_output(self) -> None:
-        os.system("clear")
-
-    def adjust(self) -> None:  # interactive
-        algorithm = Adjustment[option_input(["manual", "rollover", "rigid", "balance"]).upper()]
-        start = date_input(prompt_start="Start date")
-        end = date_input(prompt_start="End date")
-        n: Optional[int] = None
-        if algorithm == Adjustment.RIGID:
-            n = int(input("Shift (number of days):\n "))
-        self.adjust_loads(start=start, end=end, algorithm=algorithm, n=n)
-
-    def view(self) -> None:  # interactive
-
-        ...
-
-    def vp(self, limit: int = 50) -> None:
-        print("".join((str(v) for v in list(self.projects.values())[:limit])))
-
-    def vt(self, limit: int = 50) -> None:
-        print("".join((str(v) for v in list(self.tasks.values())[:limit])))
-
-    def vd(self, limit: int = 50) -> None:
-        print("".join((str(v) for v in list(self.days.values())[:limit])))
-
-    def vb(self, limit: int = 50) -> None:
-        print("".join((str(v) for v in list(self.backlog.values())[:limit])))
-
-    def dayloads(self, start: Date = TODAY, end: Date = TODAY + 7) -> None:
-        loads: Dict[Date, int] = self.get_loads_by_day(start=start, end=end)
-        for day, total in loads.items():
-            print(f"{str(day)}: {total: >4} min")
-
-    def showday(self, day: Date = TODAY, key: Optional[Callable] = lambda x: -x.priority.value) -> None:
-        self.ensure_day(day)
-        tasks = [self.tasks[i] for i in self.days[day].tasks]
-        if key:
-            tasks.sort(key=key)
-        print("".join(map(str, tasks)))
+    # def showday(self, day: Date = TODAY, key: Optional[Callable] = lambda x: -x.priority.value) -> None:
+    #     self.ensure_day(day)
+    #     tasks = [self.tasks[i] for i in self.days[day].tasks]
+    #     if key:
+    #         tasks.sort(key=key)
+    #     print("".join(map(str, tasks)))
 
     def setup(
         self,
@@ -257,18 +156,8 @@ class Gantt:
             day_loads.update({day: total})
         return day_loads
 
-    def get_day(self, day: Date) -> dict:
-        day_tasks: dict = {}
-
-        return day_tasks
-
-    def get_days(self) -> dict:
-        days: dict = {}
-
-        return days
-
     def back_up_databases(self) -> None:
-
+        # TODO
         ...
 
     def save_all(self, save_dir: Union[Path, str] = "") -> None:
@@ -343,16 +232,6 @@ class Gantt:
             db.insert(doc.todict())
         db.close()
 
-    def editp(self) -> None:
-        id_ = int(input("Project ID:\n "))
-        key = input("Attribute to edit (name|link|priority|duration|tags|description):\n ")
-        value = {
-            "duration": lambda x: int(x),
-            "priority": lambda x: Priority[x.upper()],
-            "tags": lambda x: int(x),
-        }.get(key, lambda x: str(x))(input("New value:\n "))
-        self.edit_project(id_, key, value)
-
     def edit_project(self, project_id: int, key: str, value: Any) -> None:
         if key in {"name", "link", "priority", "duration", "tags", "description"}:
             if key == "tags":
@@ -366,19 +245,6 @@ class Gantt:
             print("Requested edit not possible: '{key}' -> {value}. Use the method 'reschedule_tasks' instead.")
         else:
             print("Requested edit not possible: '{key}' -> {value}.")
-
-    def editt(self) -> None:
-        id_ = int(input("Task ID:\n "))
-        key = input("Attribute to edit (duration|priority|color|status|date|subtasks):\n ")
-        value = {
-            "duration": lambda x: int(x),
-            "priority": lambda x: Priority[x.upper()],
-            "color": lambda x: Color[x.upper()],
-            "status": lambda x: Status[x.upper()],
-            "date": lambda x: Date.fromisoformat(x),
-            "subtasks": lambda x: eval(x),
-        }.get(key, str)(input("New value:\n "))
-        self.edit_task(id_, key, value)
 
     def edit_task(self, task_id: int, key: str, value: Any) -> None:
         if (key == "status") and (value == Status.COMPLETED):
@@ -412,12 +278,6 @@ class Gantt:
         else:
             print("Requested edit not possible: '{key}' -> {value}.")
 
-    def editd(self) -> None:
-        id_ = Date.fromisoformat(input("Date (yyyy-mm-dd):\n ")) or TODAY - 50  # just for typing
-        print("Attribute to edit:\n max_load")
-        value = int(input("New value:\n "))
-        self.edit_day(id_, "max_load", value)
-
     def edit_day(self, date: Date, key: str, value: int):
         if key == "tasks":
             print("Requested edit not possible: '{key}' -> {value}. Edit via tasks.")
@@ -425,12 +285,6 @@ class Gantt:
             self.days[date].__dict__[key] = value
         else:
             print("Requested edit not possible: '{key}' -> {value}.")
-
-    def editb(self) -> None:
-        id_ = int(input("Project ID:\n "))
-        key = input("Attribute to edit: ")
-        value = input("New value:\n ")
-        self.edit_backlog(id_, key, value)
 
     def edit_backlog(self, item_id: int, key: str, value: str):
         if key in {"name", "tasks"}:
@@ -568,352 +422,6 @@ class Gantt:
 
     def show_day(self, date: Date) -> None:
         print(date)
-
-    def interactive_search_project(self) -> None:
-        key = option_input(
-            (
-                "id",
-                "name",
-                "link",
-                "tasks",
-                "priority",
-                "start",
-                "end",
-                "interval",
-                "cluster",
-                "duration",
-                "tags",
-                "description",
-            )
-        )
-        print(key)
-        if key == "name":
-            value = validated_input(
-                "Name",
-            )
-
-            def search_condition(x):
-                return value.lower() in x.lower()
-
-        elif key == "link":
-            value = validated_input(
-                "Link",
-            )
-
-            def search_condition(x):
-                return value.lower() in x.lower()
-
-        elif key == "tasks":
-            value = validated_input(
-                "Tasks (string)",
-            )
-
-            def search_condition(x):
-                return value.lower() in x.lower()
-
-        elif key == "priority":
-            value = validated_input("Priority", lambda x: Priority[x])
-
-            def search_condition(x):
-                return value == x
-
-        elif key == "start":
-            value = validated_input("Start date", lambda x: Date.fromisoformat(x))
-
-            def search_condition(x):
-                return value == x
-
-        elif key == "end":
-            value = validated_input("End date", lambda x: Date.fromisoformat(x))
-
-            def search_condition(x):
-                return value == x
-
-        elif key == "interval":
-            value = validated_input("Interval", int)
-
-            def search_condition(x):
-                return value == x
-
-        elif key == "cluster":
-            value = validated_input("Cluster", int)
-
-            def search_condition(x):
-                return value == x
-
-        elif key == "duration":
-            value = validated_input("Duration", int)
-
-            def search_condition(x):
-                return value == x
-
-        elif key == "tags":
-            value = validated_input("Tags (comma-separated)", lambda x: list(map(lambda y: y.strip(), x.split(","))))
-
-            def search_condition(x):
-                return bool(value.intersection(x))
-
-        elif key == "description":
-            value = validated_input("Description", str)
-
-            def search_condition(x):
-                return value in x
-
-        for project in self.projects.values():
-            if search_condition(project.__dict__[key]):
-                print(project)
-
-    def interactive_search_task(self) -> None:
-        key = option_input(
-            (
-                "id",
-                "project",
-                "name",
-                "date",
-                "status",
-                "link",
-                "subtasks",
-                "duration",
-                "priority",
-                "color",
-                "tags",
-                "description",
-            )
-        )
-        if key == "id":
-            value = validated_input("Task ID", int)
-            print(self.projects[key])
-            return
-        elif key == "project":
-            value = validated_input("Project ID", str)
-
-            def search_condition(x):
-                return value == x
-
-        elif key == "name":
-            value = validated_input("Name", str)
-
-            def search_condition(x):
-                return value.lower() in x.lower()
-
-        elif key == "date":
-            value = validated_input("Date", lambda x: Date.fromisoformat(x))
-
-            def search_condition(x):
-                return value == x
-
-        elif key == "status":
-            value = validated_input("Status", lambda x: Status[x])
-
-            def search_condition(x):
-                return value == x
-
-        elif key == "link":
-            value = validated_input("Link", str)
-
-            def search_condition(x):
-                return value.lower() in x.lower()
-
-        elif key == "subtasks":
-            value = validated_input(
-                "Subtasks (comma-separated)", lambda x: list(map(lambda y: y.strip(), x.split(",")))
-            )
-
-            def search_condition(x):
-                return bool(value.intersection(x))
-
-        elif key == "duration":
-            value = validated_input("Duration", int)
-
-            def search_condition(x):
-                return value == x
-
-        elif key == "priority":
-            value = validated_input("Priority", lambda x: Priority[x])
-
-            def search_condition(x):
-                return value == x
-
-        elif key == "color":
-            value = validated_input("Color", lambda x: Color[x])
-
-            def search_condition(x):
-                return value == x
-
-        elif key == "tags":
-            value = validated_input("Tags (comma-separated)", lambda x: list(map(lambda y: y.strip(), x.split(","))))
-
-            def search_condition(x):
-                return bool(value.intersection(x))
-
-        elif key == "description":
-            value = validated_input("Description", str)
-
-            def search_condition(x):
-                return value.lower() in x.lower()
-
-        else:
-            print("Problem with key:", key)
-        for task in self.tasks.values():
-            if search_condition(task.__dict__[key]):
-                print(task)
-
-    def interactive_search_day(self) -> None:
-        key = option_input(("date", "max_load", "tasks"))
-        if key == "date":
-            value = validated_input("Date", lambda x: Date.fromisoformat(x))
-            print(self.days[value])
-            return
-        elif key == "max_load":
-            value = validated_input("Max load", int)
-
-            def search_condition(x):
-                return value == x
-
-        elif key == "tasks":
-            value = validated_input("Task", int)
-
-            def search_condition(x):
-                return value in x
-
-        else:
-            print("Problem with key:", key)
-        for day in self.days.values():
-            if search_condition(day.__dict__[key]):
-                print(day)
-
-    def interactive_search_backlog(self) -> None:
-        key = option_input(("name", "link", "tasks", "tags", "description"))
-        if key == "name":
-            value = validated_input("Name", str)
-
-            def search_condition(x):
-                return value.lower() in x.lower()
-
-        elif key == "link":
-            value = validated_input("Link", str)
-
-            def search_condition(x):
-                return value.lower() in x.lower()
-
-        elif key == "tasks":
-            value = validated_input("Tasks (str)", str)
-
-            def search_condition(x):
-                return value.lower() in x.lower()
-
-        elif key == "tags":
-            value = validated_input("Tags (comma-separated)", lambda x: set(map(lambda y: y.strip(), x.split(","))))
-
-            def search_condition(x):
-                return bool(value.intersection(x))
-
-        elif key == "description":
-            value = validated_input("Description", str)
-
-            def search_condition(x):
-                return value in x
-
-        else:
-            print("Problem with key:", key)
-        for item in self.backlog.values():
-            if search_condition(item.__dict__[key]):
-                print(item)
-
-    def interactive_search_done(self) -> None:
-        key = option_input(
-            (
-                "id",
-                "project",
-                "name",
-                "date",
-                "status",
-                "link",
-                "subtasks",
-                "duration",
-                "priority",
-                "color",
-                "tags",
-                "description",
-            )
-        )
-        if key == "name":
-            value = validated_input(
-                "Name",
-            )
-
-            def search_condition(x):
-                return value.lower() in x.lower()
-
-        elif key == "link":
-            value = validated_input(
-                "Link",
-            )
-
-            def search_condition(x):
-                return value.lower() in x.lower()
-
-        elif key == "tasks":
-            value = validated_input(
-                "Tasks (string)",
-            )
-
-            def search_condition(x):
-                return value.lower() in x.lower()
-
-        elif key == "priority":
-            value = validated_input("Priority", lambda x: Priority[x])
-
-            def search_condition(x):
-                return value == x
-
-        elif key == "start":
-            value = validated_input("Start date", lambda x: Date.fromisoformat(x))
-
-            def search_condition(x):
-                return value == x
-
-        elif key == "end":
-            value = validated_input("End date", lambda x: Date.fromisoformat(x))
-
-            def search_condition(x):
-                return value == x
-
-        elif key == "interval":
-            value = validated_input("Interval", int)
-
-            def search_condition(x):
-                return value == x
-
-        elif key == "cluster":
-            value = validated_input("Cluster", int)
-
-            def search_condition(x):
-                return value == x
-
-        elif key == "duration":
-            value = validated_input("Duration", int)
-
-            def search_condition(x):
-                return value == x
-
-        elif key == "tags":
-            value = validated_input("Tags (comma-separated)", lambda x: list(map(lambda y: y.strip(), x.split(","))))
-
-            def search_condition(x):
-                return bool(value.intersection(x))
-
-        elif key == "description":
-            value = validated_input("Description", str)
-
-            def search_condition(x):
-                return value.lower() in x.lower()
-
-        else:
-            print("Problem with key:", key)
-        for done_task in ...:  #!!
-            if search_condition(done_task):  # TODO: database
-                print(done_task)
 
     def adjust_loads(
         self,

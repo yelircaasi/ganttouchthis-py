@@ -2,7 +2,8 @@ import os
 from pathlib import Path
 from typing import Callable
 
-from ganttouchthis import TODAY, Date, Priority, Project, Task, get_gantt
+from ganttouchthis import TODAY, Date, Priority, Project, Task
+from ganttouchthis.cli.interactive_gantt import get_interactive_gantt
 from ganttouchthis.utils.input import option_input, validated_input
 
 
@@ -19,7 +20,7 @@ def wrap(func: Callable) -> Callable:
 
 def run_interactive():
 
-    g = get_gantt()
+    g = get_interactive_gantt()
     db_path = validated_input("Database base path", Path, default=Path.expanduser(Path("~/.cache/ganttouchthis/db")))
     if not db_path.exists():
         db_path.mkdir()
