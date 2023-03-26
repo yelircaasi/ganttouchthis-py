@@ -72,11 +72,13 @@ class Gantt:
 
     def show_today(self) -> None:
         self.ensure_day(TODAY)
-        tasks = sorted(
-            [self.tasks[t] for t in self.days[TODAY].tasks], key=lambda task: (task.priority.value, task.duration)
-        )
-        for task in tasks:
-            print(task)
+        for day in filter(lambda d: d <= TODAY, self.days.keys()):
+            print(box(str(day)))
+            tasks = sorted(
+                [self.tasks[t] for t in self.days[day].tasks], key=lambda task: (task.priority.value, task.duration)
+            )
+            for task in tasks:
+                print(task)
 
     # def adjust(self) -> None:
     #     algorithm = Adjustment[option_input(["manual", "rollover", "rigid", "balance"]).upper()]
@@ -122,7 +124,7 @@ class Gantt:
         self.default_max_load = default_max_load or self.default_max_load
         self.projects = self.open_projects() if not start_empty else self.projects
         self.tasks = self.open_tasks() if not start_empty else self.tasks
-        self.days = self.open_days() if not start_empty else self.get_days()
+        self.days = self.open_days() if not start_empty else {}
         # self.backlog = self.open_backlog() if not start_empty else self.backlog
         self.backlog_db = TinyDB(self.db_paths.DB_PATH / "backlog.json")
 
@@ -477,6 +479,8 @@ class Gantt:
         for t in self.tasks:
             if start <= self.tasks[t].date <= end:
                 self.tasks[t].date += n
+        for d in date_range(end + n, start):
+            self.ensure_day(d)
         for d in date_range(end, start):
             tasks = self.days[d].tasks
             self.days[d + n].tasks.extend(tasks)

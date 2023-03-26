@@ -23,7 +23,7 @@ def test_configure_paths_start_empty():
     assert g.projects == {}
     assert g.tasks == {}
     assert g.days == {}
-    assert g.backlog == {}
+    # assert g.backlog == {}
 
 
 def test_open_nonexistent_db():
@@ -47,7 +47,7 @@ def test_open_nonexistent_db():
     assert g.projects == {}
     assert g.tasks == {}
     assert g.days == {}
-    assert g.backlog == {}
+    # assert g.backlog == {}
 
     rmdir(nonexistent_db)
 
@@ -59,7 +59,7 @@ def test_open_empty():
     assert g.projects == {}
     assert g.tasks == {}
     assert g.days == {}
-    assert g.backlog == {}
+    # assert g.backlog == {}
 
 
 def test_open_nonempty():
@@ -80,6 +80,6 @@ def test_open_nonempty():
         for k, v in day.todict().items():
             assert day.__dict__[k] == days[d].__dict__[k]
 
-    for i, b in g.backlog.items():
-        for k, v in b.todict().items():
-            assert b.__dict__[k] == backlog[i].__dict__[k]
+    # for i, b in g.backlog.items():
+    #     for k, v in b.todict().items():
+    #         assert b.__dict__[k] == backlog[i].__dict__[k]

@@ -13,13 +13,24 @@ path can be set with the environment variable `GANTTOUCHTHIS_DB_PATH`.
 
 [x] change Gantt class to not open backlog.json and keep it in memory
 
-[ ] clean up code, remove junk comments, refactor long methods
+[ ] change projects and tasks to track which days, projects, and tasks
+    change and then write only the ones that have changed
+
+[ ] change some methods to properties(with `@property` decorator
+
+[ ] clean up code
+
+[ ] remove junk comments
+
+[ ] refactor long methods
 
 [ ] write methods (basic and interactive) to create project from backlog
 
 [ ] write test for basic functionality
 
 [ ] write tests for interactive functionality
+
+[ ] add feature to open pdf from terminal (will require config file as well)
 
 [ ] refine CLI (using typer?)
 
