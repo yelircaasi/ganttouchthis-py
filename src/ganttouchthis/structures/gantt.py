@@ -72,7 +72,7 @@ class Gantt:
 
     def show_today(self) -> None:
         self.ensure_day(TODAY)
-        for day in filter(lambda d: d <= TODAY, self.days.keys()):
+        for day in sorted(filter(lambda d: d <= TODAY, self.days.keys())):
             print(box(str(day)))
             tasks = sorted(
                 [self.tasks[t] for t in self.days[day].tasks], key=lambda task: (task.priority.value, task.duration)
