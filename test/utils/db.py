@@ -5,7 +5,7 @@ from tinydb import TinyDB
 
 from ganttouchthis import Color, Date, Priority
 from ganttouchthis.structures.backlog import BacklogItem
-from ganttouchthis.structures.day import Day
+from ganttouchthis.structures.day import DayAgenda
 from ganttouchthis.structures.project import Project
 from ganttouchthis.structures.task import Task
 from ganttouchthis.utils.enums import Status
@@ -174,25 +174,25 @@ def make_data():
         ),
     }
     days = {
-        Date(2023, 4, 3): Day(Date(2023, 4, 3), max_load=240, tasks=[1, 5, 6]),
-        Date(2023, 4, 4): Day(Date(2023, 4, 4), max_load=240, tasks=[]),
-        Date(2023, 4, 5): Day(Date(2023, 4, 5), max_load=240, tasks=[]),
-        Date(2023, 4, 6): Day(Date(2023, 4, 6), max_load=240, tasks=[]),
-        Date(2023, 4, 7): Day(Date(2023, 4, 7), max_load=240, tasks=[]),
-        Date(2023, 4, 8): Day(Date(2023, 4, 8), max_load=240, tasks=[]),
-        Date(2023, 4, 9): Day(Date(2023, 4, 9), max_load=240, tasks=[2]),
-        Date(2023, 4, 10): Day(Date(2023, 4, 10), max_load=240, tasks=[]),
-        Date(2023, 4, 11): Day(Date(2023, 4, 11), max_load=240, tasks=[]),
-        Date(2023, 4, 12): Day(Date(2023, 4, 12), max_load=240, tasks=[7]),
-        Date(2023, 4, 13): Day(Date(2023, 4, 13), max_load=240, tasks=[]),
-        Date(2023, 4, 14): Day(Date(2023, 4, 14), max_load=240, tasks=[]),
-        Date(2023, 4, 15): Day(Date(2023, 4, 15), max_load=240, tasks=[3]),
-        Date(2023, 4, 16): Day(Date(2023, 4, 16), max_load=240, tasks=[]),
-        Date(2023, 4, 17): Day(Date(2023, 4, 17), max_load=240, tasks=[]),
-        Date(2023, 4, 18): Day(Date(2023, 4, 18), max_load=240, tasks=[]),
-        Date(2023, 4, 19): Day(Date(2023, 4, 19), max_load=240, tasks=[]),
-        Date(2023, 4, 20): Day(Date(2023, 4, 20), max_load=240, tasks=[]),
-        Date(2023, 4, 21): Day(Date(2023, 4, 21), max_load=240, tasks=[4, 8]),
+        Date(2023, 4, 3): DayAgenda(Date(2023, 4, 3), max_load=240, tasks=[1, 5, 6]),
+        Date(2023, 4, 4): DayAgenda(Date(2023, 4, 4), max_load=240, tasks=[]),
+        Date(2023, 4, 5): DayAgenda(Date(2023, 4, 5), max_load=240, tasks=[]),
+        Date(2023, 4, 6): DayAgenda(Date(2023, 4, 6), max_load=240, tasks=[]),
+        Date(2023, 4, 7): DayAgenda(Date(2023, 4, 7), max_load=240, tasks=[]),
+        Date(2023, 4, 8): DayAgenda(Date(2023, 4, 8), max_load=240, tasks=[]),
+        Date(2023, 4, 9): DayAgenda(Date(2023, 4, 9), max_load=240, tasks=[2]),
+        Date(2023, 4, 10): DayAgenda(Date(2023, 4, 10), max_load=240, tasks=[]),
+        Date(2023, 4, 11): DayAgenda(Date(2023, 4, 11), max_load=240, tasks=[]),
+        Date(2023, 4, 12): DayAgenda(Date(2023, 4, 12), max_load=240, tasks=[7]),
+        Date(2023, 4, 13): DayAgenda(Date(2023, 4, 13), max_load=240, tasks=[]),
+        Date(2023, 4, 14): DayAgenda(Date(2023, 4, 14), max_load=240, tasks=[]),
+        Date(2023, 4, 15): DayAgenda(Date(2023, 4, 15), max_load=240, tasks=[3]),
+        Date(2023, 4, 16): DayAgenda(Date(2023, 4, 16), max_load=240, tasks=[]),
+        Date(2023, 4, 17): DayAgenda(Date(2023, 4, 17), max_load=240, tasks=[]),
+        Date(2023, 4, 18): DayAgenda(Date(2023, 4, 18), max_load=240, tasks=[]),
+        Date(2023, 4, 19): DayAgenda(Date(2023, 4, 19), max_load=240, tasks=[]),
+        Date(2023, 4, 20): DayAgenda(Date(2023, 4, 20), max_load=240, tasks=[]),
+        Date(2023, 4, 21): DayAgenda(Date(2023, 4, 21), max_load=240, tasks=[4, 8]),
     }
     backlog = {
         1: BacklogItem(
@@ -224,7 +224,7 @@ def write_data(db_path, projects, tasks, days, backlog):
     for doc in tasks.values():
         db.insert(doc.todict())
     db.close()
-    db = TinyDB(db_path / "days.json")
+    db = TinyDB(db_path / "dayagendas.json")
     db.truncate()
     for doc in days.values():
         db.insert(doc.todict())
@@ -236,7 +236,7 @@ def write_data(db_path, projects, tasks, days, backlog):
     db.close()
 
 
-DictTuple = Tuple[Dict[int, Project], Dict[int, Task], Dict[Date, Day], Dict[int, BacklogItem]]
+DictTuple = Tuple[Dict[int, Project], Dict[int, Task], Dict[Date, DayAgenda], Dict[int, BacklogItem]]
 
 
 def read_data(db_path) -> DictTuple:
@@ -246,8 +246,8 @@ def read_data(db_path) -> DictTuple:
     db = TinyDB(db_path / "tasks.json")
     tasks: Dict[int, Task] = {d.id: d for d in map(Task.fromdict, db.all())}
     db.close()
-    db = TinyDB(db_path / "days.json")
-    days: Dict[Date, Day] = {d.date: d for d in map(Day.fromdict, db.all())}
+    db = TinyDB(db_path / "dayagendas.json")
+    days: Dict[Date, DayAgenda] = {d.date: d for d in map(DayAgenda.fromdict, db.all())}
     db.close()
     db = TinyDB(db_path / "backlog.json")
     backlog: Dict[int, BacklogItem] = {i + 1: d for i, d in enumerate(map(BacklogItem.fromdict, db.all()))}

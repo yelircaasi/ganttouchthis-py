@@ -17,7 +17,7 @@ def test_configure_paths_start_empty():
 
     assert str(g.db_paths.PROJECTS_DB_PATH).endswith("/test/data/empty_db/projects.json")
     assert str(g.db_paths.TASKS_DB_PATH).endswith("/test/data/empty_db/tasks.json")
-    assert str(g.db_paths.DAYS_DB_PATH).endswith("/test/data/empty_db/days.json")
+    assert str(g.db_paths.DAYS_DB_PATH).endswith("/test/data/empty_db/dayagendas.json")
     assert str(g.db_paths.BACKLOG_DB_PATH).endswith("/test/data/empty_db/backlog.json")
 
     assert g.projects == {}
@@ -41,7 +41,7 @@ def test_open_nonexistent_db():
 
     assert str(g.db_paths.PROJECTS_DB_PATH).endswith("/test/data/nonexistent_db/projects.json")
     assert str(g.db_paths.TASKS_DB_PATH).endswith("/test/data/nonexistent_db/tasks.json")
-    assert str(g.db_paths.DAYS_DB_PATH).endswith("/test/data/nonexistent_db/days.json")
+    assert str(g.db_paths.DAYS_DB_PATH).endswith("/test/data/nonexistent_db/dayagendas.json")
     assert str(g.db_paths.BACKLOG_DB_PATH).endswith("/test/data/nonexistent_db/backlog.json")
 
     assert g.projects == {}

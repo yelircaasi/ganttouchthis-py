@@ -8,7 +8,7 @@ class DBPaths:
         self.DB_PATH = Path.expanduser(Path(os.environ.get("GANTTOUCHTHIS_DB_PATH", base_db_path)))
         self.PROJECTS_DB_PATH = self.DB_PATH / "projects.json"
         self.TASKS_DB_PATH = self.DB_PATH / "tasks.json"
-        self.DAYS_DB_PATH = self.DB_PATH / "days.json"
+        self.DAYS_DB_PATH = self.DB_PATH / "dayagendas.json"
         self.BACKLOG_DB_PATH = self.DB_PATH / "backlog.json"
 
         if not self.DB_PATH.exists():

@@ -16,7 +16,7 @@ def multibox(strings: Iterable[str]) -> str:
 
 def table(array2d_: List[List[Union[str, int]]], head=True) -> str:
     ...
-    "─│┌ ┐"
+    #"─│┌ ┐"
     array2d: List[List[str]] = list(map(lambda row: list(map(str, row)), array2d_))
     print(array2d)
     assert len(set(map(len, array2d))) == 1  # all rows should have the same number of values

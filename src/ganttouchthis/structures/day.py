@@ -4,7 +4,7 @@ from ganttouchthis.utils.date import Date
 from ganttouchthis.utils.repr import multibox
 
 
-class Day:
+class DayAgenda:
     def __init__(
         self,
         date: Date,
@@ -39,7 +39,7 @@ class Day:
         }
 
     @classmethod
-    def fromdict(cls, json_dict: Dict[str, Any]) -> "Day":
+    def fromdict(cls, json_dict: Dict[str, Any]) -> "DayAgenda":
         return cls(
             date=Date.fromisoformat(json_dict["date"]) or Date.today() - 100,
             max_load=json_dict["max_load"],

@@ -5,7 +5,7 @@ from typing import Any, Callable, Dict, List, Literal, Optional, Union
 from tinydb import Query, TinyDB
 
 from ganttouchthis.structures.backlog import BacklogItem
-from ganttouchthis.structures.day import Day
+from ganttouchthis.structures.day import DayAgenda
 from ganttouchthis.structures.project import Project
 from ganttouchthis.structures.task import Task
 from ganttouchthis.utils.date import Date, date_range
@@ -30,7 +30,7 @@ class Gantt:
         self.tasks: Dict[int, Task] = {}
         self.backlog: Dict[int, BacklogItem] = {}
         self.done: Dict[int, Task] = {}
-        self.days: Dict[Date, Day] = {}
+        self.days: Dict[Date, DayAgenda] = {}
         self.project_keys = {
             "id",
             "name",
@@ -94,7 +94,7 @@ class Gantt:
                 print(project)
 
     def interactive_edit(self) -> None:
-        toedit = option_input(["Project", "Task", "Day"]).lower()
+        toedit = option_input(["Project", "Task", "DayAgenda"]).lower()
         self.clear_output()
         if toedit == "project":
             self.editp()
@@ -104,7 +104,7 @@ class Gantt:
             self.editd()
 
     def interactive_search(self) -> None:
-        tosearch = option_input(["Project", "Task", "Day", "Backlog", "Done"]).lower()
+        tosearch = option_input(["Project", "Task", "DayAgenda", "Backlog", "Done"]).lower()
         self.clear_output()
         if tosearch == "project":
             self.interactive_search_project()
@@ -235,7 +235,7 @@ class Gantt:
 
     def open_days(self) -> dict:
         days_db = TinyDB(self.db_paths.DAYS_DB_PATH)
-        days = map(Day.fromdict, days_db.all())
+        days = map(DayAgenda.fromdict, days_db.all())
         days_db.close()
         return {d.date: d for d in days}
 
@@ -247,7 +247,7 @@ class Gantt:
 
     def ensure_day(self, day: Date) -> None:
         if not day in self.days:
-            self.days.update({day: Day(day, max_load=self.default_max_load, tasks=[])})
+            self.days.update({day: DayAgenda(day, max_load=self.default_max_load, tasks=[])})
 
     def get_loads_by_day(self, start: Date = TODAY, end: Date = TODAY + 7) -> Dict[Date, int]:
         day_loads = {}
@@ -277,7 +277,7 @@ class Gantt:
         self.save_tasks(save_dir)
         print("Tasks saved.")
         self.save_days(save_dir)
-        print("Days saved.")
+        print("DayAgendas saved.")
         self.save_done(save_dir)
         print("Done tasks saved.")
 
@@ -318,8 +318,8 @@ class Gantt:
         save_dir = Path(save_dir)
         if not save_dir.exists():
             save_dir.mkdir()
-        save_path = save_dir / "days.json"
-        os.rename(save_path, "/tmp/days.json")
+        save_path = save_dir / "dayagendas.json"
+        os.rename(save_path, "/tmp/dayagendas.json")
         save_path.touch()
         db = TinyDB(save_path)
         db.truncate()
