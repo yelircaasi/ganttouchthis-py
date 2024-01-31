@@ -64,8 +64,8 @@ def test_open_empty():
 
 def test_open_nonempty():
     test_data_path = Path(__file__).parent / "data/read_nonempty_db"
-    projects, tasks, days, backlog = make_data()
-    write_data(test_data_path, projects, tasks, days, backlog)
+    projects, tasks, schedules, backlog = make_data()
+    write_data(test_data_path, projects, tasks, schedules, backlog)
     g.setup(base_db_path=test_data_path)
 
     for i, p in g.projects.items():
@@ -76,9 +76,9 @@ def test_open_nonempty():
         for k, v in t.todict().items():
             assert t.__dict__[k] == tasks[i].__dict__[k]
 
-    for d, day in g.days.items():
-        for k, v in day.todict().items():
-            assert day.__dict__[k] == days[d].__dict__[k]
+    for d, schedule in g.days.items():
+        for k, v in schedule.todict().items():
+            assert schedule.__dict__[k] == schedules[d].__dict__[k]
 
     for i, b in g.backlog.items():
         for k, v in b.todict().items():

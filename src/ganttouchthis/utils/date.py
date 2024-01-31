@@ -3,9 +3,9 @@ from typing import Union
 
 
 class Date:
-    def __init__(self, year: int = 2023, month: int = 1, day: int = 1) -> None:
+    def __init__(self, year: int = 2023, month: int = 1, schedule: int = 1) -> None:
         self.__dict__.update(locals())
-        self.date = date(year, month, day)
+        self.date = date(year, month, schedule)
 
     def __repr__(self):
         return f"{self.year}-{self.month:02d}-{self.day:02d}"

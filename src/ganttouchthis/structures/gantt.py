@@ -2,7 +2,9 @@ import os
 from pathlib import Path
 from typing import Any, Callable, Dict, List, Literal, Optional, Union
 
-from tinydb import Query, TinyDB
+#from tinydb import Query, TinyDB
+Query = ""
+TinyDB = "" # to get rid of error until I refactor
 
 from ganttouchthis.structures.backlog import BacklogItem
 from ganttouchthis.structures.day import DayAgenda
@@ -13,7 +15,7 @@ from ganttouchthis.utils.db import DBPaths
 from ganttouchthis.utils.enums import Adjustment, Color, Priority, Status
 from ganttouchthis.utils.input import date_input, option_input, validated_input
 from ganttouchthis.utils.repr import box, multibox
-from ganttouchthis.utils.temporal import schedule_tasks
+from ganttouchthis.utils.temporal import day_tasks
 
 DEFAULT_MAX_LOAD: int = 240
 TODAY = Date.today()
@@ -496,14 +498,14 @@ class Gantt:
             description=description,
         )
         self.projects.update({project_id: proj})
-        schedule = schedule_tasks(
+        day = day_tasks(
             start=start,
             end=end,
             interval=interval,
             cluster=cluster,
             tasks=tasks,
         )
-        for d, subtasks in schedule.items():
+        for d, subtasks in day.items():
             task_id = 1 if not self.tasks else max(self.tasks) + 1
             self.tasks.update(
                 {

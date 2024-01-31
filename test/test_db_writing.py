@@ -18,11 +18,11 @@ def test_save_empty():
 
 def test_save_nonempty():
     save_path = Path(__file__).parent / "data/write_nonempty_db"
-    projects, tasks, days, backlog = make_data()
+    projects, tasks, schedules, backlog = make_data()
 
     g.projects = projects
     g.tasks = tasks
-    g.days = days
+    g.days = schedules
     g.backlog = backlog
 
     g.save_projects(save_path)
@@ -30,7 +30,7 @@ def test_save_nonempty():
     g.save_days(save_path)
     g.save_done(save_path)
 
-    projects_, tasks_, days_, backlog_ = read_data(save_path)
+    projects_, tasks_, schedules_, backlog_ = read_data(save_path)
 
     for i, p in projects.items():
         for k, v in p.todict().items():
@@ -38,9 +38,9 @@ def test_save_nonempty():
     for i, t in tasks.items():
         for k, v in t.todict().items():
             assert t.__dict__[k] == tasks_[i].__dict__[k]
-    for d, day in days.items():
-        for k, v in day.todict().items():
-            assert day.__dict__[k] == days_[d].__dict__[k]
+    for d, schedule in schedules.items():
+        for k, v in schedule.todict().items():
+            assert schedule.__dict__[k] == schedules_[d].__dict__[k]
     for i, b in g.backlog.items():
         for k, v in b.todict().items():
             assert b.__dict__[k] == backlog_[i].__dict__[k]

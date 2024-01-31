@@ -173,7 +173,7 @@ def make_data():
             description="a book on best practices with docker",
         ),
     }
-    days = {
+    schedules = {
         Date(2023, 4, 3): DayAgenda(Date(2023, 4, 3), max_load=240, tasks=[1, 5, 6]),
         Date(2023, 4, 4): DayAgenda(Date(2023, 4, 4), max_load=240, tasks=[]),
         Date(2023, 4, 5): DayAgenda(Date(2023, 4, 5), max_load=240, tasks=[]),
@@ -210,10 +210,10 @@ def make_data():
         5: BacklogItem("Python. Сборник упражнений", tasks="34", tags={"python"}),
     }
 
-    return (projects, tasks, days, backlog)
+    return (projects, tasks, schedules, backlog)
 
 
-def write_data(db_path, projects, tasks, days, backlog):
+def write_data(db_path, projects, tasks, schedules, backlog):
     db = TinyDB(db_path / "projects.json")
     db.truncate()
     for doc in projects.values():
@@ -226,7 +226,7 @@ def write_data(db_path, projects, tasks, days, backlog):
     db.close()
     db = TinyDB(db_path / "dayagendas.json")
     db.truncate()
-    for doc in days.values():
+    for doc in schedules.values():
         db.insert(doc.todict())
     db.close()
     db = TinyDB(db_path / "backlog.json")
@@ -247,9 +247,9 @@ def read_data(db_path) -> DictTuple:
     tasks: Dict[int, Task] = {d.id: d for d in map(Task.fromdict, db.all())}
     db.close()
     db = TinyDB(db_path / "dayagendas.json")
-    days: Dict[Date, DayAgenda] = {d.date: d for d in map(DayAgenda.fromdict, db.all())}
+    schedules: Dict[Date, DayAgenda] = {d.date: d for d in map(DayAgenda.fromdict, db.all())}
     db.close()
     db = TinyDB(db_path / "backlog.json")
     backlog: Dict[int, BacklogItem] = {i + 1: d for i, d in enumerate(map(BacklogItem.fromdict, db.all()))}
     db.close()
-    return (projects, tasks, days, backlog)
+    return (projects, tasks, schedules, backlog)
